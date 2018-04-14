@@ -129,6 +129,7 @@ class Home extends Component {
                     clas: noticiaCla
                 });
             })
+            // eslint-disable-next-line
             noticiaCla.map((cla, index) => {
                 const options = { 'url': 'https://cors-anywhere.herokuapp.com/' + cla.link }
                 ogs(options)
@@ -142,13 +143,36 @@ class Home extends Component {
             })
         }
     }
+    //Open graph parser for wp Api
+    mapOpenGraphImageResults = function (url, index) {
+        if (this.state.clas.length > 0) {
+            let noticiaCla = _.cloneDeep(this.state.clas);
+            let done = _.after(noticiaCla.length, () => {
+                this.setState({
+                    clas: noticiaCla
+                });
+            })
+            // eslint-disable-next-line
+            noticiaCla.map((cla, index) => {
+                const options = { 'url': 'https://cors-anywhere.herokuapp.com/' + cla.link }
+                ogs(options)
+                    .then(function (result) {
+                        cla.imgUrl = result.data.ogImage.url;
+                        done();
+                    })
+                    .catch(function (error) {
+                        console.log('error:', error);
+                    })
+            })
+        }
+    }
     render() {
         this.mapOpenGraphImageResults();
         let clas = this.state.clas.map((cla, index) => {
             return (
                 <div className="col-md-4" key={index}>
                     <div className="card mb-4 box-shadow">
-                        <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={cla.imgUrl} alt="Thumbnail [100%x225]" />
+                        <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!cla.imgUrl) ? require('../images/noticiaCLa.PNG') : cla.imgUrl} alt="Thumbnail [100%x225]" />
                         <div className="card-body">
                             <h3>{ReactHtmlParser(cla.title)}</h3>
                             <p className="card-text">{moment(cla.pubDate).format('L')}</p>
@@ -161,7 +185,7 @@ class Home extends Component {
                         <div className="modal-dialog modal-lg">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <img className="modal-header" src={require('../images/noticiaCLa.PNG')} alt="Thumbnail [100%x225]" />
+                                    <img className="modal-header" src={cla.imgUrl} alt="Thumbnail [100%x225]" />
                                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
