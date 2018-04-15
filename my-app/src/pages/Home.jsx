@@ -77,6 +77,7 @@ mapOpenGraphImageResults = function (url, index) {
                 }
             }));
         })
+        // eslint-disable-next-line
         noticiaCla.map((cla, index) => {
             const options = { 'url': 'https://cors-anywhere.herokuapp.com/' + cla.link }
             ogs(options)
