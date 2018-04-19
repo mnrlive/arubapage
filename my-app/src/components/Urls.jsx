@@ -4,7 +4,7 @@ function Urls() {
     
     const noticiaCla = 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.noticiacla.com%2Frss';
     const eArubiano = 'https://earubianonews.com/wp-json/wp/v2/posts?_embed';
-    const aweMainta = 'https://awemainta.com/wp-json/wp/v2/posts?_embed';
+    const aweMainta = 'https://cors-anywhere.herokuapp.com/https://awemainta.com/wp-json/wp/v2/posts?_embed';
     const bintiCuatorOra = 'https://24ora.com/wp-json/wp/v2/posts?_embed';
     const boletinExtra = 'https://boletinextra.com/wp-json/wp/v2/posts?_embed';
     const masNoticia = 'https://www.masnoticia.com/wp-json/wp/v2/posts?_embed';

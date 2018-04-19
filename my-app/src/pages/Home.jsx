@@ -315,7 +315,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(post._embedded['wp:featuredmedia'][0].code || post._embedded['wp:featuredmedia'][0].media_details.sizes.medium === undefined) ? require('../images/masnoticia.PNG') : post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!post._embedded['wp:featuredmedia'] || post._embedded['wp:featuredmedia'][0].code || post._embedded['wp:featuredmedia'][0].media_details.sizes.medium === undefined) ? require('../images/masnoticia.PNG') : post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(post.title.rendered)}</h3>
                         <p className="card-text">{moment(post.date).format('L')}</p>
@@ -328,7 +328,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(post._embedded['wp:featuredmedia'][0].code || post._embedded['wp:featuredmedia'][0].media_details.sizes.full === undefined) ? require('../images/masnoticia.PNG') : post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={(!post._embedded['wp:featuredmedia'] || post._embedded['wp:featuredmedia'][0].code || post._embedded['wp:featuredmedia'][0].media_details.sizes.full === undefined) ? require('../images/masnoticia.PNG') : post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -685,11 +685,12 @@ render() {
     return (
         <div>
             <Navbar />
+            <main role="main" class="container">
             <div className="jumbotron">
                 <section className="jumbotron text-center">
                     <div className="container">
-                        <h1 className="jumbotron-heading">Welcome to ArubaPage.com</h1>
-                        <p className="lead text-muted">One Happy Island, One well informed Aruban.</p>
+                        <h1 className="jumbotron-heading">Welcome to Aruba Page</h1>
+                        <p className="lead text-muted">One Happy Island, One well informed Aruban</p>
                     </div>
                 </section>
             </div>
@@ -710,10 +711,11 @@ render() {
                         We are currently displaying the latest 10 news articles from each news provider. <i className="text-muted">#stayinformed</i>
                 </p>
             </div>
+            </main>
             <footer className="container">
                 <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
             </footer>
-        </div>
+            </div>
     );
 }
 }

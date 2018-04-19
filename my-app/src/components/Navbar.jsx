@@ -5,7 +5,7 @@ import './Navbar.css';
 class Navbar extends Component {
     render() {
         return (
-            <nav style={{ backgroundColor : '#3f90df'}} className="navbar navbar-expand-md navbar-dark">
+            <nav className="navbar navbar-expand-md fixed-top navbar-dark">
             <div className="container">
                     <a className="navbar-brand" href="/"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="45" height="45" viewBox="0 0 171.000000 171.000000"
