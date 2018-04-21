@@ -19,6 +19,11 @@ import './Home.css';
 import newsServices from '../config/services'
 import NewsItem from '../components/NewsItem'
 
+// eslint-disable-next-line
+const regex = /^(.*[\\\/])/gm;
+const subst = ``;
+
+
 class Home extends Component {
     constructor() {
         super();
@@ -28,8 +33,6 @@ class Home extends Component {
         }
     
 }
-
-
 addServiceData(key, data) {
     this.setState((state) => ({
         ...state,
@@ -91,6 +94,7 @@ mapOpenGraphImageResults = function (url, index) {
         })
     }
 }
+
 render() {
     //Noticia cla with example on how to refactor to use a news item component
     let clas = this.state.services.noticiaCla && this.state.services.noticiaCla.map((cla, index) => {
@@ -207,6 +211,7 @@ render() {
                     <div className="card-body">
                         <h3>{ReactHtmlParser(boletin.title.rendered)}</h3>
                         <p className="card-text">{moment(boletin.date).format('L')}</p>
+                        <p>{boletin._embedded['wp:featuredmedia'][0].source_url.replace(regex, subst)}</p>
                         <p dangerouslySetInnerHTML={{ __html: boletin.excerpt.rendered }}></p>
                         <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + boletin.id}>read more</button>
                         <div className="text-muted">provider: boletinextra.com</div>
@@ -415,7 +420,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(native._embedded['wp:featuredmedia'][0].code) ? require('../images/arubaNative.PNG') : native._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(native._embedded['wp:featuredmedia'] === undefined || native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url === 'undefined' || native._embedded['wp:featuredmedia'][0].code) ? require('../images/arubaNative.PNG') : native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(native.title.rendered)}</h3>
                         <p className="card-text">{moment(native.date).format('L')}</p>
@@ -428,7 +433,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(native._embedded['wp:featuredmedia'][0].code) ? require('../images/arubaNative.PNG') : native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={(native._embedded['wp:featuredmedia'] === undefined || native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url === 'undefined' || native._embedded['wp:featuredmedia'][0].code) ? require('../images/arubaNative.PNG') : native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -685,7 +690,7 @@ render() {
     return (
         <div>
             <Navbar />
-            <main role="main" class="container">
+            <main role="main" className="container">
             <div className="jumbotron">
                 <section className="jumbotron text-center">
                     <div className="container">

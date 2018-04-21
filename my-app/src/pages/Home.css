@@ -1,13 +1,16 @@
 :root {
     --jumbotron-padding-y: 2rem;
 }
+#root{
+        background-color: #f5f7fa;
+}
 
 .jumbotron {
     margin-top: 40px;
     padding-top: var(--jumbotron-padding-y);
     padding-bottom: var(--jumbotron-padding-y);
     margin-bottom: 0;
-    background-color: #fff;
+    background-color: #f5f7fa;
 }
 
 @media (min-width: 768px) {
@@ -88,6 +91,7 @@ footer p {
 }
 .navbar-brand{
         padding-top: 1.3125rem !important;
+        white-space: pre-line !important;
 }
 
 @media (min-width: 48em) {
