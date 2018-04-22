@@ -20,9 +20,7 @@ import newsServices from '../config/services'
 import NewsItem from '../components/NewsItem'
 
 // eslint-disable-next-line
-const regex = /^(.*[\\\/])/gm;
-const subst = ``;
-
+const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
 
 class Home extends Component {
     constructor() {
@@ -207,11 +205,10 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={require('../images/boletin.png')} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={((require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg'))) ? (require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg')) : (require('../images/boletinHD.jpg'))} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(boletin.title.rendered)}</h3>
                         <p className="card-text">{moment(boletin.date).format('L')}</p>
-                        <p>{boletin._embedded['wp:featuredmedia'][0].source_url.replace(regex, subst)}</p>
                         <p dangerouslySetInnerHTML={{ __html: boletin.excerpt.rendered }}></p>
                         <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + boletin.id}>read more</button>
                         <div className="text-muted">provider: boletinextra.com</div>
@@ -221,7 +218,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={require('../images/boletinHD.jpg')} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={((require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg'))) ? (require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg')) : (require('../images/boletinHD.jpg'))} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
