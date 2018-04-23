@@ -16,8 +16,8 @@ import {
     WhatsappIcon,
 } from 'react-share';
 import './Home.css';
-import newsServices from '../config/services'
-import NewsItem from '../components/NewsItem'
+import newsServices from '../config/services';
+import NewsItem from '../components/NewsItem';
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -202,10 +202,17 @@ render() {
     })
     //boletin extra
     let boletins =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletin, index) => {
+function imageTest() {
+    try {
+        return ((require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg')));
+    } catch (e) {
+        return require('../images/boletinHD.jpg');
+    }
+}
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={((require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg'))) ? (require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg')) : (require('../images/boletinHD.jpg'))} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageTest()} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(boletin.title.rendered)}</h3>
                         <p className="card-text">{moment(boletin.date).format('L')}</p>
@@ -218,7 +225,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={((require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg'))) ? (require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg')) : (require('../images/boletinHD.jpg'))} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={imageTest()} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
