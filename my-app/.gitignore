@@ -9,6 +9,9 @@
 # production
 /build
 
+# Web Images
+/src/webimages
+
 # misc
 .DS_Store
 .env.local

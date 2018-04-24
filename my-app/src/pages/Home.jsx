@@ -102,10 +102,23 @@ render() {
     })
     // e arubiano
     let arubianos = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
+        function imageRuba() {
+            try {
+                // only 900 x 425 format
+                return (require('../webimages/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].source_url)[2]) + '-900x425.jpg'));
+            } catch (e) {
+                try {
+                    return ((require('../webimages/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].source_url)[2]) + '-900x425.jpeg')));
+                }catch(e){
+
+                }
+                return require('../images/eArubiano.PNG');
+            }
+        }
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={require('../images/eArubiano.PNG')} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageRuba()} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(arubiano.title.rendered)}</h3>
                         <p className="card-text">{moment(arubiano.date).format('L')}</p>
@@ -118,7 +131,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={require('../images/eArubiano.PNG')} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={imageRuba()} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -202,13 +215,13 @@ render() {
     })
     //boletin extra
     let boletins =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletin, index) => {
-function imageTest() {
-    try {
-        return ((require('../images/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-300x160.jpg')));
-    } catch (e) {
-        return require('../images/boletinHD.jpg');
-    }
-}
+        function imageTest() {
+            try {
+                return ((require('../webimages/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-620x330.jpg')));
+            } catch (e) {
+                return require('../images/boletinHD.jpg');
+            }
+        }
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
@@ -261,10 +274,27 @@ function imageTest() {
     })
     //24ora
     let oras = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
+        function imageOra() {
+            try {
+                return ((require('../webimages/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.jpg')));
+            } catch (e) {
+
+                try {
+                    return ((require('../webimages/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.jpeg')));
+                } catch (e) {
+                    try {
+                        return ((require('../webimages/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.png')));
+                    } catch (e) {
+
+                    }
+                }
+                return require('../images/24ora.jpg');
+            }
+        }
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={require('../images/24ora.jpg')} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageOra()} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(ora.title.rendered)}</h3>
                         <p className="card-text">{moment(ora.date).format('L')}</p>
@@ -277,7 +307,7 @@ function imageTest() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={require('../images/24ora.jpg')} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={imageOra()} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
