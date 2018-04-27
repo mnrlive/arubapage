@@ -92,6 +92,23 @@ mapOpenGraphImageResults = function (url, index) {
         })
     }
 }
+// Cathing erros and showing default
+imageErrorCheck(provider) {
+
+    if(provider === 'native'){
+            try {
+                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+            } catch (e) {
+                return require('../images/arubaNative.PNG');
+            }
+    }else{
+        try {
+            return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+        } catch (e) {
+            return require('../images/bondia.PNG');
+        }
+    }
+}
 
 render() {
     //Noticia cla with example on how to refactor to use a news item component
@@ -100,7 +117,7 @@ render() {
             <NewsItem key={index} index={index} cla={cla} />
         )
     })
-    // e arubiano
+    // e arubiano Crawl for images!
     let arubianos = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
         function imageRuba() {
             try {
@@ -213,7 +230,7 @@ render() {
             </div>
         )
     })
-    //boletin extra
+    //boletin extra Crawl for images!
     let boletins =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletin, index) => {
         function imageTest() {
             try {
@@ -272,7 +289,7 @@ render() {
             </div>
         )
     })
-    //24ora
+    //24ora Crawl for images!
     let oras = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
         function imageOra() {
             try {
@@ -454,7 +471,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(native._embedded['wp:featuredmedia'] === undefined || native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url === 'undefined' || native._embedded['wp:featuredmedia'][0].code) ? require('../images/arubaNative.PNG') : native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(native)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(native.title.rendered)}</h3>
                         <p className="card-text">{moment(native.date).format('L')}</p>
@@ -467,7 +484,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(native._embedded['wp:featuredmedia'] === undefined || native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url === 'undefined' || native._embedded['wp:featuredmedia'][0].code) ? require('../images/arubaNative.PNG') : native._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(native)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -506,7 +523,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={bondia._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(bondia)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(bondia.title.rendered)}</h3>
                         <p className="card-text">{moment(bondia.date).format('L')}</p>
@@ -519,7 +536,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={bondia._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(bondia)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
