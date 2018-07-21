@@ -57,7 +57,7 @@ fetchDataFromServices(){
             fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {this.addServiceData(key, responseJson.items)})
            
         }else{
-            fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {this.addServiceData(key, responseJson)})
+            fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => { this.addServiceData(key, responseJson)})
         }
     })
 }
@@ -95,19 +95,28 @@ mapOpenGraphImageResults = function (url, index) {
 // Cathing erros and showing default
 imageErrorCheck(provider) {
 
-    if(provider === 'native'){
-            try {
-                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-            } catch (e) {
-                return require('../images/arubaNative.PNG');
-            }
-    }else{
-        try {
-            return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-        } catch (e) {
-            return require('../images/bondia.PNG');
-        }
-    }
+    const regEx = /[-a-zA-Z0-9@:%_.~#?&=]{2,256}\.[a-z]{2,4}/;
+    const link = (regEx.exec(provider.link));
+
+    if ( link[0] === 'arubanative.com'){
+         try {
+             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+         } catch (e) {
+             return require('../images/arubaNative.PNG');
+         }
+    } else if (link[0] === 'www.bondia.com'){
+         try {
+             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+         } catch (e) {
+             return require('../images/bondia.PNG');
+         }
+    } else if (link[0] === 'focus.aw'){
+         try {
+             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+         } catch (e) {
+             return require('../images/focus.PNG');
+         }
+     }
 }
 
 render() {
@@ -573,7 +582,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!focus._embedded['wp:featuredmedia'] || focus._embedded['wp:featuredmedia'][0].code || focus._embedded['wp:featuredmedia'][0].media_details.sizes.medium === undefined) ? require('../images/focus.PNG') : focus._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(focus)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(focus.title.rendered)}</h3>
                         <p className="card-text">{moment(focus.date).format('L')}</p>
@@ -586,7 +595,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(!focus._embedded['wp:featuredmedia'] || focus._embedded['wp:featuredmedia'][0].code || focus._embedded['wp:featuredmedia'][0].media_details.sizes.full === undefined) ? require('../images/focus.PNG') : focus._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(focus)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -627,13 +636,13 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={require('../images/batiBleki.PNG')} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!bleki._embedded['wp:featuredmedia'] || bleki._embedded['wp:featuredmedia'][0].code) ? require('../images/batiBlekiHD.PNG') : bleki._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(bleki.title.rendered)}</h3>
                         <p className="card-text">{moment(bleki.date).format('L')}</p>
                         <p dangerouslySetInnerHTML={{ __html: bleki.excerpt.rendered.substring(0, 250) + "..." }}></p>
                         <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + bleki.id}>read more</button>
-                        <div className="text-muted">provider: batibleki.visitaruba.com</div>
+                        <div className="text-muted">provider: www.visitaruba.com/blog</div>
                     </div>
                 </div>
                 <div className="modal fade" id={bleki.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
