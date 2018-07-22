@@ -104,19 +104,43 @@ imageErrorCheck(provider) {
          } catch (e) {
              return require('../images/arubaNative.PNG');
          }
-    } else if (link[0] === 'www.bondia.com'){
+        } else if (link[0] === 'www.bondia.com'){
          try {
              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
          } catch (e) {
              return require('../images/bondia.PNG');
          }
-    } else if (link[0] === 'focus.aw'){
+        } else if (link[0] === 'focus.aw'){
          try {
              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
          } catch (e) {
              return require('../images/focus.PNG');
          }
-     }
+        } else if (link[0] === 'awemainta.com') {
+         try {
+             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+         } catch (e) {
+             return require('../images/aweMainta.PNG');
+            }
+        } else if (link[0] === 'coolaruba.com') {
+            try {
+                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+            } catch (e) {
+                return require('../images/coolFm.png');
+            }
+        } else if (link[0] === 'www.diario.aw') {
+                try {
+                    return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+                } catch (e) {
+                    return require('../images/diario.PNG');
+                }
+        } else if (link[0] === 'masnoticia.com') {
+            try {
+                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+            } catch (e) {
+                return require('../images/masnoticia.PNG')
+            }
+        }
 }
 
 render() {
@@ -194,7 +218,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!mainta._embedded['wp:featuredmedia'] || mainta._embedded['wp:featuredmedia'][0].code || mainta._embedded['wp:featuredmedia'][0].media_details.sizes.medium === undefined) ? require('../images/aweMainta.PNG') : mainta._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(mainta)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(mainta.title.rendered.substring(0, 170))}</h3>
                         <p className="card-text">{moment(mainta.date).format('L')}</p>
@@ -207,7 +231,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(!mainta._embedded['wp:featuredmedia'] || mainta._embedded['wp:featuredmedia'][0].code || mainta._embedded['wp:featuredmedia'][0].media_details.sizes.full === undefined) ? require('../images/aweMainta.PNG') : mainta._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(mainta)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -380,7 +404,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!post._embedded['wp:featuredmedia'] || post._embedded['wp:featuredmedia'][0].code || post._embedded['wp:featuredmedia'][0].media_details.sizes.medium === undefined) ? require('../images/masnoticia.PNG') : post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(post)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(post.title.rendered)}</h3>
                         <p className="card-text">{moment(post.date).format('L')}</p>
@@ -393,7 +417,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(!post._embedded['wp:featuredmedia'] || post._embedded['wp:featuredmedia'][0].code || post._embedded['wp:featuredmedia'][0].media_details.sizes.full === undefined) ? require('../images/masnoticia.PNG') : post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(post)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -430,7 +454,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!noticia._embedded['wp:featuredmedia'] || noticia._embedded['wp:featuredmedia'][0].code || noticia._embedded['wp:featuredmedia'][0].media_details.sizes.medium === undefined) ? require('../images/diario.PNG') : noticia._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(noticia)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(noticia.title.rendered)}</h3>
                         <p className="card-text">{moment(noticia.date).format('L')}</p>
@@ -443,7 +467,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={(!noticia._embedded['wp:featuredmedia'] || noticia._embedded['wp:featuredmedia'][0].code || noticia._embedded['wp:featuredmedia'][0].media_details.sizes.full === undefined) ? require('../images/diario.PNG') : noticia._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(noticia)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -686,7 +710,7 @@ render() {
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={radio._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(radio)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(radio.title.rendered)}</h3>
                         <p className="card-text">{moment(radio.date).format('L')}</p>
@@ -698,7 +722,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={radio._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(radio)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
