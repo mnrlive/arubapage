@@ -136,7 +136,7 @@ imageErrorCheck(provider) {
                 }
         } else if (link[0] === 'masnoticia.com') {
             try {
-                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+                return require('../images/masnoticia.PNG');
             } catch (e) {
                 return require('../images/masnoticia.PNG')
             }
