@@ -27,10 +27,12 @@ let defaultVolume = 0.2;
 const videoOptions = {
     autoplay: false,
     controls: true,
+    preload: true,
+    fluid: true,
     poster: require('../images/TeleArubaGrey.png'),
     overrideNative: true,
     sources: [{
-               src: 'https://cors-anywhere.herokuapp.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8',
+               src: 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8',
                type: 'application/x-mpegURL'
           }]
 }
