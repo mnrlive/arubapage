@@ -189,3 +189,11 @@ i:hover{
     border-radius: 1.3em;
     font-size: 3em;
 }
+
+@media only screen and (max-width: 768px){
+    .video-js {
+      width: 471px !important;
+      height: 388px !important;
+      margin-left: -33px;
+    }
+}
