@@ -5,6 +5,7 @@ import moment from 'moment';
 import ScrollToTop from 'react-scroll-up';
 import Navbar from '../components/Navbar.jsx';
 import Loader from 'react-loader';
+import videojs from 'video.js';
 import ogs from 'open-graph-scraper';
 import _ from 'lodash'
 import {
@@ -21,6 +22,19 @@ import NewsItem from '../components/NewsItem';
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
+let defaultVolume = 0.2;
+
+const videoOptions = {
+    autoplay: false,
+    controls: true,
+    poster: require('../images/TeleArubaGrey.png'),
+    sources: [{
+               src: 'https://cors-anywhere.herokuapp.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8',
+               type: 'application/x-mpegURL',
+          }]
+
+}
+
 
 class Home extends Component {
     constructor() {
@@ -64,7 +78,20 @@ fetchDataFromServices(){
 
 componentDidMount() {
     this.fetchDataFromServices();
+        this.player = videojs(this.videoNode, videoOptions, function onPlayerReady() {
+            console.log('onPlayerReady', this);
+            this.volume(defaultVolume);
+        });
 }
+
+
+  // destroy player on unmount
+  componentWillUnmount() {
+      if (this.player) {
+          this.player.dispose()
+      }
+  }
+
 
 mapOpenGraphImageResults = function (url, index) {
     if (this.state.services.noticiaCla && this.state.services.noticiaCla.length > 0) {
@@ -111,11 +138,11 @@ imageErrorCheck(provider) {
              return require('../images/bondia.PNG');
          }
         } else if (link[0] === 'focus.aw'){
-         try {
-             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-         } catch (e) {
+            try {
+                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+            } catch (e) {
              return require('../images/focus.PNG');
-         }
+            }
         } else if (link[0] === 'awemainta.com') {
          try {
              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
@@ -135,11 +162,8 @@ imageErrorCheck(provider) {
                     return require('../images/diario.PNG');
                 }
         } else if (link[0] === 'masnoticia.com') {
-            try {
+
                 return require('../images/masnoticia.PNG');
-            } catch (e) {
-                return require('../images/masnoticia.PNG')
-            }
         }
 }
 
@@ -780,7 +804,10 @@ render() {
                     <div className="container">
                         <h1 className="jumbotron-heading">Welcome to Aruba Page</h1>
                         <p className="lead text-muted">One Happy Island, One well informed Aruban</p>
-                    </div>
+                          <div data-vjs-player>
+                           <video ref={ node => this.videoNode = node } className="video-js vjs-default-skin vjs-big-play-centered"></video>
+                          </div>
+                        </div>
                 </section>
             </div>
             <ScrollToTop style={{ "zIndex": '1' }} showUnder={160}>
