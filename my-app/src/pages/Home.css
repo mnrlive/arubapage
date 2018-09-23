@@ -192,8 +192,8 @@ i:hover{
 
 @media only screen and (max-width: 768px){
     .video-js {
-      width: 471px !important;
-      height: 388px !important;
-      margin-left: -33px;
+      width: 339px !important;
+      height: 177px !important;
+      margin-left: -32px;
     }
 }
