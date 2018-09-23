@@ -19,6 +19,15 @@ import {
 import './Home.css';
 import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
+import { isMobile } from 'react-device-detect';
+
+const renderContent = () => {
+    if (isMobile) {
+        return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+    } else{
+        return 'https://cors-anywhere.herokuapp.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+    }
+}
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -32,7 +41,7 @@ const videoOptions = {
     poster: require('../images/TeleArubaGrey.png'),
     overrideNative: true,
     sources: [{
-               src: 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8',
+               src: renderContent(),
                type: 'application/x-mpegURL'
           }]
 }
