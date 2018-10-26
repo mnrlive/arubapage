@@ -815,10 +815,17 @@ render() {
                     <div className="container">
                         <h1 className="jumbotron-heading">Welcome to Aruba Page</h1>
                         <p className="lead text-muted">One Happy Island, One well informed Aruban</p>
+                        <p>
+                         <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                           Click here to watch Tele Aruba live!
+                         </button>
+                        </p>
+                        <div className="collapse" id="collapseExample">
                           <div data-vjs-player>
-                           <video ref={ node => this.videoNode = node } className="video-js vjs-default-skin vjs-big-play-centered"></video>
+                           <video ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
                           </div>
                         </div>
+                    </div>
                 </section>
             </div>
             <ScrollToTop style={{ "zIndex": '1' }} showUnder={160}>

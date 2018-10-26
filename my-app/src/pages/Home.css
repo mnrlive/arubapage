@@ -190,6 +190,10 @@ i:hover{
     font-size: 3em;
 }
 
+.collapse.show {
+    height: inherit !important;
+}
+
 /* @media only screen and (max-width: 768px){
     .video-js {
       width: 339px !important;
