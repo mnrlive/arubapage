@@ -19,13 +19,13 @@ import {
 import './Home.css';
 import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
-import { isMobile } from 'react-device-detect';
+import { isChrome } from 'react-device-detect';
 
 const renderContent = () => {
-    if (isMobile) {
-        return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
-    } else{
+    if (isChrome) {
         return 'https://cors-anywhere.herokuapp.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+    } else{
+        return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }
 }
 
