@@ -817,7 +817,7 @@ render() {
                         <p className="lead text-muted">One Happy Island, One well informed Aruban</p>
                         <p>
                          <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                           Click here to watch Tele Aruba live!
+                           Click to watch Tele Aruba live!
                          </button>
                         </p>
                         <div className="collapse" id="collapseExample">
