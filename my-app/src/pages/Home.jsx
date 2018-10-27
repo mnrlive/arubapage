@@ -4,9 +4,9 @@ import sanitizeHtml from 'sanitize-html';
 import moment from 'moment';
 import ScrollToTop from 'react-scroll-up';
 import Navbar from '../components/Navbar.jsx';
-import Loader from 'react-loader';
 import videojs from 'video.js';
 import ogs from 'open-graph-scraper';
+import Skeleton from 'react-loading-skeleton';
 import _ from 'lodash'
 import {
     FacebookShareButton,
@@ -832,11 +832,10 @@ render() {
                 <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
             </ScrollToTop>
             <div className="container">
-                <Loader loaded={this.state.loaded}>
+            {this.state.loaded || <Skeleton count={10} />}
                     <div className="row">
                         {data}
                     </div>
-                </Loader>
                 <p style={{ "marginTop": "60px", "padding": "10%" }} className="lead font-weight-normal">
                     It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />
                     This web app allows you to see all the latest news from all online news providers from the island.
