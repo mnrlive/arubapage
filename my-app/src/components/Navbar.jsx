@@ -27,7 +27,7 @@ class Navbar extends Component {
                         <li className="nav-item">
                                 <div><NavLink className="nav-link" activeClassName={"active"} exact={true} to="/">Home</NavLink></div>
                         </li>
-                        <li>
+                        <li className="nav-item">
                             <div><NavLink className="nav-link" activeClassName={"active"} to="/about">About</NavLink></div>
                         </li>
                         </ul>

@@ -6,7 +6,7 @@
 }
 
 .jumbotron {
-    margin-top: 40px;
+    margin-top: 55px;
     padding-top: var(--jumbotron-padding-y);
     padding-bottom: var(--jumbotron-padding-y);
     margin-bottom: 0;
@@ -114,6 +114,7 @@ i:hover{
 }
 .nav{
     display: inline-flex !important;
+    margin-bottom: 1em !important;
 }
 
 .arrow{
@@ -123,11 +124,6 @@ i:hover{
         z-index: 1 !important;
 }
 
-.collapse.show {
-    display: block;
-    transition: inherit !important;
-    height: 40px;
-}
 #brandname{
     float: right;
     padding-top: 6px;
@@ -190,8 +186,8 @@ i:hover{
     font-size: 3em;
 }
 
-.collapse.show {
-    height: inherit !important;
+.nav-item {
+    padding-top: 20px;
 }
 
 /* @media only screen and (max-width: 768px){
