@@ -90,10 +90,19 @@ fetchDataFromServices(){
     };
     Object.keys(newsServices).forEach((key) => {
         if(key === 'noticiaCla'){
-            fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {this.addServiceData(key, responseJson.items)})
-           
+
+            try{
+                fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {this.addServiceData(key, responseJson.items)})
+            }
+            catch (e) {
+
+            }
         }else{
-            fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => { this.addServiceData(key, responseJson)})
+            try{
+                fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => { this.addServiceData(key, responseJson)})
+            } catch (e) {
+                
+            }
         }
     })
 }
