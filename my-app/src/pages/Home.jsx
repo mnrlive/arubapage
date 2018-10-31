@@ -19,12 +19,23 @@ import {
 import './Home.css';
 import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
-import { isChrome } from 'react-device-detect';
+import {
+    isChrome,
+    isMobile,
+    isChromium,
+    isAndroid,
+    isIOS,
+    browserName,
+    MobileView
+} from 'react-device-detect';
 
+  const Browser = browserName;
 const renderContent = () => {
-    if (isChrome) {
-        return 'https://cors-anywhere.herokuapp.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
-    } else{
+    if (isMobile || isChromium || isAndroid || isIOS || MobileView) {
+        return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+    } else if (isChrome || browserName === 'Chrome Webview' || browserName === 'Facebook') {
+        return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+    }else{
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }
 }
@@ -118,7 +129,7 @@ mapOpenGraphImageResults = function (url, index) {
         })
         // eslint-disable-next-line
         noticiaCla.map((cla, index) => {
-            const options = { 'url': 'https://cors-anywhere.herokuapp.com/' + cla.link }
+            const options = { 'url': 'https://wordpressmade.com/' + cla.link }
             ogs(options)
                 .then(function (result) {
                     cla.imgUrl = result.data.ogImage.url;
@@ -826,6 +837,7 @@ render() {
                           </div>
                         </div>
                     </div>
+                    <div id="browsercheck">Your browser is: {Browser}, Aruba page works well on Chrome, Firefox and Edge</div>
                 </section>
             </div>
             <ScrollToTop style={{ "zIndex": '1' }} showUnder={160}>

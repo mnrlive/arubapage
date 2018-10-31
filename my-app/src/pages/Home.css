@@ -164,15 +164,9 @@ i:hover{
         background-image: linear-gradient(100deg, #0070ba00, #1546a085);
 }
 
-/* .vjs_video_3-dimensions {
-    width: 610px !important;
-    height: 345px !important;
+#browsercheck {
+    font-size: 8px;
 }
-
-.video-js{
-    width: 610px !important;
-    height: 345px !important;
-} */
 
 .video-js .vjs-big-play-button {
     height: 2em !important;
