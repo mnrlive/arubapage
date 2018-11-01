@@ -21,19 +21,12 @@ import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
 import {
     isChrome,
-    isMobile,
-    isChromium,
-    isAndroid,
-    isIOS,
-    browserName,
-    MobileView
+    browserName
 } from 'react-device-detect';
 
   const Browser = browserName;
 const renderContent = () => {
-    if (isMobile || isChromium || isAndroid || isIOS || MobileView) {
-        return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
-    } else if (isChrome || browserName === 'Chrome Webview' || browserName === 'Facebook') {
+  if (isChrome || browserName === 'Chrome Webview' || browserName === 'Facebook') {
         return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }else{
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
@@ -193,8 +186,11 @@ imageErrorCheck(provider) {
                     return require('../images/diario.PNG');
                 }
         } else if (link[0] === 'masnoticia.com') {
-
-                return require('../images/masnoticia.PNG');
+                        try {
+                            return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+                        } catch (e) {
+                            return require('../images/masnoticia.PNG');
+                        }
         }
 }
 
