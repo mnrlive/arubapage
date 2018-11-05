@@ -21,13 +21,17 @@ import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
 import {
     isChrome,
-    browserName
+    browserName,
+    isAndroid,
+    isFirefox
 } from 'react-device-detect';
 
   const Browser = browserName;
 const renderContent = () => {
-  if (isChrome || browserName === 'Chrome Webview' || browserName === 'Facebook') {
+  if (((isChrome || isFirefox) && !isAndroid)) {
         return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+    }else if((Browser === 'Facebook' && isChrome)){
+      return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }else{
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }
@@ -191,6 +195,13 @@ imageErrorCheck(provider) {
                         } catch (e) {
                             return require('../images/masnoticia.PNG');
                         }
+        }
+        else if (link[0] === '24ora.com') {
+            try {
+                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+            } catch (e) {
+                return require('../images/24ora.jpg');
+            }
         }
 }
 
@@ -375,27 +386,10 @@ render() {
     })
     //24ora Crawl for images!
     let oras = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
-        function imageOra() {
-            try {
-                return ((require('../webimages/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.jpg')));
-            } catch (e) {
-
-                try {
-                    return ((require('../webimages/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.jpeg')));
-                } catch (e) {
-                    try {
-                        return ((require('../webimages/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.png')));
-                    } catch (e) {
-
-                    }
-                }
-                return require('../images/24ora.jpg');
-            }
-        }
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageOra()} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(ora)} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(ora.title.rendered)}</h3>
                         <p className="card-text">{moment(ora.date).format('L')}</p>
@@ -408,7 +402,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={imageOra()} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={this.imageErrorCheck(ora)} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -812,13 +806,13 @@ render() {
         natifes,
         posts,
         clas,
-        boletins,
         bondias,
         news,
+        oras,
+        boletins,
         arubianos,
         maintas,
         focuses,
-        oras,
         blekis,
         radios
     ]
