@@ -470,7 +470,11 @@ render() {
                             </div>
                             <div className="modal-body" >
                                 <p className="card-text">{moment(post.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(post.content.rendered))}
+                                <div>{ReactHtmlParser(sanitizeHtml(post.content.rendered, {
+                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
+                                    allowedAttributes: { 'iframe': ['src'] },
+                                    allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
+                                }))}</div>
                                 <a href="https://masnoticia.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> masnoticia.com</a>
                                 <a href={post.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
                                 <div className="modal-footer">
