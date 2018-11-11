@@ -183,11 +183,3 @@ i:hover{
 .nav-item {
     padding-top: 20px;
 }
-
-/* @media only screen and (max-width: 768px){
-    .video-js {
-      width: 339px !important;
-      height: 177px !important;
-      margin-left: -32px;
-    }
-} */

@@ -806,20 +806,6 @@ render() {
         )
     })
 
-    const data = [
-        natifes,
-        posts,
-        clas,
-        bondias,
-        news,
-        oras,
-        boletins,
-        arubianos,
-        maintas,
-        focuses,
-        blekis,
-        radios
-    ]
     return (
         <div>
             <Navbar />
@@ -848,8 +834,77 @@ render() {
             </ScrollToTop>
             <div className="container">
             {this.state.loaded || <Skeleton count={10} />}
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    ArubaNative.com
+                </h3>
                     <div className="row">
-                        {data}
+                        {natifes}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    MasNoticia.com
+                </h3>
+                    <div className="row">
+                        {posts}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    NoticiaCla.com
+                </h3>
+                    <div className="row">
+                        {clas}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    BonDia.com
+                </h3>
+                    <div className="row">
+                        {bondias}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    Diario.aw
+                </h3>
+                    <div className="row">
+                        {news}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    24ora.com
+                </h3>
+                    <div className="row">
+                        {oras}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    BoletinExtra.com
+                </h3>
+                    <div className="row">
+                        {boletins}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    EarubianoNews.com
+                </h3>
+                    <div className="row">
+                        {arubianos}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    AweMainta.com
+                </h3>
+                    <div className="row">
+                        {maintas}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    Focus.aw
+                </h3>
+                    <div className="row">
+                        {focuses}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    VisitAruba.com
+                </h3>
+                    <div className="row">
+                        {blekis}
+                    </div>
+                <h3 className="pb-3 mb-4 font-italic border-bottom">
+                    CoolAruba.com
+                </h3>
+                    <div className="row">
+                        {radios}
                     </div>
                 <p style={{ "marginTop": "60px", "padding": "10%" }} className="lead font-weight-normal">
                     It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />
