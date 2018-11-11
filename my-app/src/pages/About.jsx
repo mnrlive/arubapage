@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Navbar from '../components/Navbar.jsx';
+import Navbar from '../components/NavbarAbout.jsx';
 import Loader from 'react-loader';
 import ScrollToTop from 'react-scroll-up';
 

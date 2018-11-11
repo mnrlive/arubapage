@@ -6,7 +6,7 @@
 }
 
 .jumbotron {
-    margin-top: 55px;
+    margin-top: 35px;
     padding-top: var(--jumbotron-padding-y);
     padding-bottom: var(--jumbotron-padding-y);
     margin-bottom: 0;

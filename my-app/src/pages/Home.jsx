@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar.jsx';
 import videojs from 'video.js';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
+import ScrollableAnchor, {configureAnchors} from 'react-scrollable-anchor';
 import _ from 'lodash'
 import {
     FacebookShareButton,
@@ -36,6 +37,7 @@ const renderContent = () => {
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }
 }
+
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -105,6 +107,7 @@ fetchDataFromServices(){
 }
 
 componentDidMount() {
+    configureAnchors({offset: -150, scrollDuration: 200});
     this.fetchDataFromServices();
         this.player = videojs(this.videoNode, videoOptions, function onPlayerReady() {
             console.log('onPlayerReady', this);
@@ -834,75 +837,99 @@ render() {
             </ScrollToTop>
             <div className="container">
             {this.state.loaded || <Skeleton count={10} />}
-                <h3 className="pb-3 mb-4 font-italic border-bottom">
-                    ArubaNative.com
-                </h3>
+            <ScrollableAnchor id={'ArubaNative'}>
+            <h3 className="pb-3 mb-4 font-italic border-bottom">
+                ArubaNative.com
+            </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {natifes}
                     </div>
-                <h3 className="pb-3 mb-4 font-italic border-bottom">
-                    MasNoticia.com
-                </h3>
+            <ScrollableAnchor id={'MasNoticia'}>
+            <h3 className="pb-3 mb-4 font-italic border-bottom">
+                MasNoticia.com
+            </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {posts}
                     </div>
+            <ScrollableAnchor id={'NoticiaCla'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     NoticiaCla.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {clas}
                     </div>
+            <ScrollableAnchor id={'BonDia'}>        
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     BonDia.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {bondias}
                     </div>
+            <ScrollableAnchor id={'Diario'}>          
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     Diario.aw
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {news}
                     </div>
+            <ScrollableAnchor id={'24ora'}>    
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     24ora.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {oras}
                     </div>
+            <ScrollableAnchor id={'BoletinExtra'}> 
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     BoletinExtra.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {boletins}
                     </div>
+            <ScrollableAnchor id={'EarubianoNews'}> 
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     EarubianoNews.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {arubianos}
                     </div>
+            <ScrollableAnchor id={'AweMainta'}> 
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     AweMainta.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {maintas}
                     </div>
+            <ScrollableAnchor id={'Focus'}> 
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     Focus.aw
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {focuses}
                     </div>
+            <ScrollableAnchor id={'VisitAruba'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     VisitAruba.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {blekis}
                     </div>
+            <ScrollableAnchor id={'CoolAruba'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     CoolAruba.com
                 </h3>
+            </ScrollableAnchor>
                     <div className="row">
                         {radios}
                     </div>
