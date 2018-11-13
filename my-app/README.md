@@ -9,10 +9,10 @@ npm i, yarn start
 
 ## Authors
 
-* **Robin Giel** - [PurpleBooth](https://robingiel.com)
+* **Robin Giel** - [https://robingiel.com](https://robingiel.com)
 
 See also the list of contributers coming soon.
 
 ## See the page live
 
-* **ArubaPage** - [PurpleBooth](https://arubapage.com)
+* **ArubaPage** - [https://arubapage.com](https://arubapage.com)
