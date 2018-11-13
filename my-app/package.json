@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "debug": ">=2.6.9",
     "image-scraper": "^0.2.1",
     "images-downloader": "^1.0.3",
     "lodash": "^4.17.5",
