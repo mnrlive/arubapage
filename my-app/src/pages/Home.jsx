@@ -4,6 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 import moment from 'moment';
 import ScrollToTop from 'react-scroll-up';
 import Navbar from '../components/Navbar.jsx';
+import AWSSoundPlayer from '../components/Player.jsx';
 import videojs from 'video.js';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
@@ -38,6 +39,8 @@ const renderContent = () => {
     }
 }
 
+const radio_url = 'http://162.244.81.62:8000/stream?type=.mp3';
+const radio_name = 'Power FM Aruba';
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -64,7 +67,17 @@ class Home extends Component {
             services: {},
             loaded: false
         }
-    
+
+        this.prev = this.prev.bind(this);
+        this.next = this.next.bind(this);
+}
+
+prev() {
+    console.log("prev is clicked!!")
+}
+
+next() {
+    console.log("next is clicked!!")
 }
 addServiceData(key, data) {
     this.setState((state) => ({
@@ -832,7 +845,7 @@ render() {
                     <div id="browsercheck">Your browser is: {Browser}, Aruba page works well on Chrome, Firefox and Edge</div>
                 </section>
             </div>
-            <ScrollToTop style={{ "zIndex": '1' }} showUnder={160}>
+            <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
                 <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
             </ScrollToTop>
             <div className="container">
@@ -939,11 +952,17 @@ render() {
                     Instead of going on news sites one by one or finding out about the news on Facebook or other social media,
                     we created a one page website that gathers all news from all news providers.
                         We are currently displaying the latest 10 news articles from each news provider. <i className="text-muted">#stayinformed</i>
+                    <div class="text-center text-muted"><p>© 2018 made by:</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
                 </p>
             </div>
             </main>
-            <footer className="container">
-                <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
+            <footer className="footer">
+                <div className="container">
+                     <AWSSoundPlayer
+                    streamUrl={radio_url}
+                    trackTitle={radio_name} 
+                    preloadType="auto" />
+                    </div>
             </footer>
             </div>
     );
