@@ -9,7 +9,7 @@ class AWSSoundPlayer extends Component {
     const { trackTitle } = this.props;
 
     return (
-      <div className="p1 mb3 mt1 flex flex-center bg-darken-1 orange rounded">
+      <div className="p1 mb3 mt1 flex flex-center bg-darken-1 orange">
       <PlayButton
       className="flex-none h4 button button-transparent button-grow rounded mr2"
       {...this.props} />

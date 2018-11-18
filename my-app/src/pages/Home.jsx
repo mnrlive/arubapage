@@ -39,8 +39,10 @@ const renderContent = () => {
     }
 }
 
-const radio_url = 'http://162.244.81.62:8000/stream?type=.mp3';
-const radio_name = 'Power FM Aruba';
+const radio = {
+    url: 'http://158.69.114.190:8072/;?1476089829845.mp3',
+    name: 'NEW'
+}
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -65,20 +67,21 @@ class Home extends Component {
         super();
         this.state = {
             services: {},
-            loaded: false
+            loaded: false,
+            radio: {
+                url: 'http://162.244.81.62:8000/stream?type=.mp3',
+                name: 'Power FM Aruba'
+            }
         }
 
-        this.prev = this.prev.bind(this);
-        this.next = this.next.bind(this);
+        this.handleClick = this.handleClick.bind(this);
 }
 
-prev() {
-    console.log("prev is clicked!!")
-}
-
-next() {
-    console.log("next is clicked!!")
-}
+  handleClick() {
+      this.setState(state => ({
+          radio: radio
+      }));
+  }
 addServiceData(key, data) {
     this.setState((state) => ({
         ...state,
@@ -946,24 +949,42 @@ render() {
                     <div className="row">
                         {radios}
                     </div>
-                <p style={{ "marginTop": "60px", "padding": "10%" }} className="lead font-weight-normal">
+                <div style={{ "marginTop": "60px", "padding": "10%" }}>
+                    <p className="lead font-weight-normal">
                     It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />
                     This web app allows you to see all the latest news from all online news providers from the island.
                     Instead of going on news sites one by one or finding out about the news on Facebook or other social media,
                     we created a one page website that gathers all news from all news providers.
-                        We are currently displaying the latest 10 news articles from each news provider. <i className="text-muted">#stayinformed</i>
-                    <div class="text-center text-muted"><p>© 2018 made by:</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
-                </p>
+                        We are currently displaying the latest 10 news articles from each news provider. <i className="text-muted">#stayinformed</i></p>
+                        <div className="text-center text-muted"><p>© 2018 made by:</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
+                </div>
             </div>
             </main>
-            <footer className="footer">
-                <div className="container">
-                     <AWSSoundPlayer
-                    streamUrl={radio_url}
-                    trackTitle={radio_name} 
-                    preloadType="auto" />
-                    </div>
-            </footer>
+
+                <div id="radio"> 
+                                        <div className="btn-group dropup">
+                            <button type="button"  style={{"position": "absolute", "marginLeft": "2px", "lineHeight": "22px"}} className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Choose your Radio Station
+                            </button>
+                            <div className="dropdown-menu" x-placement="top-start" style={{"position": "absolute", "willChange": "transform", "top": "0px", "left": "0px", "transform": "translate3d(0px, -165px, 0px)"}}>
+                            <button onClick={this.handleClick} className="dropdown-item">Heart Music Radio</button>
+                            <a className="dropdown-item" href="https://arubapage.com">Top FM 95</a>
+                            <a className="dropdown-item" href="https://arubapage.com">Magic FM</a>
+                            <a className="dropdown-item" href="https://arubapage.com">Power News</a>
+                            <a className="dropdown-item" href="https://arubapage.com">Galactica</a>
+                            <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="https://arubapage.com">Cool Aruba</a>
+                            </div>
+                        </div>
+                <div id="player">
+                    <AWSSoundPlayer
+                        streamUrl={this.state.radio.url}
+                        trackTitle={this.state.radio.name} 
+                        preloadType="auto"
+                         />
+                </div>
+                </div>
+
             </div>
     );
 }
