@@ -53,6 +53,8 @@ const playlist =
      title: 'Top FM 95' },
      { url: 'http://coolaruba.com:8000/stream;;audio.mp3?hash=1541949287484',
      title: 'Cool FM Aruba' },
+     { url: 'http://67.212.189.122:8119/stream',
+     title: 'Heart Music Radio 106.7 FM' },
      { url: 'http://majestic.wavestreamer.com:3771/;stream.mp3',
      title: '99.9 FM Galactica' },
      { url: 'http://192.99.63.189:10879/Canal90',
