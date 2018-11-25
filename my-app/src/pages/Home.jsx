@@ -4,11 +4,13 @@ import sanitizeHtml from 'sanitize-html';
 import moment from 'moment';
 import ScrollToTop from 'react-scroll-up';
 import Navbar from '../components/Navbar.jsx';
-import AWSSoundPlayer from '../components/Player.jsx';
+import SecondNavbar from '../components/SecondNavbar.jsx';
 import videojs from 'video.js';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
 import ScrollableAnchor, {configureAnchors} from 'react-scrollable-anchor';
+import AudioPlayer from 'react-responsive-audio-player';
+import { Sticky, StickyContainer } from 'react-sticky';
 import _ from 'lodash'
 import {
     FacebookShareButton,
@@ -28,6 +30,8 @@ import {
     isFirefox
 } from 'react-device-detect';
 
+
+
   const Browser = browserName;
 const renderContent = () => {
   if (((isChrome || isFirefox) && !isAndroid)) {
@@ -39,10 +43,33 @@ const renderContent = () => {
     }
 }
 
-const radio = {
-    url: 'http://158.69.114.190:8072/;?1476089829845.mp3',
-    name: 'NEW'
-}
+
+const playlist =
+  [{ url: 'http://158.69.114.190:8072/;?1476089829845.mp3',
+     title: 'Magic 96.5 FM' },
+     { url: 'http://162.244.81.62:8000/stream?type=.mp3',
+     title: 'Power FM Aruba' },
+     { url: 'http://192.99.63.189:10995/topfm?type=.mp3',
+     title: 'Top FM 95' },
+     { url: 'http://coolaruba.com:8000/stream;;audio.mp3?hash=1541949287484',
+     title: 'Cool FM Aruba' },
+     { url: 'http://majestic.wavestreamer.com:3771/;stream.mp3',
+     title: '99.9 FM Galactica' },
+     { url: 'http://192.99.63.189:10879/Canal90',
+     title: 'Canal 90 FM' },
+     { url: 'http://whooshserver.net:9880/live',
+     title: 'Bo GUIA FM' },
+     { url: 'http://174.123.174.50:8480/;stream.mp3?1523266412907',
+     title: 'Mega 88 FM Aruba' },
+     { url: 'http://62.210.209.179:8000/live',
+     title: 'Latina FM' },
+     { url: 'http://ice1.securenetsystems.net/DEMOSTN?playSessionID=6AEB38B7-CA0F-2F2B-384DB852DD5B857C',
+     title: 'AFM Aruba' },
+     { url: 'https://streamer.radio.co/s579e30929/listen',
+     title: 'Super Exitos Aruba' },
+      { url: 'http://www.fresharuba.com:8006/;',
+     title: 'Fresh FM Aruba' }
+     ];
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -67,21 +94,11 @@ class Home extends Component {
         super();
         this.state = {
             services: {},
-            loaded: false,
-            radio: {
-                url: 'http://162.244.81.62:8000/stream?type=.mp3',
-                name: 'Power FM Aruba'
-            }
+            loaded: false
         }
 
-        this.handleClick = this.handleClick.bind(this);
 }
 
-  handleClick() {
-      this.setState(state => ({
-          radio: radio
-      }));
-  }
 addServiceData(key, data) {
     this.setState((state) => ({
         ...state,
@@ -827,7 +844,14 @@ render() {
 
     return (
         <div>
-            <Navbar />
+        <Navbar />
+        <StickyContainer>
+      
+<Sticky>{({ style }) => <div className="navZ" style={style}>
+        <SecondNavbar/>
+</div>}</Sticky>
+
+
             <main role="main" className="container">
             <div className="jumbotron">
                 <section className="jumbotron text-center">
@@ -949,7 +973,7 @@ render() {
                     <div className="row">
                         {radios}
                     </div>
-                <div style={{ "marginTop": "60px", "padding": "10%" }}>
+                <div className="bottomText">
                     <p className="lead font-weight-normal">
                     It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />
                     This web app allows you to see all the latest news from all online news providers from the island.
@@ -962,29 +986,9 @@ render() {
             </main>
 
                 <div id="radio"> 
-                                        <div className="btn-group dropup">
-                            <button type="button"  style={{"position": "absolute", "marginLeft": "2px", "lineHeight": "22px"}} className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Choose your Radio Station
-                            </button>
-                            <div className="dropdown-menu" x-placement="top-start" style={{"position": "absolute", "willChange": "transform", "top": "0px", "left": "0px", "transform": "translate3d(0px, -165px, 0px)"}}>
-                            <button onClick={this.handleClick} className="dropdown-item">Heart Music Radio</button>
-                            <a className="dropdown-item" href="https://arubapage.com">Top FM 95</a>
-                            <a className="dropdown-item" href="https://arubapage.com">Magic FM</a>
-                            <a className="dropdown-item" href="https://arubapage.com">Power News</a>
-                            <a className="dropdown-item" href="https://arubapage.com">Galactica</a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="https://arubapage.com">Cool Aruba</a>
-                            </div>
-                        </div>
-                <div id="player">
-                    <AWSSoundPlayer
-                        streamUrl={this.state.radio.url}
-                        trackTitle={this.state.radio.name} 
-                        preloadType="auto"
-                         />
+                    <AudioPlayer playlist={playlist} />
                 </div>
-                </div>
-
+                </StickyContainer>
             </div>
     );
 }

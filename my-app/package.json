@@ -18,6 +18,7 @@
     "react-loader": "^2.4.3",
     "react-loading-skeleton": "^0.6.1",
     "react-promise": "^2.0.2",
+    "react-responsive-audio-player": "^1.5.0",
     "react-router-dom": "^4.2.2",
     "react-router-ga": "^1.0.0",
     "react-scripts": "1.1.1",
@@ -25,6 +26,7 @@
     "react-scrollable-anchor": "^0.6.1",
     "react-share": "^2.1.1",
     "react-soundplayer": "^1.0.4",
+    "react-sticky": "^6.0.3",
     "sanitize-html": "^1.18.2",
     "video.js": "^7.2.2"
   },

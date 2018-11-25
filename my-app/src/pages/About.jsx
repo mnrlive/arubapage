@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Navbar from '../components/NavbarAbout.jsx';
-import Loader from 'react-loader';
 import ScrollToTop from 'react-scroll-up';
+import Skeleton from 'react-loading-skeleton';
 
 class About extends Component {
 
@@ -113,13 +113,12 @@ return (
             </section>
         </div>
         <div className="container">
-        <Loader loaded={this.state.loaded}>
             <div className="row">
+            {this.state.loaded || <Skeleton count={10} />}
                 {boletins}
                 {instagrams}
                 {twitters}
             </div>
-        </Loader>    
         </div>
         <footer className="container">
             <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>

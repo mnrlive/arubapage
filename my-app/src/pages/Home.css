@@ -37,8 +37,6 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 135px;
-    line-height: 60px;
     -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
 }
@@ -191,6 +189,16 @@ i:hover{
     font-size: 8px;
 }
 
+.navZ{
+    z-index: 2;
+}
+
+.bottomText{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 10%;
+}
+
 .video-js .vjs-big-play-button {
     height: 2em !important;
     width: 2em !important;
@@ -205,4 +213,12 @@ i:hover{
 
 .nav-item {
     padding-top: 20px;
+}
+
+.audio_time_progress{
+    display:none !important;
+}
+
+.audio_info_marquee{
+    width: 100% !important;
 }
