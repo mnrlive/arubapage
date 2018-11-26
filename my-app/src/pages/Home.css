@@ -219,6 +219,22 @@ i:hover{
     display:none !important;
 }
 
-.audio_info_marquee{
+.audio_player .audio_info_marquee {
     width: 100% !important;
+    overflow: hidden;
+    width: calc(100% - 180px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: initial;
+}
+
+.audio_player .audio_info {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    word-break: break-all;
+    margin: 0;
+    font-size: 19.2px;
+    color: #fff;
 }
