@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-    FacebookShareButton, 
-    TwitterShareButton, 
-    WhatsappShareButton, 
+    FacebookShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
     FacebookIcon,
     TwitterIcon,
     WhatsappIcon,} from 'react-share';

@@ -23,14 +23,19 @@ import {
 import './Home.css';
 import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
+
 import {
     isChrome,
     browserName,
     isAndroid,
     isFirefox
 } from 'react-device-detect';
-
-
+import NewsCard from "../components/NewsCard";
+import NewsModal from "../components/NewsModal";
+import NewsItem2 from '../components/NewsItem2';
+import { imageErrorCheck } from "../utils/imageErrorCheck";
+import { playlist } from "../utils/playlist";
+import { imageRuba, imageTest } from "../utils/imageFunctions";
 
   const Browser = browserName;
 const renderContent = () => {
@@ -42,36 +47,6 @@ const renderContent = () => {
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }
 }
-
-
-const playlist =
-  [{ url: 'http://158.69.114.190:8072/;?1476089829845.mp3',
-     title: 'Magic 96.5 FM' },
-     { url: 'http://162.244.81.62:8000/stream?type=.mp3',
-     title: 'Power FM Aruba' },
-     { url: 'http://192.99.63.189:10995/topfm?type=.mp3',
-     title: 'Top FM 95' },
-     { url: 'http://coolaruba.com:8000/stream;;audio.mp3?hash=1541949287484',
-     title: 'Cool FM Aruba' },
-     { url: 'http://67.212.189.122:8119/stream',
-     title: 'Heart Music Radio 106.7 FM' },
-     { url: 'http://majestic.wavestreamer.com:3771/;stream.mp3',
-     title: '99.9 FM Galactica' },
-     { url: 'http://192.99.63.189:10879/Canal90',
-     title: 'Canal 90 FM' },
-     { url: 'http://whooshserver.net:9880/live',
-     title: 'Bo GUIA FM' },
-     { url: 'http://174.123.174.50:8480/;stream.mp3?1523266412907',
-     title: 'Mega 88 FM Aruba' },
-     { url: 'http://62.210.209.179:8000/live',
-     title: 'Latina FM' },
-     { url: 'http://ice1.securenetsystems.net/DEMOSTN?playSessionID=6AEB38B7-CA0F-2F2B-384DB852DD5B857C',
-     title: 'AFM Aruba' },
-     { url: 'https://streamer.radio.co/s579e30929/listen',
-     title: 'Super Exitos Aruba' },
-      { url: 'http://www.fresharuba.com:8006/;',
-     title: 'Fresh FM Aruba' }
-     ];
 
 // eslint-disable-next-line
 const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
@@ -89,7 +64,6 @@ const videoOptions = {
                type: 'application/x-mpegURL'
           }]
 }
-
 
 class Home extends Component {
     constructor() {
@@ -135,7 +109,7 @@ fetchDataFromServices(){
             try{
                 fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => { this.addServiceData(key, responseJson)})
             } catch (e) {
-                
+
             }
         }
     })
@@ -185,63 +159,6 @@ mapOpenGraphImageResults = function (url, index) {
         })
     }
 }
-// Cathing erros and showing default
-imageErrorCheck(provider) {
-
-    const regEx = /[-a-zA-Z0-9@:%_.~#?&=]{2,256}\.[a-z]{2,4}/;
-    const link = (regEx.exec(provider.link));
-
-    if ( link[0] === 'arubanative.com'){
-         try {
-             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-         } catch (e) {
-             return require('../images/arubaNative.PNG');
-         }
-        } else if (link[0] === 'www.bondia.com'){
-         try {
-             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-         } catch (e) {
-             return require('../images/bondia.PNG');
-         }
-        } else if (link[0] === 'focus.aw'){
-            try {
-                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-            } catch (e) {
-             return require('../images/focus.PNG');
-            }
-        } else if (link[0] === 'awemainta.com') {
-         try {
-             return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-         } catch (e) {
-             return require('../images/aweMainta.PNG');
-            }
-        } else if (link[0] === 'coolaruba.com') {
-            try {
-                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-            } catch (e) {
-                return require('../images/coolFm.png');
-            }
-        } else if (link[0] === 'www.diario.aw') {
-                try {
-                    return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-                } catch (e) {
-                    return require('../images/diario.PNG');
-                }
-        } else if (link[0] === 'masnoticia.com') {
-                        try {
-                            return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-                        } catch (e) {
-                            return require('../images/masnoticia.PNG');
-                        }
-        }
-        else if (link[0] === '24ora.com') {
-            try {
-                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-            } catch (e) {
-                return require('../images/24ora.jpg');
-            }
-        }
-}
 
 render() {
     //Noticia cla with example on how to refactor to use a news item component
@@ -252,203 +169,32 @@ render() {
     })
     // e arubiano Crawl for images!
     let arubianos = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
-        function imageRuba() {
-            try {
-                // only 900 x 425 format
-                return (require('../webimages/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].source_url)[2]) + '-900x425.jpg'));
-            } catch (e) {
-                try {
-                    return ((require('../webimages/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].source_url)[2]) + '-900x425.jpeg')));
-                }catch(e){
-
-                }
-                return require('../images/eArubiano.PNG');
-            }
-        }
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageRuba()} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(arubiano.title.rendered)}</h3>
-                        <p className="card-text">{moment(arubiano.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: arubiano.excerpt.rendered.substring(0, 250) + "..." }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + arubiano.id}>read more</button>
-                        <div className="text-muted">provider: earubianonews.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={arubiano.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={imageRuba()} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(arubiano.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(arubiano.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(arubiano.content.rendered))}
-                                <a href="https://earubianonews.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> earubianonews.com</a>
-                                <a href={arubiano.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={arubiano.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={arubiano.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={arubiano.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           <NewsItem2 key={index} index={index} newsSource={arubiano} provider="earubianonews.com" imgFunction={imageRuba(arubiano)} />
         )
     })
     //awe mainta
     let maintas = this.state.services.aweMainta && this.state.services.aweMainta.map((mainta, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(mainta)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(mainta.title.rendered.substring(0, 170))}</h3>
-                        <p className="card-text">{moment(mainta.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: mainta.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + mainta.id}>read more</button>
-                        <div className="text-muted">provider: awemainta.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={mainta.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(mainta)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(mainta.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(mainta.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(mainta.content.rendered))}
-                                <a href="https://awemainta.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> awemainta.com</a>
-                                <a href={mainta.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={mainta.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={mainta.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={mainta.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NewsItem2 key={index} index={index} newsSource={mainta} provider="awemainta.com" imgFunction={imageErrorCheck(mainta)} />
         )
     })
     //boletin extra Crawl for images!
-    let boletins =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletin, index) => {
-        function imageTest() {
-            try {
-                return ((require('../webimages/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-620x330.jpg')));
-            } catch (e) {
-                return require('../images/boletinHD.jpg');
-            }
-        }
+    let boletins =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletinExtra, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageTest()} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(boletin.title.rendered)}</h3>
-                        <p className="card-text">{moment(boletin.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: boletin.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + boletin.id}>read more</button>
-                        <div className="text-muted">provider: boletinextra.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={boletin.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={imageTest()} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(boletin.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(boletin.date).format('L')}</p>
-                                <div>{ReactHtmlParser(sanitizeHtml(boletin.content.rendered, {
-                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
-                                }))}</div>
-                                <a href="https://boletinextra.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> boletinextra.com</a>
-                                <a href={boletin.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={boletin.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={boletin.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={boletin.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NewsItem2 key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
         )
     })
     //24ora Crawl for images!
     let oras = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(ora)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(ora.title.rendered)}</h3>
-                        <p className="card-text">{moment(ora.date).format('L')}</p>
-                        <div>{(ora.excerpt.rendered === "<p>00</p>\n") ? 'Video' : ReactHtmlParser(ora.excerpt.rendered)}</div>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + ora.id}>read more</button>
-                        <div className="text-muted">provider: 24ora.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={ora.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(ora)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(ora.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(ora.date).format('L')}</p>
-                                <div>{ReactHtmlParser(sanitizeHtml(ora.content.rendered, {
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={ora}
+                provider="24ora.com"
+                imgFunction={imageErrorCheck(ora)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(ora.content.rendered, {
                                     allowedTags: ['p', 'em', 'strong', 'b', 'i', 'span'],
                                     transformTags: {
                                         'span': function (tagName, attribs) {
@@ -458,402 +204,99 @@ render() {
                                             };
                                         }
                                     }
-                                }))}</div>
-                                <a href="https://24ora.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> 24ora.com</a>
-                                <a href={ora.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={ora.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={ora.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={ora.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                }))}
+            />
         )
     })
     //masnoticia
-    let posts = this.state.services.masNoticia && this.state.services.masNoticia.map((post, index) => {
+    let posts = this.state.services.masNoticia && this.state.services.masNoticia.map((masNoticia, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(post)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(post.title.rendered)}</h3>
-                        <p className="card-text">{moment(post.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + post.id}>read more</button>
-                        <div className="text-muted">provider: masnoticia.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={post.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(post)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(post.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(post.date).format('L')}</p>
-                                <div>{ReactHtmlParser(sanitizeHtml(post.content.rendered, {
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={masNoticia}
+                provider="masnoticia.com"
+                imgFunction={imageErrorCheck(masNoticia)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(masNoticia.content.rendered, {
                                     allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
                                     allowedAttributes: { 'iframe': ['src'] },
                                     allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
-                                }))}</div>
-                                <a href="https://masnoticia.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> masnoticia.com</a>
-                                <a href={post.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={post.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={post.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={post.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                }))}
+            />
         )
     })
     //diario
-    let news = this.state.services.diario && this.state.services.diario.map((noticia, index) => {
+    let news = this.state.services.diario && this.state.services.diario.map((diario, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(noticia)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(noticia.title.rendered)}</h3>
-                        <p className="card-text">{moment(noticia.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: noticia.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + noticia.id}>read more</button>
-                        <div className="text-muted">provider: diario.aw</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={noticia.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(noticia)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(noticia.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(noticia.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(noticia.content.rendered))}
-                                <a href="https://diario.aw" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> diario.aw</a>
-                                <a href={noticia.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={noticia.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={noticia.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={noticia.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NewsItem2 key={index} index={index} newsSource={diario} provider="diario.aw" imgFunction={imageErrorCheck(diario)} />
         )
     })
     //aruba native
-    let natifes = this.state.services.arubaNative && this.state.services.arubaNative.map((native, index) => {
+    let natifes = this.state.services.arubaNative && this.state.services.arubaNative.map((arubaNative, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(native)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(native.title.rendered)}</h3>
-                        <p className="card-text">{moment(native.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: native.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + native.id}>read more</button>
-                        <div className="text-muted">provider: arubanative.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={native.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(native)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(native.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(native.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(native.content.rendered, {
-                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
-                                }))}
-                                <a href="https://arubanative.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> arubanative.com</a>
-                                <a href={native.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={native.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={native.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={native.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NewsItem2 key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
         )
     })
     //bon dia aruba
     let bondias = this.state.services.bonDia && this.state.services.bonDia.map((bondia, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(bondia)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(bondia.title.rendered)}</h3>
-                        <p className="card-text">{moment(bondia.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: bondia.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + bondia.id}>read more</button>
-                        <div className="text-muted">provider: bondia.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={bondia.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(bondia)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(bondia.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(bondia.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(bondia.content.rendered))}
-                                <a href="https://www.bondia.com/" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> bondia.com</a>
-                                <a href={bondia.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={bondia.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={bondia.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={bondia.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NewsItem2 key={index} index={index} newsSource={bondia} provider="bondia.com" imgFunction={imageErrorCheck(bondia)} />
         )
     })
     //focus
     let focuses = this.state.services.focus && this.state.services.focus.map((focus, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(focus)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(focus.title.rendered)}</h3>
-                        <p className="card-text">{moment(focus.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: focus.excerpt.rendered }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + focus.id}>read more</button>
-                        <div className="text-muted">provider: focus.aw</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={focus.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(focus)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(focus.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(focus.date).format('L')}</p>
-                                <div>{ReactHtmlParser(sanitizeHtml(focus.content.rendered, {
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={focus}
+                provider="focus.aw"
+                imgFunction={imageErrorCheck(focus)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(focus.content.rendered, {
                                     allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
                                     allowedAttributes: { 'iframe': ['src'] },
                                     allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
-                                }))}</div>
-                                <a href="https://focus.aw" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> focus.aw</a>
-                                <a href={focus.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={focus.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={focus.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={focus.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                }))}
+            />
         )
     })
-    //bati bleki    
-    let blekis = this.state.services.batiBleki && this.state.services.batiBleki.map((bleki, index) => {
+    //visit aruba
+    let blekis = this.state.services.batiBleki && this.state.services.batiBleki.map((visitAruba, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={(!bleki._embedded['wp:featuredmedia'] || bleki._embedded['wp:featuredmedia'][0].code) ? require('../images/batiBlekiHD.PNG') : bleki._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(bleki.title.rendered)}</h3>
-                        <p className="card-text">{moment(bleki.date).format('L')}</p>
-                        <p dangerouslySetInnerHTML={{ __html: bleki.excerpt.rendered.substring(0, 250) + "..." }}></p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + bleki.id}>read more</button>
-                        <div className="text-muted">provider: www.visitaruba.com/blog</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={bleki.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={(!bleki._embedded['wp:featuredmedia'] || bleki._embedded['wp:featuredmedia'][0].code) ? require('../images/batiBlekiHD.PNG') : bleki._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(bleki.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(bleki.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(bleki.content.rendered))}
-                                <a href="https://batibleki.visitaruba.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> batibleki.visitaruba.com</a>
-                                <a href={bleki.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={bleki.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={bleki.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={bleki.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={visitAruba}
+                provider="visitaruba.com"
+                imgFunction={(!visitAruba._embedded['wp:featuredmedia'] || visitAruba._embedded['wp:featuredmedia'][0].code) ?
+                        require('../images/batiBlekiHD.PNG') : visitAruba._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
+            />
         )
     })
     //coolaruba
-    let radios = this.state.services.coolAruba && this.state.services.coolAruba.map((radio, index) => {
+    let radios = this.state.services.coolAruba && this.state.services.coolAruba.map((coolAruba, index) => {
         return (
-            <div className="col-md-4" key={index}>
-                <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(radio)} alt="Thumbnail [100%x225]" />
-                    <div className="card-body">
-                        <h3>{ReactHtmlParser(radio.title.rendered)}</h3>
-                        <p className="card-text">{moment(radio.date).format('L')}</p>
-                        <button type="button" className="btn btn-lg btn-primary" data-toggle="modal" data-target={"#" + radio.id}>read more</button>
-                        <div className="text-muted">provider: coolaruba.com</div>
-                    </div>
-                </div>
-                <div className="modal fade" id={radio.id} tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-                    <div className="modal-dialog modal-lg">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(radio)} alt="Thumbnail [100%x225]" />
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h3 className="modal-title" id="exampleModalCenterTitle">{ReactHtmlParser(radio.title.rendered)}</h3>
-                            </div>
-                            <div className="modal-body" >
-                                <p className="card-text">{moment(radio.date).format('L')}</p>
-                                <div>{ReactHtmlParser(sanitizeHtml(radio.content.rendered, {
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={coolAruba}
+                provider="coolaruba.com"
+                imgFunction={imageErrorCheck(coolAruba)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(coolAruba.content.rendered, {
                                     allowedTags: ['p', 'em', 'strong', 'b', 'i']
-                                }))}</div>
-                                <a href="https://coolaruba.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> coolaruba.com</a>
-                                <a href={radio.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
-                                <div className="modal-footer">
-                                    <div className="sharebuttons">
-                                        <FacebookShareButton url={radio.link}>
-                                            <FacebookIcon size={32} round={true} />
-                                        </FacebookShareButton>
-                                        <TwitterShareButton url={radio.link}>
-                                            <TwitterIcon size={32} round={true} />
-                                        </TwitterShareButton>
-                                        <WhatsappShareButton url={radio.link}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
-                                    </div>
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                }))}
+            />
         )
     })
 
     return (
         <div>
-        <Navbar />
-        <StickyContainer>
-      
-<Sticky>{({ style }) => <div className="navZ" style={style}>
-        <SecondNavbar/>
-</div>}</Sticky>
+            <Navbar />
+            <StickyContainer>
 
-
+            <Sticky>{({ style }) => <div className="navZ" style={style}>
+                    <SecondNavbar/>
+            </div>}</Sticky>
             <main role="main" className="container">
             <div className="jumbotron">
                 <section className="jumbotron text-center">
@@ -861,17 +304,17 @@ render() {
                         <h1 className="jumbotron-heading">Welcome to Aruba Page</h1>
                         <p className="lead text-muted">One Happy Island, One well informed Aruban</p>
                         <p>
-                         <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                           Click to watch Tele Aruba live!
-                         </button>
+                            <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Click to watch Tele Aruba live!
+                            </button>
                         </p>
                         <div className="collapse" id="collapseExample">
-                          <div data-vjs-player>
-                           <video ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
-                          </div>
+                            <div data-vjs-player>
+                                <video ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
+                            </div>
                         </div>
                     </div>
-                    <div id="browsercheck">Your browser is: {Browser}, Aruba page works well on Chrome, Firefox and Edge</div>
+                    <div id="browsercheck">Your browser is: {browserName}, Aruba page works well on Chrome, Firefox and Edge</div>
                 </section>
             </div>
             <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
@@ -903,7 +346,7 @@ render() {
                     <div className="row">
                         {clas}
                     </div>
-            <ScrollableAnchor id={'BonDia'}>        
+            <ScrollableAnchor id={'BonDia'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     BonDia.com
                 </h3>
@@ -911,7 +354,7 @@ render() {
                     <div className="row">
                         {bondias}
                     </div>
-            <ScrollableAnchor id={'Diario'}>          
+            <ScrollableAnchor id={'Diario'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     Diario.aw
                 </h3>
@@ -919,7 +362,7 @@ render() {
                     <div className="row">
                         {news}
                     </div>
-            <ScrollableAnchor id={'24ora'}>    
+            <ScrollableAnchor id={'24ora'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     24ora.com
                 </h3>
@@ -927,7 +370,7 @@ render() {
                     <div className="row">
                         {oras}
                     </div>
-            <ScrollableAnchor id={'BoletinExtra'}> 
+            <ScrollableAnchor id={'BoletinExtra'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     BoletinExtra.com
                 </h3>
@@ -935,7 +378,7 @@ render() {
                     <div className="row">
                         {boletins}
                     </div>
-            <ScrollableAnchor id={'EarubianoNews'}> 
+            <ScrollableAnchor id={'EarubianoNews'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     EarubianoNews.com
                 </h3>
@@ -943,7 +386,7 @@ render() {
                     <div className="row">
                         {arubianos}
                     </div>
-            <ScrollableAnchor id={'AweMainta'}> 
+            <ScrollableAnchor id={'AweMainta'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     AweMainta.com
                 </h3>
@@ -951,7 +394,7 @@ render() {
                     <div className="row">
                         {maintas}
                     </div>
-            <ScrollableAnchor id={'Focus'}> 
+            <ScrollableAnchor id={'Focus'}>
                 <h3 className="pb-3 mb-4 font-italic border-bottom">
                     Focus.aw
                 </h3>
@@ -987,7 +430,7 @@ render() {
             </div>
             </main>
 
-                <div id="radio"> 
+                <div id="radio">
                     <AudioPlayer playlist={playlist} />
                 </div>
                 </StickyContainer>
