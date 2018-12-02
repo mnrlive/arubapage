@@ -1,4 +1,4 @@
-const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
+const regex = /^(.*[\\/])(.*)\.[^.]+$/;
 
 export const imageRuba = function(arubiano) {
   try {

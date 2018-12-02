@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const NewsCard = props => {
   return (
@@ -26,10 +25,6 @@ const NewsCard = props => {
         </div>
     </div>
   );
-};
-
-NewsCard.propTypes = {
-
 };
 
 export default NewsCard;

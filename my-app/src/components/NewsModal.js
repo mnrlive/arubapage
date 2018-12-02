@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -9,8 +8,7 @@ import {
   WhatsappIcon,
 } from 'react-share';
 
-const NewsModal = props => {
-  return (
+const NewsModal = props => (
     <div
       className="modal fade"
       id={props.id}
@@ -59,13 +57,13 @@ const NewsModal = props => {
                   </a>
                   <div className="modal-footer">
                       <div className="sharebuttons">
-                          <FacebookShareButton url={props.articleLink}>
+                          <FacebookShareButton url={props.articleUrl}>
                               <FacebookIcon size={32} round={true} />
                           </FacebookShareButton>
-                          <TwitterShareButton url={props.articleLink}>
+                          <TwitterShareButton url={props.articleUrl}>
                               <TwitterIcon size={32} round={true} />
                           </TwitterShareButton>
-                          <WhatsappShareButton url={props.articleLink}>
+                          <WhatsappShareButton url={props.articleUrl}>
                               <WhatsappIcon size={32} round={true} />
                           </WhatsappShareButton>
                       </div>
@@ -76,10 +74,5 @@ const NewsModal = props => {
       </div>
   </div>
   );
-};
-
-NewsModal.propTypes = {
-
-};
 
 export default NewsModal;

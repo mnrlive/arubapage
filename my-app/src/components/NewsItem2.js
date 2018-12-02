@@ -1,18 +1,9 @@
 import React from 'react';
-import {
-    FacebookShareButton,
-    TwitterShareButton,
-    WhatsappShareButton,
-    FacebookIcon,
-    TwitterIcon,
-    WhatsappIcon,} from 'react-share';
 import moment from 'moment';
 import ReactHtmlParser from 'react-html-parser';
 import sanitizeHtml from 'sanitize-html';
 import NewsCard from "./NewsCard";
 import NewsModal from "./NewsModal";
-import { imageRuba, imageTest } from "../utils/imageFunctions";
-import { imageErrorCheck } from "../utils/imageErrorCheck";
 
 const NewsItem2 = ({ newsSource, index, provider, imgFunction, renderedContent }) => (
     <div className="col-md-4" key={index}>
