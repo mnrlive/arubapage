@@ -31,8 +31,7 @@ import {
 } from 'react-device-detect';
 
 
-
-  const Browser = browserName;
+const Browser = browserName;
 const renderContent = () => {
   if (((isChrome || isFirefox) && !isAndroid)) {
         return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
@@ -74,7 +73,8 @@ const playlist =
      ];
 
 // eslint-disable-next-line
-const regex = /^(.*[\\\/])(.*)\.[^.]+$/;
+const regex = /^(.*[\\\/])(.*)/;
+const extensions = /(?:jpg|gif|png)/;
 let defaultVolume = 0.2;
 
 const videoOptions = {
@@ -234,13 +234,6 @@ imageErrorCheck(provider) {
                             return require('../images/masnoticia.PNG');
                         }
         }
-        else if (link[0] === '24ora.com') {
-            try {
-                return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-            } catch (e) {
-                return require('../images/24ora.jpg');
-            }
-        }
 }
 
 render() {
@@ -254,21 +247,21 @@ render() {
     let arubianos = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
         function imageRuba() {
             try {
-                // only 900 x 425 format
-                return (require('../webimages/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].source_url)[2]) + '-900x425.jpg'));
-            } catch (e) {
-                try {
-                    return ((require('../webimages/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].source_url)[2]) + '-900x425.jpeg')));
-                }catch(e){
+                if ((extensions.exec(arubiano._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url)[0]) === 'jpg'){
+                    return (('https://arubapage.com/static/media/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url)[2]) + '.1'));
 
+                }else{
+
+                    return ( ('https://arubapage.com/static/media/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url)[2])));
                 }
-                return require('../images/eArubiano.PNG');
+            } catch (e) {
+                 return require('../images/eArubiano.PNG');
             }
         }
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageRuba()} alt="Thumbnail [100%x225]" />
+                    <img onError={require('../images/eArubiano.PNG')} className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={imageRuba()} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(arubiano.title.rendered)}</h3>
                         <p className="card-text">{moment(arubiano.date).format('L')}</p>
@@ -289,7 +282,14 @@ render() {
                             </div>
                             <div className="modal-body" >
                                 <p className="card-text">{moment(arubiano.date).format('L')}</p>
-                                {ReactHtmlParser(sanitizeHtml(arubiano.content.rendered))}
+                                {ReactHtmlParser(sanitizeHtml(arubiano.content.rendered, {
+                                        allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
+                                        allowedAttributes: {
+                                            'iframe': ['src']
+                                        },
+                                        allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
+                                    }
+                                    ))}
                                 <a href="https://earubianonews.com" target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-globe" aria-hidden="true"></i> earubianonews.com</a>
                                 <a href={arubiano.link} target="_blank" rel="noopener noreferrer"><i style={{ color: "black" }} className="fa fa-link" aria-hidden="true"></i> link to article</a>
                                 <div className="modal-footer">
@@ -367,9 +367,9 @@ render() {
     let boletins =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletin, index) => {
         function imageTest() {
             try {
-                return ((require('../webimages/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '-620x330.jpg')));
+                return ('https://arubapage.com/static/media/' +  (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '.1');
             } catch (e) {
-                return require('../images/boletinHD.jpg');
+                    return require('../images/boletinHD.jpg');
             }
         }
         return (
@@ -424,10 +424,17 @@ render() {
     })
     //24ora Crawl for images!
     let oras = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
+                function image24() {
+                    try {
+                        return ((require('../images/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.jpg')));
+                    } catch (e) {
+                        return require('../images/24ora.jpg');
+                    }
+                }
         return (
             <div className="col-md-4" key={index}>
                 <div className="card mb-4 box-shadow">
-                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={this.imageErrorCheck(ora)} alt="Thumbnail [100%x225]" />
+                    <img className="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" src={image24()} alt="Thumbnail [100%x225]" />
                     <div className="card-body">
                         <h3>{ReactHtmlParser(ora.title.rendered)}</h3>
                         <p className="card-text">{moment(ora.date).format('L')}</p>
@@ -440,7 +447,7 @@ render() {
                     <div className="modal-dialog modal-lg">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <img className="modal-header" src={this.imageErrorCheck(ora)} alt="Thumbnail [100%x225]" />
+                                <img className="modal-header" src={image24()} alt="Thumbnail [100%x225]" />
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
