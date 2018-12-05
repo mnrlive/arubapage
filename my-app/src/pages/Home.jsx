@@ -101,6 +101,7 @@ mapOpenGraphImageResults = function (url, index) {
     }
 }
 
+
 render() {
     // TODO: work this into newsitem2;
     let noticiaCla = this.state.services.noticiaCla && this.state.services.noticiaCla.map((cla, index) => {
@@ -127,6 +128,7 @@ render() {
         )
     })
     //24ora Crawl for images!
+
     let bintiCuatroOra = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
         return (
             <NewsItem2
