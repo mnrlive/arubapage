@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar.jsx';
 import SecondNavbar from '../components/SecondNavbar.jsx';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
-import AudioPlayer from 'react-responsive-audio-player';
+import { MediaPlayer } from '@cassette/player';
 import { Sticky, StickyContainer } from 'react-sticky';
 import _ from 'lodash'
 import './Home.css';
@@ -19,7 +19,7 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { playlist } from "../utils/playlist";
-import { imageRuba, imageTest } from "../utils/imageFunctions";
+import { imageRuba, imageTest, imageBintiCuater } from "../utils/imageFunctions";
 
 class Home extends Component {
     constructor() {
@@ -112,7 +112,23 @@ render() {
     // e arubiano Crawl for images!
     let eArubianoNews = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
         return (
-           <NewsItem2 key={index} index={index} newsSource={arubiano} provider="earubianonews.com" imgFunction={imageRuba(arubiano)} />
+           <NewsItem2 
+                key={index} 
+                index={index} 
+                newsSource={arubiano} 
+                provider="earubianonews.com" 
+                imgFunction={imageRuba(arubiano)}
+                renderedContent = {
+                    ReactHtmlParser(sanitizeHtml(arubiano.content.rendered, {
+                        allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
+                        allowedAttributes: {
+                            'iframe': ['src']
+                        },
+                        allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
+                    }))
+                }
+
+                 />
         )
     })
     //awe mainta
@@ -136,7 +152,7 @@ render() {
                 index={index}
                 newsSource={ora}
                 provider="24ora.com"
-                imgFunction={imageErrorCheck(ora)}
+                imgFunction={imageBintiCuater(ora)}
                 renderedContent={ReactHtmlParser(sanitizeHtml(ora.content.rendered, {
                                     allowedTags: ['p', 'em', 'strong', 'b', 'i', 'span'],
                                     transformTags: {
@@ -274,7 +290,10 @@ render() {
                 </div>
                 </main>
                     <div id="radio">
-                        <AudioPlayer playlist={playlist} />
+                     <MediaPlayer
+                        playlist={playlist}
+                        controls = {['backskip', 'playpause', 'forwardskip', 'volume', 'progress']}
+                     />
                     </div>
             </StickyContainer>
         </div>

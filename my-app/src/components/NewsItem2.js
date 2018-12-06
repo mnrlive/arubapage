@@ -22,7 +22,7 @@ const NewsItem2 = ({ newsSource, index, provider, imgFunction, renderedContent }
             title={ReactHtmlParser(newsSource.title.rendered)}
             date={moment(newsSource.date).format('L')}
             renderedContent={renderedContent ? renderedContent : ReactHtmlParser(sanitizeHtml(newsSource.content.rendered))}
-            source={"https://" + provider}
+            source={" https://" + provider}
             articleUrl={newsSource.link}
         />
     </div>
