@@ -177,7 +177,7 @@ render() {
                 provider="masnoticia.com"
                 imgFunction={imageErrorCheck(masNoticia)}
                 renderedContent={ReactHtmlParser(sanitizeHtml(masNoticia.content.rendered, {
-                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
+                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong'],
                                     allowedAttributes: { 'iframe': ['src'] },
                                     allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
                                 }))}
@@ -212,7 +212,7 @@ render() {
                 provider="focus.aw"
                 imgFunction={imageErrorCheck(focus)}
                 renderedContent={ReactHtmlParser(sanitizeHtml(focus.content.rendered, {
-                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
+                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong'],
                                     allowedAttributes: { 'iframe': ['src'] },
                                     allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
                                 }))}

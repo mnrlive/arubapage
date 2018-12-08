@@ -89,7 +89,7 @@ return (
         <div className="jumbotron">
             <section className="jumbotron text-center">
                 <div className="container">
-                    <h1 className="jumbotron-heading">About ArubaPage.com</h1>
+                    <h1 className="jumbotron-heading" style={{"marginTop": "35px"}}>ArubaPage.com</h1>
                     <p className="lead text-muted">One Happy Island, One well informed Aruban.</p>
                     <ScrollToTop style={{ "zIndex": '1' }} showUnder={160}>
                         <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
