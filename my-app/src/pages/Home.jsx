@@ -8,6 +8,7 @@ import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
 import { MediaPlayer } from '@cassette/player';
 import { Sticky, StickyContainer } from 'react-sticky';
+import AudioPlayer from 'react-responsive-audio-player';
 import _ from 'lodash'
 import './Home.css';
 import newsServices from '../config/services';
@@ -20,6 +21,7 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { playlist } from "../utils/playlist";
 import { imageRuba, imageTest, imageBintiCuater } from "../utils/imageFunctions";
+import {isEdge} from 'react-device-detect';
 
 class Home extends Component {
     constructor() {
@@ -290,10 +292,10 @@ render() {
                 </div>
                 </main>
                     <div id="radio">
-                     <MediaPlayer
-                        playlist={playlist}
-                        controls = {['backskip', 'playpause', 'forwardskip', 'volume', 'progress']}
-                     />
+                        {
+                            (isEdge) ?
+                         ( <AudioPlayer playlist={playlist} />) : (<MediaPlayer playlist={playlist} controls = {['backskip', 'playpause', 'forwardskip', 'volume', 'progress']}/>)
+                        }
                     </div>
             </StickyContainer>
         </div>
