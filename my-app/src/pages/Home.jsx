@@ -20,7 +20,7 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { playlist } from "../utils/playlist";
-import { imageRuba, imageTest, imageBintiCuater } from "../utils/imageFunctions";
+import { imageRuba, imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 import {isEdge} from 'react-device-detect';
 
 class Home extends Component {
@@ -198,6 +198,12 @@ render() {
             <NewsItem2 key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
         )
     })
+    //solo di pueblo
+    let solo = this.state.services.solo && this.state.services.solo.map((solo, index) => {
+        return (
+            <NewsItem2 key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
+        )
+    })
     //bon dia aruba
     let bondia = this.state.services.bonDia && this.state.services.bonDia.map((bondia, index) => {
         return (
@@ -235,15 +241,15 @@ render() {
         )
     })
     //coolaruba
-    let coolAruba = this.state.services.coolAruba && this.state.services.coolAruba.map((coolAruba, index) => {
+    let sports = this.state.services.sports && this.state.services.sports.map((sports, index) => {
         return (
             <NewsItem2
                 key={index}
                 index={index}
-                newsSource={coolAruba}
-                provider="coolaruba.com"
-                imgFunction={imageErrorCheck(coolAruba)}
-                renderedContent={ReactHtmlParser(sanitizeHtml(coolAruba.content.rendered, {
+                newsSource={sports}
+                provider="www.297sports.com"
+                imgFunction={imageSports(sports)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(sports.content.rendered, {
                                     allowedTags: ['p', 'em', 'strong', 'b', 'i']
                                 }))}
             />
@@ -271,15 +277,16 @@ render() {
                     <NewsItemsContainer id='ArubaNative' newsSource='ArubaNative.com' newsItems={arubaNative} />
                     <NewsItemsContainer id='MasNoticia' newsSource='MasNoticia.com' newsItems={masNoticia} />
                     <NewsItemsContainer id='NoticiaCla' newsSource='NoticiaCla.com' newsItems={noticiaCla} />
-                    <NewsItemsContainer id='BonDia' newsSource='BonDia.com' newsItems={bondia} />
                     <NewsItemsContainer id='Diario' newsSource='Diario.aw' newsItems={diario} />
+                    <NewsItemsContainer id='SoloDiPueblo' newsSource='SoloDiPueblo.com' newsItems={solo} />
                     <NewsItemsContainer id='24ora' newsSource='24ora.com' newsItems={bintiCuatroOra} />
                     <NewsItemsContainer id='BoletinExtra' newsSource='BoletinExtra.com' newsItems={boletinExtra} />
                     <NewsItemsContainer id='EarubianoNews' newsSource='EarubianoNews.com' newsItems={eArubianoNews} />
                     <NewsItemsContainer id='AweMainta' newsSource='AweMainta.com' newsItems={aweMainta} />
                     <NewsItemsContainer id='Focus' newsSource='Focus.aw' newsItems={focus} />
                     <NewsItemsContainer id='VisitAruba' newsSource='VisitAruba.com' newsItems={visitAruba} />
-                    <NewsItemsContainer id='CoolAruba' newsSource='CoolAruba.com' newsItems={coolAruba} />
+                    <NewsItemsContainer id='BonDia' newsSource='BonDia.com' newsItems={bondia} />
+                    <NewsItemsContainer id='297Sports' newsSource='297Sports.com' newsItems={sports} />
                     <div className="bottomText">
                         <p className="lead font-weight-normal">
                         It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />

@@ -29,7 +29,7 @@ export const imageErrorCheck = function(provider) {
        } catch (e) {
            return require('../images/aweMainta.PNG');
           }
-      } else if (link[0] === 'coolaruba.com') {
+      } else if (link[0] === 'www.297sports.com') {
           try {
               return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
           } catch (e) {
@@ -47,12 +47,12 @@ export const imageErrorCheck = function(provider) {
                       } catch (e) {
                           return require('../images/masnoticia.PNG');
                       }
-      }
-      else if (link[0] === '24ora.com') {
+      } else if (link[0] === 'solodipueblo.com') {
           try {
-              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+            //   return (provider._embedded['wp:featuredmedia'][0].media_details['file']);
+              return require('../images/soloDefaultimg.jpg');
           } catch (e) {
-              return require('../images/24ora.jpg');
+              return require('../images/soloDefaultimg.jpg');
           }
       }
 }

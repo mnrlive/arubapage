@@ -24,3 +24,19 @@ export const imageBintiCuater = function (ora) {
                         return require('../images/24ora.jpg');
                     }
 }
+
+// export const imageSolo = function (solo) {
+//                     try {
+//                         return ('https://arubapage.com/static/media/' + (regex.exec(solo._embedded['wp:featuredmedia'][0].media_details['file'])[2]) + '.1');
+//                     } catch (e) {
+//                         return require('../images/boletinHD.jpg');
+//                     }
+// }
+
+export const imageSports = function (sports) {
+                    try {
+                        return ('http://www.297sports.com/wp-content/uploads/2018/12/' + (regex.exec(sports._embedded['wp:featuredmedia'][0].source_url)[2]));
+                    } catch (e) {
+                        return require('../images/297sport.JPG');
+                    }
+}
