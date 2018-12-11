@@ -11,15 +11,16 @@ class SecondNavbar extends Component {
                     <Link className="nav-link" to="arubanative.com">ArubaNative</Link>
                     <Link className="nav-link" to="masnoticia.com">MasNoticia</Link>
                     <Link className="nav-link" to="noticiacla.com">NoticiaCla</Link>
-                    <Link className="nav-link" to="bondia.com">BonDia</Link>
                     <Link className="nav-link" to="diario.aw">Diario</Link>
+                    <Link className="nav-link" to="solodipueblo.com">SoloDiPueblo</Link>
                     <Link className="nav-link" to="24ora.com">24ora</Link>
                     <Link className="nav-link" to="boletinextra.com">BoletinExtra</Link>
                     <Link className="nav-link" to="earubianonews.com">EarubianoNews</Link>
                     <Link className="nav-link" to="awemainta.com">AweMainta</Link>
                     <Link className="nav-link" to="focus.aw">Focus</Link>
                     <Link className="nav-link" to="visitaruba.com">VisitAruba</Link>
-                    <Link className="nav-link" to="coolaruba.com">CoolAruba</Link>
+                    <Link className="nav-link" to="bondia.com">BonDia</Link>
+                    <Link className="nav-link" to="297Sports.com">297Sports</Link>
                 </nav>
             </div>
 

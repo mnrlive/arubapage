@@ -23,6 +23,8 @@ export const playlist =
      title: 'AFM Aruba' },
      { url: 'https://streamer.radio.co/s579e30929/listen',
      title: 'Super Exitos Aruba' },
-      { url: 'http://www.fresharuba.com:8006/;',
-     title: 'Fresh FM Aruba' }
+     { url: 'http://www.fresharuba.com:8006/;',
+     title: 'Fresh FM Aruba' },
+     { url: 'http://s02.whooshserver.net:8054/vip',
+     title: 'VIP Radio Aruba' }
      ];

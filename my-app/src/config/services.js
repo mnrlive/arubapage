@@ -9,9 +9,10 @@ export const diario = 'https://wordpressmade.com/https://www.diario.aw/wp-json/w
 export const focus = 'https://wordpressmade.com/https://focus.aw/index.php/wp-json/wp/v2/posts?_embed&per_page=12';
 export const batiBleki = 'https://wordpressmade.com/https://www.visitaruba.com/blog/wp-json/wp/v2/posts?_embed&per_page=12';
 export const bonDia = 'https://wordpressmade.com/https://www.bondia.com/wp-json/wp/v2/posts?_embed&per_page=12';
-export const coolAruba = 'https://wordpressmade.com/https://coolaruba.com/wp-json/wp/v2/posts?_embed&per_page=12';
+export const sports = 'https://wordpressmade.com/http://www.297sports.com/wp-json//wp/v2/posts?_embed&per_page=12';
+export const solo = 'https://cors-anywhere.herokuapp.com/http://solodipueblo.com//wp-json/wp/v2/posts?_embed&per_page=12';
 
 const services = {
-    arubaNative,noticiaCla,eArubianoNews,aweMainta,_24ora,boletinExtra,masNoticia,diario,focus,batiBleki,bonDia,coolAruba
+    arubaNative,noticiaCla,eArubianoNews,aweMainta,_24ora,boletinExtra,masNoticia,diario,focus,batiBleki,bonDia,sports,solo
 }
 export default services;

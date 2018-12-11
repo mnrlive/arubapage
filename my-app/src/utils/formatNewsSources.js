@@ -4,7 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 import NewsItem from '../components/common/NewsItem/NewsItem';
 import NewsItem2 from '../components/common/NewsItem/NewsItem2';
 import { imageErrorCheck } from "../utils/imageErrorCheck";
-import { imageRuba, imageTest } from "../utils/imageFunctions";
+import { imageRuba, imageTest,imageBintiCuater, imageSports } from "../utils/imageFunctions";
 
 export const formatNewsSources = (services) => {
   // TODO: work this into newsitem2;
@@ -40,7 +40,7 @@ export const formatNewsSources = (services) => {
               index={index}
               newsSource={ora}
               provider="24ora.com"
-              imgFunction={imageErrorCheck(ora)}
+              imgFunction={imageBintiCuater(ora)}
               renderedContent={ReactHtmlParser(sanitizeHtml(ora.content.rendered, {
                                   allowedTags: ['p', 'em', 'strong', 'b', 'i', 'span'],
                                   transformTags: {
@@ -84,6 +84,12 @@ export const formatNewsSources = (services) => {
           <NewsItem2 key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
       )
   })
+    //solo di pueblo
+    let solo = services.solo && services.solo.map((solo, index) => {
+        return (
+            <NewsItem2 key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
+        )
+    })
   //bon dia aruba
   let bondia = services.bonDia && services.bonDia.map((bondia, index) => {
       return (
@@ -121,22 +127,37 @@ export const formatNewsSources = (services) => {
       )
   })
   //coolaruba
-  let coolAruba = services.coolAruba && services.coolAruba.map((coolAruba, index) => {
-      return (
-          <NewsItem2
-              key={index}
-              index={index}
-              newsSource={coolAruba}
-              provider="coolaruba.com"
-              imgFunction={imageErrorCheck(coolAruba)}
-              renderedContent={ReactHtmlParser(sanitizeHtml(coolAruba.content.rendered, {
-                                  allowedTags: ['p', 'em', 'strong', 'b', 'i']
-                              }))}
-          />
-      )
-  })
+//   let coolAruba = services.coolAruba && services.coolAruba.map((coolAruba, index) => {
+//       return (
+//           <NewsItem2
+//               key={index}
+//               index={index}
+//               newsSource={coolAruba}
+//               provider="coolaruba.com"
+//               imgFunction={imageErrorCheck(coolAruba)}
+//               renderedContent={ReactHtmlParser(sanitizeHtml(coolAruba.content.rendered, {
+//                                   allowedTags: ['p', 'em', 'strong', 'b', 'i']
+//                               }))}
+//           />
+//       )
+//   })
+      //coolaruba
+    let sports = services.sports && services.sports.map((sports, index) => {
+        return (
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={sports}
+                provider="www.297sports.com"
+                imgFunction={imageSports(sports)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(sports.content.rendered, {
+                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
+                                }))}
+            />
+        )
+    })
 
-  const formattedNewsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, coolAruba];
+  const formattedNewsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, solo, sports];
 
   return formattedNewsSources;
 }

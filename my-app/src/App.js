@@ -74,7 +74,7 @@ class App extends Component {
   render() {
     const { services } = this.state;
     const newsSources = formatNewsSources(services)
-    let loaded = _.compact(newsSources).length === 12
+    let loaded = _.compact(newsSources).length === 13
 
       return (
         <Router>
@@ -88,15 +88,20 @@ class App extends Component {
               {
                 newsSources && newsSources.map((newsItems, index) => {
                     if(newsItems){
-                        const anchor =  newsItems[0].props.provider ?
-                            newsItems[0].props.provider.charAt(0).toUpperCase() + newsItems[0].props.provider.slice(1, newsItems[0].props.provider.indexOf('.')) :
-                            "Noticiacla"
+                        let anchor;
+                            if( newsItems[0].props.provider){
+                                const {provider} = newsItems[0].props
+                                anchor = provider.replace('www.', '').charAt(0).toUpperCase() + provider.replace('www.', '').slice(1)
+                            } else {
+                                anchor = "noticiacla.com"
+                            }
+
                         return  (
-                            <Route key={index} path={newsItems[0].props.cla ? "/noticiacla.com" : `/${newsItems[0].props.provider}`} component={() => (
+                            <Route key={index} path={ '/' +  anchor } component={() => (
                                 <NewsItemsContainer
                                     key={index}
                                     id={anchor}
-                                    newsSource={newsItems[0].props.provider}
+                                    newsSource={anchor}
                                     newsItems={newsItems}
                                 /> )}
                             />
