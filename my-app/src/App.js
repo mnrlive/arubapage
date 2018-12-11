@@ -74,10 +74,12 @@ class App extends Component {
   render() {
     const { services } = this.state;
     const newsSources = formatNewsSources(services)
+    let loaded = _.compact(newsSources).length === 12
+
       return (
         <Router>
           <Analytics id="UA-115970603-1" debug>
-            <Header />
+            <Header loaded = {loaded} />
               <Favicon url={[ico]} />
               <Route exact path="/" component={LandingPage}/>
               <Route path="/home" component={LandingPage}/>

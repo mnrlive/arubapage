@@ -55,7 +55,8 @@ body {
 }
 
 #spinner {
-  text-align: center !important;
+  height: 24px;
+  margin-left: 16px;
 }
 
 /*
