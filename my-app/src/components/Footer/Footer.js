@@ -1,7 +1,7 @@
 import React from 'react';
 import AudioPlayer from 'react-responsive-audio-player';
 import { playlist } from "../../utils/playlist";
-import {isEdge} from 'react-device-detect';
+import { isEdge } from 'react-device-detect';
 import { MediaPlayer } from '@cassette/player';
 
 const Footer = () => {

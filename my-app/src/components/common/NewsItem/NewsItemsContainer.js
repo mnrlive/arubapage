@@ -5,7 +5,7 @@ import { configureAnchors } from 'react-scrollable-anchor';
 
 class NewsItemsContainer extends Component {
   componentDidMount() {
-    configureAnchors({offset: -150, scrollDuration: 200});
+    configureAnchors({offset: -65, scrollDuration: 200});
 }
   render() {
     const { newsSource, newsItems } = this.props

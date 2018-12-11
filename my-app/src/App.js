@@ -6,7 +6,7 @@ import ico from './images/aruba.ico';
 import ogs from 'open-graph-scraper';
 import _ from 'lodash'
 // components
-import LandingPage from './components/LandingPage/LandingPage';
+import LandingPageContainer from './components/LandingPage/LandingPageContainer';
 import AboutContainer from './components/AboutPage/AboutContainer';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -81,8 +81,8 @@ class App extends Component {
           <Analytics id="UA-115970603-1" debug>
             <Header loaded = {loaded} />
               <Favicon url={[ico]} />
-              <Route exact path="/" component={LandingPage}/>
-              <Route path="/home" component={LandingPage}/>
+              <Route exact path="/" component={LandingPageContainer}/>
+              <Route path="/home" component={LandingPageContainer}/>
               <Route path="/about" component={AboutContainer} />
               {/* <Route path="/all" component={() => (<AllNews newsSources={newsSources} loaded={loaded} />)} /> */}
               {

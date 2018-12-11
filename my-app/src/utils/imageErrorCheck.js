@@ -35,13 +35,7 @@ export const imageErrorCheck = function(provider) {
         } catch (e) {
             return require('../images/coolFm.png');
         }
-        } else if (link[0] === 'coolaruba.com') {
-          try {
-              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-          } catch (e) {
-              return require('../images/coolFm.png');
-          }
-      } else if (link[0] === 'www.diario.aw') {
+        } else if (link[0] === 'www.diario.aw') {
               try {
                   return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
               } catch (e) {
@@ -53,13 +47,6 @@ export const imageErrorCheck = function(provider) {
                       } catch (e) {
                           return require('../images/masnoticia.PNG');
                       }
-      }
-      else if (link[0] === '24ora.com') {
-          try {
-              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
-          } catch (e) {
-              return require('../images/24ora.jpg');
-          }
       } else if (link[0] === 'solodipueblo.com') {
         try {
           //   return (provider._embedded['wp:featuredmedia'][0].media_details['file']);

@@ -1,11 +1,9 @@
 import React from 'react';
-import JumbotronHome from './LandingPageJumbotron';
 
-const LandingPage = () => {
+const LandingPageContent = () => {
   return (
       <main className="container content">
-        <JumbotronHome />
-        <p className="container lead font-weight-normal">
+        <p className="lead font-weight-normal">
           It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />
           This web app allows you to see all the latest news from all online news providers from the island.
           Instead of going on news sites one by one or finding out about the news on Facebook or other social media,
@@ -20,4 +18,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default LandingPageContent;
