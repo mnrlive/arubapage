@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './Navbar.css';
+import Scrollspy from 'react-scrollspy';
 
 class SecondNavbar extends Component {
     render() {
         return (
-    <div className="nav-scroller bg-white shadow-sm box-shadow">
-      <nav className="nav nav-underline">
+            <div>
+      <nav className="nav-pills nav-underline nav-scroller bg-white shadow-sm box-shadow">
+    <Scrollspy items={ ['ArubaNative', 'MasNoticia', 'NoticiaCla', 'Diario', 'SoloDiPueblo', 'dosCuatorOra', 'BoletinExtra', 'EarubianoNews', 'AweMainta', 'Focus', 'VisitAruba', 'BonDia', 'dosNuebeSheteSports'] } currentClassName="active">
         <a className="nav-link" href="#ArubaNative">ArubaNative</a>
         <a className="nav-link" href="#MasNoticia">MasNoticia</a>
         <a className="nav-link" href="#NoticiaCla">NoticiaCla</a>
@@ -19,8 +21,9 @@ class SecondNavbar extends Component {
         <a className="nav-link" href="#VisitAruba">VisitAruba</a>
         <a className="nav-link" href="#BonDia">BonDia</a>
         <a className="nav-link" href="#297Sports">297Sports</a>
-      </nav>
-      </div>
+    </Scrollspy>
+        </nav>
+        </div>
 
         );
     }

@@ -274,19 +274,19 @@ render() {
                 </ScrollToTop>
                 <div className="container">
                     {this.state.loaded || <Skeleton count={10} />}
-                    <NewsItemsContainer id='ArubaNative' newsSource='ArubaNative.com' newsItems={arubaNative} />
-                    <NewsItemsContainer id='MasNoticia' newsSource='MasNoticia.com' newsItems={masNoticia} />
-                    <NewsItemsContainer id='NoticiaCla' newsSource='NoticiaCla.com' newsItems={noticiaCla} />
-                    <NewsItemsContainer id='Diario' newsSource='Diario.aw' newsItems={diario} />
-                    <NewsItemsContainer id='SoloDiPueblo' newsSource='SoloDiPueblo.com' newsItems={solo} />
-                    <NewsItemsContainer id='24ora' newsSource='24ora.com' newsItems={bintiCuatroOra} />
-                    <NewsItemsContainer id='BoletinExtra' newsSource='BoletinExtra.com' newsItems={boletinExtra} />
-                    <NewsItemsContainer id='EarubianoNews' newsSource='EarubianoNews.com' newsItems={eArubianoNews} />
-                    <NewsItemsContainer id='AweMainta' newsSource='AweMainta.com' newsItems={aweMainta} />
-                    <NewsItemsContainer id='Focus' newsSource='Focus.aw' newsItems={focus} />
-                    <NewsItemsContainer id='VisitAruba' newsSource='VisitAruba.com' newsItems={visitAruba} />
-                    <NewsItemsContainer id='BonDia' newsSource='BonDia.com' newsItems={bondia} />
-                    <NewsItemsContainer id='297Sports' newsSource='297Sports.com' newsItems={sports} />
+                    <section id='ArubaNative'><NewsItemsContainer id='ArubaNative' newsSource='ArubaNative.com' newsItems={arubaNative} /></section>
+                    <section id='MasNoticia'><NewsItemsContainer id='MasNoticia' newsSource='MasNoticia.com' newsItems={masNoticia} /></section>
+                    <section id='NoticiaCla'><NewsItemsContainer id='NoticiaCla' newsSource='NoticiaCla.com' newsItems={noticiaCla} /></section>
+                    <section id='Diario'><NewsItemsContainer id='Diario' newsSource='Diario.aw' newsItems={diario} /></section>
+                    <section id='SoloDiPueblo'><NewsItemsContainer id='SoloDiPueblo' newsSource='SoloDiPueblo.com' newsItems={solo} /></section>
+                    <section id='dosCuatorOra'><NewsItemsContainer id='24ora' newsSource='24ora.com' newsItems={bintiCuatroOra} /></section>
+                    <section id='BoletinExtra'><NewsItemsContainer id='BoletinExtra' newsSource='BoletinExtra.com' newsItems={boletinExtra} /></section>
+                    <section id='EarubianoNews'><NewsItemsContainer id='EarubianoNews' newsSource='EarubianoNews.com' newsItems={eArubianoNews} /></section>
+                    <section id='AweMainta'><NewsItemsContainer id='AweMainta' newsSource='AweMainta.com' newsItems={aweMainta} /></section>
+                    <section id='Focus'><NewsItemsContainer id='Focus' newsSource='Focus.aw' newsItems={focus} /></section>
+                    <section id='VisitAruba'><NewsItemsContainer id='VisitAruba' newsSource='VisitAruba.com' newsItems={visitAruba} /></section>
+                    <section id='BonDia'><NewsItemsContainer id='BonDia' newsSource='BonDia.com' newsItems={bondia} /></section>
+                    <section id='dosNuebeSheteSports'><NewsItemsContainer id='297Sports' newsSource='297Sports.com' newsItems={sports} /></section>
                     <div className="bottomText">
                         <p className="lead font-weight-normal">
                         It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />

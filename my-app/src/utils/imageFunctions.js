@@ -34,8 +34,9 @@ export const imageBintiCuater = function (ora) {
 // }
 
 export const imageSports = function (sports) {
+    const d = new Date();
                     try {
-                        return ('http://www.297sports.com/wp-content/uploads/2018/12/' + (regex.exec(sports._embedded['wp:featuredmedia'][0].source_url)[2]));
+                        return ('http://www.297sports.com/wp-content/uploads/' + d.getFullYear() + '/' + (("0" + (d.getMonth() + 1)).slice(-2)) + '/' + (regex.exec(sports._embedded['wp:featuredmedia'][0].source_url)[2]));
                     } catch (e) {
                         return require('../images/297sport.JPG');
                     }

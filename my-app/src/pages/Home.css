@@ -637,3 +637,19 @@ i:hover{
           animation: none !important;
       }
   }
+
+  #ArubaNative,
+  #MasNoticia,
+  #NoticiaCla,
+  #Diario,
+  #SoloDiPueblo,
+  #dosCuatorOra,
+  #BoletinExtra,
+  #EarubianoNews,
+  #AweMainta,
+  #Focus,
+  #VisitAruba,
+  #BonDia,
+  #dosNuebeSheteSports{
+      margin-top: 130px;
+  }

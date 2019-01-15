@@ -32,7 +32,8 @@ body {
     width: 100%;
     text-align: center;
     z-index: 2;
-    height: 2.75rem;
+    padding-top: 15px;
+    height: unset;
     overflow-y: hidden;
 }
 
@@ -59,6 +60,12 @@ body {
 
 .nav-underline .nav-link:hover {
     color: #007bff;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #fff !important;
+    background-color: #007bff;
 }
 
 .nav-underline .active {
