@@ -22,6 +22,7 @@ import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { playlist } from "../utils/playlist";
 import { imageRuba, imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 import {isEdge} from 'react-device-detect';
+import AdSense from 'react-adsense';
 
 class Home extends Component {
     constructor() {
@@ -269,6 +270,13 @@ render() {
                 </Sticky>
                 <main role="main" className="container">
                 <Jumbotron />
+                    <AdSense.Google
+                        client='ca-pub-8107944427019798'
+                        slot='5340644171'
+                        style={{ display: 'block' }}
+                        format='auto'
+                        responsive='true'
+                    />
                 <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
                     <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
                 </ScrollToTop>
