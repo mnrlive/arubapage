@@ -3,7 +3,8 @@ const regex = /^(.*[\\\/])(.*)/;
 
 export const imageRuba = function(arubiano) {
             try {
-                return (('https://arubapage.com/static/media/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url)[2]) + '.1'));
+                return require('../images/eArubiano.PNG');
+                // return (('https://arubapage.com/static/media/' + (regex.exec(arubiano._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url)[2]) + '.1'));
             } catch (e) {
                 return require('../images/eArubiano.PNG');
             }
@@ -11,7 +12,8 @@ export const imageRuba = function(arubiano) {
 
 export const imageTest = function(boletin) {
             try {
-                return ('https://arubapage.com/static/media/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '.1');
+                return require('../images/boletinHD.jpg');
+                // return ('https://arubapage.com/static/media/' + (regex.exec(boletin._embedded['wp:featuredmedia'][0].source_url)[2]) + '.1');
             } catch (e) {
                 return require('../images/boletinHD.jpg');
             }
@@ -19,7 +21,8 @@ export const imageTest = function(boletin) {
 
 export const imageBintiCuater = function (ora) {
                     try {
-                        return ('https://arubapage.com/static/media/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.1');
+                        // return ('https://arubapage.com/static/media/' + (regex.exec(ora._embedded['wp:featuredmedia'][0].source_url)[2]) + '.1');
+                        return require('../images/24ora.jpg');
                     } catch (e) {
                         return require('../images/24ora.jpg');
                     }
