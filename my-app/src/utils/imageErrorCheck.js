@@ -23,7 +23,7 @@ export const imageErrorCheck = function(provider) {
           } catch (e) {
            return require('../images/focus.PNG');
           }
-      } else if (link[0] === 'awemainta.com') {
+      } else if (link[0] === 'www.awemainta.com') {
        try {
            return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
        } catch (e) {

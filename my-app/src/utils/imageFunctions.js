@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-const regex = /^(.*[\\\/])(.*)/;
+// const regex = /^(.*[\\\/])(.*)/;
+// const regex2 = /[^\/]*(.*)/;
 
 export const imageRuba = function(arubiano) {
             try {
@@ -37,9 +38,10 @@ export const imageBintiCuater = function (ora) {
 // }
 
 export const imageSports = function (sports) {
-    const d = new Date();
+        let url = sports._embedded['wp:featuredmedia'][0].source_url;
                     try {
-                        return ('http://www.297sports.com/wp-content/uploads/' + d.getFullYear() + '/' + (("0" + (d.getMonth() + 1)).slice(-2)) + '/' + (regex.exec(sports._embedded['wp:featuredmedia'][0].source_url)[2]));
+                        // return ('http:' + (regex2.exec(sports._embedded['wp:featuredmedia'][0].source_url)[1]));
+                         return url.replace(/^https:\/\//i, 'http://');
                     } catch (e) {
                         return require('../images/297sport.JPG');
                     }

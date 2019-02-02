@@ -241,7 +241,7 @@ render() {
             />
         )
     })
-    //coolaruba
+    //297sports
     let sports = this.state.services.sports && this.state.services.sports.map((sports, index) => {
         return (
             <NewsItem2
