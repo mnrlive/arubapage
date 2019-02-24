@@ -20,7 +20,7 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { playlist } from "../utils/playlist";
-import { imageRuba, imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
+import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 import {isEdge, isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
 
@@ -120,7 +120,7 @@ render() {
                 index={index} 
                 newsSource={arubiano} 
                 provider="earubianonews.com" 
-                imgFunction={imageRuba(arubiano)}
+                imgFunction={imageErrorCheck(arubiano)}
                 renderedContent = {
                     ReactHtmlParser(sanitizeHtml(arubiano.content.rendered, {
                         allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],

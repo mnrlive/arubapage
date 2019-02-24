@@ -23,7 +23,7 @@ class About extends Component {
                     loaded: true
                 })
             }),
-            fetch('https://wordpressmade.com/https://publish.twitter.com/oembed?url=https://twitter.com/arubapage/status/977901243275403265').then((response) => response.json()).then(response => {
+            fetch('https://provider.arubapage.com/https://publish.twitter.com/oembed?url=https://twitter.com/arubapage/status/977901243275403265').then((response) => response.json()).then(response => {
                 this.setState({
                     twitters: [response],
                     loaded: true
