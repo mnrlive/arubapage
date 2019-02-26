@@ -20,6 +20,12 @@
     }
 }
 
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1300px;
+    }
+}
+
 .jumbotron p:last-child {
     margin-bottom: 0;
 }
@@ -136,6 +142,7 @@ i:hover{
 .nav{
     display: inline-flex !important;
     margin-bottom: 1em !important;
+    padding-left: 15px !important;
 }
 
 .arrow{
