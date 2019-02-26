@@ -21,7 +21,7 @@ class Navbar extends Component {
                                 </g>
                      </svg> 
                      <span id="brandname">ArubaPage.com</span>
-                     <p id="slogan">One &nbsp; Happy Island, one well informed Aruban</p>
+                     <div id="slogan">One Happy Island, one well informed Aruban</div>
                     </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

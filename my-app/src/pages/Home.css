@@ -152,7 +152,8 @@ i:hover{
     padding-left: 5px;
 }
 #slogan{
-    font-size: 48%;
+    margin-left: 30px;
+    font-size: 43%;
     color: #ffd000;
     font-weight: 600;
     display: inherit;
