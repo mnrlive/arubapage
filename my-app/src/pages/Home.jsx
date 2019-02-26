@@ -301,18 +301,18 @@ render() {
                 </ScrollToTop>
                 <div className="container">
                     {this.state.loaded || <Skeleton count={10} />}
-                    <section id='ArubaNative'><NewsItemsContainer id='ArubaNative' newsSource='ArubaNative.com' newsItems={arubaNative} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='8522153357'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
                     <section id='MasNoticia'><NewsItemsContainer id='MasNoticia' newsSource='MasNoticia.com' newsItems={masNoticia} /></section>
                     <AdSense.Google
                         client='ca-pub-8107944427019798'
                         slot='9924285810'
+                        style={{ display: 'block' }}
+                        format='auto'
+                        responsive='true'
+                    />
+                    <section id='ArubaNative'><NewsItemsContainer id='ArubaNative' newsSource='ArubaNative.com' newsItems={arubaNative} /></section>
+                    <AdSense.Google
+                        client='ca-pub-8107944427019798'
+                        slot='8522153357'
                         style={{ display: 'block' }}
                         format='auto'
                         responsive='true'
