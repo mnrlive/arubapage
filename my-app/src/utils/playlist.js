@@ -1,12 +1,10 @@
 export const playlist =
   [{ url: 'http://158.69.114.190:8072/;?1476089829845.mp3',
      title: 'Magic 96.5 FM',
-     isUnboundedStream : true
-    },
+     isUnboundedStream : true},
      { url: 'http://162.244.81.62:8000/stream?type=.mp3',
      title: 'Power FM Aruba',
-     isUnboundedStream: true
-     },
+     isUnboundedStream: true},
      { url: 'http://192.99.63.189:10995/topfm?type=.mp3',
      title: 'Top FM 95',
      isUnboundedStream : true},

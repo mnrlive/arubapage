@@ -23,7 +23,14 @@ export const imageErrorCheck = function(provider) {
           } catch (e) {
            return require('../images/focus.PNG');
           }
-      } else if (link[0] === 'earubianonews.com') {
+      } else if (link[0] === 'xclusivomagazine.com') {
+          try {
+              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+          } catch (e) {
+              return require('../images/focus.PNG');
+          }
+      }  
+      else if (link[0] === 'earubianonews.com') {
               return require('../images/eArubiano.PNG');
         }
        else if (link[0] === 'www.awemainta.com') {

@@ -11,8 +11,10 @@ export const batiBleki = 'https://provider.arubapage.com/https://www.visitaruba.
 export const bonDia = 'https://provider.arubapage.com/https://www.bondia.com/wp-json/wp/v2/posts?_embed&per_page=12';
 export const sports = 'https://provider.arubapage.com/http://www.297sports.com/wp-json//wp/v2/posts?_embed&per_page=12';
 export const solo = 'https://provider.arubapage.com/http://solodipueblo.com//wp-json/wp/v2/posts?_embed&per_page=12';
+export const xclusivo = 'https://provider.arubapage.com/http://xclusivomagazine.com//wp-json/wp/v2/posts?_embed&per_page=12';
+
 
 const services = {
-    arubaNative,noticiaCla,eArubianoNews,aweMainta,_24ora,boletinExtra,masNoticia,diario,focus,batiBleki,bonDia,sports,solo
+    arubaNative,noticiaCla,eArubianoNews,aweMainta,_24ora,boletinExtra,masNoticia,diario,focus,batiBleki,bonDia,sports,solo,xclusivo
 }
 export default services;

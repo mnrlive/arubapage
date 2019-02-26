@@ -256,6 +256,21 @@ render() {
             />
         )
     })
+
+        let xclusivo = this.state.services.xclusivo && this.state.services.xclusivo.map((xclusivo, index) => {
+        return (
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={xclusivo}
+                provider="xclusivomagazine.com"
+                imgFunction={imageErrorCheck(xclusivo)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(xclusivo.content.rendered, {
+                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
+                                }))}
+            />
+        )
+    })
     // could be mapped over for NewsItemsContainer rendering
     // const newsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, coolAruba];
 
@@ -383,6 +398,14 @@ render() {
                         responsive='true'
                     />
                     <section id='dosNuebeSheteSports'><NewsItemsContainer id='297Sports' newsSource='297Sports.com' newsItems={sports} /></section>
+                    <AdSense.Google
+                        client='ca-pub-8107944427019798'
+                        slot='5944091472'
+                        style={{ display: 'block' }}
+                        format='auto'
+                        responsive='true'
+                    />
+                    <section id='xClusivoMag'><NewsItemsContainer id='xClusivo' newsSource='XclusivoMagazine.com' newsItems={xclusivo} /></section>
                     <AdSense.Google
                         client='ca-pub-8107944427019798'
                         slot='5944091472'

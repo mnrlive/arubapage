@@ -7,7 +7,7 @@ class SecondNavbar extends Component {
         return (
             <div>
       <nav className="nav-pills nav-underline nav-scroller bg-white shadow-sm box-shadow">
-    <Scrollspy items={ ['ArubaNative', 'MasNoticia', 'NoticiaCla', 'Diario', 'SoloDiPueblo', 'BonDia', 'dosCuatorOra', 'AweMainta', 'BoletinExtra', 'EarubianoNews', 'Focus', 'VisitAruba', 'dosNuebeSheteSports'] } currentClassName="active">
+    <Scrollspy items={ ['ArubaNative', 'MasNoticia', 'NoticiaCla', 'Diario', 'SoloDiPueblo', 'BonDia', 'dosCuatorOra', 'AweMainta', 'BoletinExtra', 'EarubianoNews', 'Focus', 'VisitAruba', 'dosNuebeSheteSports', 'xClusivoMag'] } currentClassName="active">
         <a className="nav-link" href="#ArubaNative">ArubaNative</a>
         <a className="nav-link" href="#MasNoticia">MasNoticia</a>
         <a className="nav-link" href="#NoticiaCla">NoticiaCla</a>
@@ -21,6 +21,7 @@ class SecondNavbar extends Component {
         <a className="nav-link" href="#Focus">Focus</a>
         <a className="nav-link" href="#VisitAruba">VisitAruba</a>
         <a className="nav-link" href="#297Sports">297Sports</a>
+        <a className="nav-link" href="#xClusivo">Xclusivo</a>
     </Scrollspy>
         </nav>
         </div>
