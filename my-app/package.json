@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cassette/core": "^2.0.0-alpha.7",
-    "@cassette/player": "^2.0.0-alpha.7",
+    "@cassette/core": "2.0.0-alpha.29",
+    "@cassette/player": "2.0.0-alpha.29",
     "debug": ">=2.6.9",
     "image-scraper": "^0.2.1",
     "images-downloader": "^1.0.3",
@@ -29,7 +29,6 @@
     "react-scrollable-anchor": "^0.6.1",
     "react-scrollspy": "^3.3.5",
     "react-share": "^2.1.1",
-    "react-soundplayer": "^1.0.4",
     "react-sticky": "^6.0.3",
     "sanitize-html": "^1.18.2",
     "video.js": "^7.2.2"
