@@ -146,9 +146,18 @@ i:hover{
 }
 
 #brandname{
-    float: right;
+    position: absolute;
+    font-weight: 600;
     padding-top: 6px;
-    padding-left: 8px;
+    padding-left: 5px;
+}
+#slogan{
+    font-size: 48%;
+    color: #ffd000;
+    font-weight: 600;
+    display: inherit;
+    font-style: italic;
+    margin-top: -22px;
 }
 .loader{
         position: absolute;

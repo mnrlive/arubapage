@@ -19,7 +19,10 @@ class Navbar extends Component {
                                 274 125 284 15 6 130 45 255 87 l229 77 -251 92 c-139 51 -254 94 -256 97 -3
                                 2 -49 123 -103 267 l-99 263 -88 -244z"/>
                                 </g>
-                    </svg> <span id="brandname">ArubaPage.com</span></a>
+                     </svg> 
+                     <span id="brandname">ArubaPage.com</span>
+                     <p id="slogan">One &nbsp; Happy Island, one well informed Aruban</p>
+                    </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
             </button>
