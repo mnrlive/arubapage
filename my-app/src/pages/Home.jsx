@@ -6,9 +6,7 @@ import Navbar from '../components/Navbar.jsx';
 import SecondNavbar from '../components/SecondNavbar.jsx';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
-import { MediaPlayer } from '@cassette/player';
 import { Sticky, StickyContainer } from 'react-sticky';
-import AudioPlayer from 'react-responsive-audio-player';
 import _ from 'lodash'
 import './Home.css';
 import newsServices from '../config/services';
@@ -19,9 +17,8 @@ import Jumbotron from "../components/Jumbotron";
 import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
-import { playlist } from "../utils/playlist";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
-import {isEdge, isMobile} from 'react-device-detect';
+import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
 
 class Home extends Component {
@@ -424,12 +421,6 @@ render() {
                     </div>
                 </div>
                 </main>
-                    <div id="radio">
-                        {
-                            (isEdge) ?
-                         ( <AudioPlayer playlist={playlist} />) : (<MediaPlayer playlist={playlist} controls = {['backskip', 'playpause', 'forwardskip', 'volume', 'progress']}/>)
-                        }
-                    </div>
             </StickyContainer>
         </div>
     );

@@ -6,6 +6,7 @@ import ico from './images/aruba.ico';
 import './App.css';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
+import Footer from './components/Footer/Footer';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About} />
           </div>
+          <Footer />
           </Analytics>
         </Router>
       );
