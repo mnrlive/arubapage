@@ -120,9 +120,9 @@ return (
                 {twitters}
             </div>
         </div>
-        <footer className="container">
-            <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
-        </footer>
+        <div id="aboutFooter" className="container">
+            <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://robingiel.com" target="_blank" rel="noopener noreferrer">RG</a></div>
+        </div>
     </div>
 );
     }

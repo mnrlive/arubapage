@@ -152,6 +152,10 @@ i:hover{
         z-index: 1 !important;
 }
 
+#aboutFooter{
+    margin-bottom: 100px;
+}
+
 #brandname{
     position: absolute;
     font-weight: 600;

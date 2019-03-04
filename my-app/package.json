@@ -12,6 +12,7 @@
     "moment": "^2.21.0",
     "open-graph-scraper": "^3.3.0",
     "react": "^16.2.0",
+    "react-add-to-homescreen": "^1.0.0",
     "react-adsense": "0.0.6",
     "react-device-detect": "^1.6.1",
     "react-dom": "^16.2.0",
@@ -31,6 +32,7 @@
     "react-share": "^2.1.1",
     "react-sticky": "^6.0.3",
     "sanitize-html": "^1.18.2",
+    "sw-toolbox": "^3.6.0",
     "video.js": "^7.2.2"
   },
   "scripts": {

@@ -417,7 +417,7 @@ render() {
                         Instead of going on news sites one by one or finding out about the news on Facebook or other social media platforms,
                         we created a one page website that gathers all news from all news providers.
                             We are currently displaying the latest 10 news articles from each news provider. <i className="text-muted">#stayinformed</i></p>
-                            <div className="text-center text-muted"><p>© 2018 made by:</p><a href="https://sitelift.nl" target="_blank" rel="noopener noreferrer">Site Lift NL</a></div>
+                            <div className="text-center text-muted"><p>© 2018 made by:</p><a href="https://robingiel.com" target="_blank" rel="noopener noreferrer">RG</a></div>
                     </div>
                 </div>
                 </main>

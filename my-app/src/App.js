@@ -7,9 +7,16 @@ import './App.css';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Footer from './components/Footer/Footer';
+// import AddToHomescreen from 'react-add-to-homescreen';
 
 
 class App extends Component {
+
+  //  handleAddToHomescreen = () => {
+  //    alert('1. Open Share menu\n2. Tap on "Add to Home Screen" button');
+        // <AddToHomescreen onAddToHomescreenClick={this.handleAddToHomescreenClick} />
+  //  };
+
   render() {
       return (
         <Router>
