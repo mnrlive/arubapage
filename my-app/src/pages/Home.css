@@ -146,7 +146,7 @@ i:hover{
 }
 
 .arrow{
-    color: #3f90df;
+    color: #3f90df !important;
 }
 .scroll{
         z-index: 1 !important;
