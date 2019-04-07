@@ -35,7 +35,7 @@ class VideoPlayer extends Component {
 
   componentDidMount() {
         this.player = videojs(this.videoNode, videoOptions, function onPlayerReady() {
-            console.log('onPlayerReady', this);
+            // console.log('onPlayerReady', this);
             this.volume(defaultVolume);
         });
   }

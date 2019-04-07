@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "skycons": "git+https://github.com/darkskyapp/skycons.git",
     "@cassette/core": "2.0.0-alpha.29",
     "@cassette/player": "2.0.0-alpha.29",
     "debug": ">=2.6.9",

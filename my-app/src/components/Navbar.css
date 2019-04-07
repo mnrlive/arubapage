@@ -92,3 +92,23 @@ body {
 .lh-150 {
     line-height: 1.5;
 }
+
+.location {
+    display: -webkit-inline-box;
+    color: white;
+    padding-left: 3px;
+}
+
+.location p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 6px;
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md>.container{
+          display: contents;
+    }
+}

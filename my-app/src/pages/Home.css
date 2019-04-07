@@ -117,8 +117,11 @@ footer p {
     display: inline !important;
 }
 .navbar-brand{
-        padding-top: 1.3125rem !important;
         white-space: pre-line !important;
+}
+
+.navbar-collapse{
+    align-items: baseline;
 }
 
 @media (min-width: 48em) {
@@ -141,8 +144,8 @@ i:hover{
 }
 .nav{
     display: inline-flex !important;
-    margin-bottom: 1em !important;
-    padding-left: 15px !important;
+    /* margin-bottom: 1em !important;
+    padding-left: 15px !important; */
 }
 
 .arrow{

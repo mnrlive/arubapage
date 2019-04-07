@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import WeatherWidget from './WeatherWidget';
 import './Navbar.css';
 
 class Navbar extends Component {
     render() {
         return (
             <div>
-            <nav className="navbar navbar-expand-md fixed-top navbar-dark">
+            <nav className="navbar navbar-expand-md navbar-dark">
             <div className="container">
                     <a className="navbar-brand" href="/"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="45" height="45" viewBox="0 0 171.000000 171.000000"
@@ -19,7 +20,7 @@ class Navbar extends Component {
                                 274 125 284 15 6 130 45 255 87 l229 77 -251 92 c-139 51 -254 94 -256 97 -3
                                 2 -49 123 -103 267 l-99 263 -88 -244z"/>
                                 </g>
-                     </svg> 
+                    </svg> 
                      <span id="brandname">ArubaPage</span>
                      <div id="slogan">One Happy Island, one well informed Aruban</div>
                     </a>
@@ -36,16 +37,20 @@ class Navbar extends Component {
                         </li>
                         </ul>
                         <div className="social nav nav-masthead ml-md-auto">
-                            
                         <li className="nav-item">
-                                <div className="social"><a href="https://www.facebook.com/ArubaPage/" target="_blank" rel="noopener noreferrer" ><i className="fa fa-facebook-square fa-lg"></i></a></div>
+                        <WeatherWidget/>
                         </li>
-                        <li className="nav-item">
-                                <div className="social"><a href="https://www.instagram.com/arubapage/" target="_blank" rel="noopener noreferrer" ><i className="fa fa-instagram fa-lg"></i></a></div>
-                        </li>
-                        <li className="nav-item">
-                                <div className="social"><a href="https://www.twitter.com/arubapage/" target="_blank" rel="noopener noreferrer" ><i className="fa fa-twitter fa-lg"></i></a></div>
-                        </li>
+                        <div style={{ 'display': 'inline-flex'}}>
+                            <li className="nav-item">
+                                    <div className="social"><a href="https://www.facebook.com/ArubaPage/" target="_blank" rel="noopener noreferrer" ><i className="fa fa-facebook-square fa-lg"></i></a></div>
+                            </li>
+                            <li className="nav-item">
+                                    <div className="social"><a href="https://www.instagram.com/arubapage/" target="_blank" rel="noopener noreferrer" ><i className="fa fa-instagram fa-lg"></i></a></div>
+                            </li>
+                            <li className="nav-item">
+                                    <div className="social"><a href="https://www.twitter.com/arubapage/" target="_blank" rel="noopener noreferrer" ><i className="fa fa-twitter fa-lg"></i></a></div>
+                            </li>
+                        </div>
                         </div>
                   </div>
                 </div>
