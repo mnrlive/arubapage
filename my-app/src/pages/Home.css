@@ -6,6 +6,19 @@
         height: 100%;
 }
 
+.pageScroll{
+        overflow: hidden;
+        height: calc(100vh - 50px);
+        min-height: initial;
+}
+
+.button{
+    float: right;
+    top: 100%;
+    position: sticky;
+    z-index: 9999;
+}
+
 .jumbotron {
     padding-top: var(--jumbotron-padding-y);
     padding-bottom: var(--jumbotron-padding-y);
@@ -204,6 +217,9 @@ i:hover{
     margin-left:10px;
 }
 .navbar{
+        position: fixed;
+        width: 100%;
+        z-index: 1;
         background-color: #3f90df;
         border-bottom: 1px solid #0070ba;
         background-image: linear-gradient(100deg, #0070ba00, #1546a085);

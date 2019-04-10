@@ -4,10 +4,10 @@ import ReactHtmlParser from 'react-html-parser';
 import sanitizeHtml from 'sanitize-html';
 import NewsCard from "./NewsCard";
 import NewsModal from "./NewsModal";
-import LazyLoad from 'react-lazyload';
+// import LazyLoad from 'react-lazyload';
 
 const NewsItem2 = ({ newsSource, index, provider, imgFunction, renderedContent }) => (
-  <LazyLoad height={200}>
+  // <LazyLoad height={200}>
     <div className="col-md-4" key={index}>
         <NewsCard
             image={imgFunction}
@@ -28,7 +28,7 @@ const NewsItem2 = ({ newsSource, index, provider, imgFunction, renderedContent }
             articleUrl={newsSource.link}
         />
     </div>
-  </LazyLoad>
+  // </LazyLoad>
 );
 
 export default NewsItem2;

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import sanitizeHtml from 'sanitize-html';
-import ScrollToTop from 'react-scroll-up';
+// import ScrollToTop from 'react-scroll-up';
 import Navbar from '../components/Navbar.jsx';
 import SecondNavbar from '../components/SecondNavbar.jsx';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
-import { Sticky, StickyContainer } from 'react-sticky';
+// import { Sticky, StickyContainer } from 'react-sticky';
 import _ from 'lodash'
 import './Home.css';
 import newsServices from '../config/services';
@@ -20,6 +20,11 @@ import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
+import Scrollbar from 'react-scrollbars-custom';
+// import Headroom from 'react-headroom';
+// import Sticky from 'react-sticky-el';
+// import PerfectScrollbar from 'react-perfect-scrollbar';
+// import 'react-perfect-scrollbar/dist/css/styles.css';
 
 class Home extends Component {
     constructor() {
@@ -29,6 +34,10 @@ class Home extends Component {
             loaded: false
         }
 }
+
+    handleScrollTopClick = () => {
+        this.scrollbar.scrollToTop();
+    };
 
 addServiceData(key, data) {
     this.setState((state) => ({
@@ -272,14 +281,19 @@ render() {
     // const newsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, coolAruba];
 
     return (
-        <div>
-            <Navbar />
-            <StickyContainer>
-                <Sticky>{({ style }) =>
-                    <div className="navZ" style={style}>
-                        <SecondNavbar/>
-                    </div>}
-                </Sticky>
+        <div className="pageScroll">
+                    <div className="button" key="scrollTop" onClick={this.handleScrollTopClick}>
+                        <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
+                    </div>
+    <Scrollbar
+     ref = {
+         ref => (this.scrollbar = ref)
+     }
+    >
+
+                           <Navbar/>
+            <SecondNavbar />
+
                 <main role="main" className="container">
                 <Jumbotron />
                         {
@@ -293,9 +307,6 @@ render() {
                         responsive='true'
                     />) : null
                         }
-                <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
-                    <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
-                </ScrollToTop>
                 <div className="container">
                     {this.state.loaded || <Skeleton count={10} />}
                     <section id='MasNoticia'><NewsItemsContainer id='MasNoticia' newsSource='MasNoticia.com' newsItems={masNoticia} /></section>
@@ -421,7 +432,7 @@ render() {
                     </div>
                 </div>
                 </main>
-            </StickyContainer>
+            </Scrollbar>
         </div>
     );
 }
