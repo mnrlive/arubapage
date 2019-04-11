@@ -3,7 +3,7 @@ import ReactHtmlParser from 'react-html-parser';
 import sanitizeHtml from 'sanitize-html';
 // import ScrollToTop from 'react-scroll-up';
 import Navbar from '../components/Navbar.jsx';
-import SecondNavbar from '../components/SecondNavbar.jsx';
+// import SecondNavbar from '../components/SecondNavbar.jsx';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
 // import { Sticky, StickyContainer } from 'react-sticky';
@@ -290,9 +290,7 @@ render() {
          ref => (this.scrollbar = ref)
      }
     >
-
-                           <Navbar/>
-            <SecondNavbar />
+<Navbar/>
 
                 <main role="main" className="container">
                 <Jumbotron />

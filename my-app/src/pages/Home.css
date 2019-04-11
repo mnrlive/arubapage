@@ -14,9 +14,9 @@
 
 .button{
     float: right;
-    top: 100%;
+    top: 84%;
     position: sticky;
-    z-index: 9999;
+    z-index: 1;
 }
 
 .jumbotron {
@@ -217,7 +217,6 @@ i:hover{
     margin-left:10px;
 }
 .navbar{
-        position: fixed;
         width: 100%;
         z-index: 1;
         background-color: #3f90df;
