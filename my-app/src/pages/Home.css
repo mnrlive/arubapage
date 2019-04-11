@@ -131,7 +131,19 @@ footer p {
 }
 .navbar-brand{
         white-space: pre-line !important;
+            display: inline-block;
+                padding-top: 11px;
+            /* padding-bottom: .3125rem; */
+            /* margin-right: 1rem; */
+            padding-bottom: unset;
+            font-size: 1.25rem;
+            margin-right: 59%;
+            line-height: inherit;
 }
+
+/* .ScrollbarContent{
+    margin-right: unset !important;
+} */
 
 .navbar-collapse{
     align-items: baseline;
@@ -173,6 +185,7 @@ i:hover{
 }
 
 #brandname{
+    font-size: 23px;
     position: absolute;
     font-weight: 600;
     padding-top: 6px;
@@ -217,6 +230,8 @@ i:hover{
     margin-left:10px;
 }
 .navbar{
+        padding-left: 50px!important;
+        padding-right: 50px!important;
         width: 100%;
         z-index: 1;
         background-color: #3f90df;

@@ -28,6 +28,11 @@ body {
     }
 }
 
+.logoBrandMobile{
+        margin: auto;
+        padding-right: 180px;
+}
+
 .nav-scroller {
     width: 100%;
     text-align: center;

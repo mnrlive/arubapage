@@ -9,6 +9,10 @@ class Navbar extends Component {
             <div>
             <nav className="navbar navbar-expand-md navbar-dark">
             <div className="container">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="logoBrandMobile">
                     <a className="navbar-brand" href="/"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="45" height="45" viewBox="0 0 171.000000 171.000000"
                         preserveAspectRatio="xMidYMid meet">
@@ -22,11 +26,8 @@ class Navbar extends Component {
                                 </g>
                     </svg> 
                      <span id="brandname">ArubaPage</span>
-                     <div id="slogan">One Happy Island, one well informed Aruban</div>
                     </a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-            </button>
+                </div>
                  <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="nav nav-masthead justify-content-center">
                         <li className="nav-item">
