@@ -9,9 +9,9 @@ import {
 
 const renderContent = () => {
   if (((isChrome || isFirefox) && !isAndroid)) {
-        return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+        return 'https://provider.arubapage.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }else if((browserName === 'Facebook' && isChrome)){
-      return 'https://wordpressmade.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+      return 'https://provider.arubapage.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }else{
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }

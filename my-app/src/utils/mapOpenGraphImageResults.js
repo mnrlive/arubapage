@@ -15,7 +15,7 @@ export const mapOpenGraphImageResults = (services, setState) => {
             })
             // eslint-disable-next-line
             noticiaCla.map((cla, index) => {
-                const options = { 'url': 'https://wordpressmade.com/' + cla.link }
+                const options = { 'url': 'https://provider.arubapage.com/' + cla.link }
                 ogs(options)
                     .then(function (result) {
                         cla.imgUrl = result.data.ogImage.url;

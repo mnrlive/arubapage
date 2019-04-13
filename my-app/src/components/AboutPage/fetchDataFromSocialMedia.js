@@ -8,7 +8,7 @@ export const fetchDataFromSocialMedia = function(setState) {
                     loaded: true
                 }
             }),
-        fetch('https://wordpressmade.com/https://publish.twitter.com/oembed?url=https://twitter.com/arubapage/status/977901243275403265')
+        fetch('https://provider.arubapage.com/https://publish.twitter.com/oembed?url=https://twitter.com/arubapage/status/977901243275403265')
             .then((response) => response.json())
             .then(response => {
                 const twitters = {

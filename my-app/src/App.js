@@ -59,7 +59,7 @@ class App extends Component {
             })
             // eslint-disable-next-line
             noticiaCla.map((cla, index) => {
-                const options = { 'url': 'https://wordpressmade.com/' + cla.link }
+                const options = { 'url': 'https://provider.arubapage.com/' + cla.link }
                 ogs(options)
                     .then(function (result) {
                         cla.imgUrl = result.data.ogImage.url;
@@ -74,7 +74,7 @@ class App extends Component {
   render() {
     const { services } = this.state;
     const newsSources = formatNewsSources(services)
-    let loaded = _.compact(newsSources).length === 13
+    let loaded = _.compact(newsSources).length === 14
 
       return (
         <Router>

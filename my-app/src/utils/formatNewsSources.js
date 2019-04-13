@@ -156,7 +156,22 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    const formattedNewsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, solo, sports];
+    let xclusivo = services.xclusivo && services.xclusivo.map((xclusivo, index) => {
+        return (
+            <NewsItem2
+                key={index}
+                index={index}
+                newsSource={xclusivo}
+                provider="xclusivomagazine.com"
+                imgFunction={imageErrorCheck(xclusivo)}
+                renderedContent={ReactHtmlParser(sanitizeHtml(xclusivo.content.rendered, {
+                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
+                                }))}
+            />
+        )
+    })
+
+    const formattedNewsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, solo, sports, xclusivo];
 
     return formattedNewsSources;
 }
