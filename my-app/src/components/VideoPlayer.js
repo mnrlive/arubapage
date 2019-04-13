@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import videojs from 'video.js';
 import {
   isChrome,
   browserName,
@@ -34,7 +33,7 @@ const videoOptions = {
 class VideoPlayer extends Component {
 
   componentDidMount() {
-        this.player = videojs(this.videoNode, videoOptions, function onPlayerReady() {
+        this.player = window.videojs(this.videoNode, videoOptions, function onPlayerReady() {
             // console.log('onPlayerReady', this);
             this.volume(defaultVolume);
         });

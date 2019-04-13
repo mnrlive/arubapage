@@ -21,9 +21,6 @@ import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
 import SpringScrollbars from '../components/SpringScrollbars';
-// import Headroom from 'react-headroom';
-// import Sticky from 'react-sticky-el';
-// import PerfectScrollbar from 'react-perfect-scrollbar';
 // import 'react-perfect-scrollbar/dist/css/styles.css';
 
 class Home extends Component {
