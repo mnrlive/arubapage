@@ -20,24 +20,29 @@ import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
-import Scrollbar from 'react-scrollbars-custom';
+import SpringScrollbars from '../components/SpringScrollbars';
 // import Headroom from 'react-headroom';
 // import Sticky from 'react-sticky-el';
 // import PerfectScrollbar from 'react-perfect-scrollbar';
 // import 'react-perfect-scrollbar/dist/css/styles.css';
 
 class Home extends Component {
-    constructor() {
-        super();
+    constructor(props, ...rest) {
+        super(props, ...rest);
         this.state = {
             services: {},
             loaded: false
         }
+         this.handleScrollTopClick = this.handleScrollTopClick.bind(this);
 }
 
-    handleScrollTopClick = () => {
-        this.scrollbar.scrollToTop();
-    };
+    handleScrollTopClick() {
+        const { scrollbars } = this.refs;
+        const scrollHeight = scrollbars.getScrollHeight();
+        scrollbars.scrollTop(_.random(scrollHeight));
+        scrollbars.scrollTop(scrollHeight);
+
+    }
 
 addServiceData(key, data) {
     this.setState((state) => ({
@@ -285,11 +290,7 @@ render() {
                     <div className="button" key="scrollTop" onClick={this.handleScrollTopClick}>
                         <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
                     </div>
-    <Scrollbar
-     ref = {
-         ref => (this.scrollbar = ref)
-     }
-    >
+    <SpringScrollbars style={{position : "unset"}} ref="scrollbars">
 <Navbar/>
 
                 <main role="main" className="container">
@@ -430,7 +431,7 @@ render() {
                     </div>
                 </div>
                 </main>
-            </Scrollbar>
+            </SpringScrollbars>
         </div>
     );
 }

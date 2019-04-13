@@ -14,8 +14,8 @@
 
 .button{
     float: right;
-    top: 84%;
-    position: sticky;
+    top: 72%;
+    position: relative;
     z-index: 1;
 }
 
@@ -230,8 +230,6 @@ i:hover{
     margin-left:10px;
 }
 .navbar{
-        padding-left: 50px!important;
-        padding-right: 50px!important;
         width: 100%;
         z-index: 1;
         background-color: #3f90df;
