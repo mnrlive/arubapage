@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import WeatherWidget from './WeatherWidget';
+import WeatherWidget from '../WeatherWidget';
 import './Navbar.css';
 
 class Navbar extends Component {

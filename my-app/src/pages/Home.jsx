@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import sanitizeHtml from 'sanitize-html';
 // import ScrollToTop from 'react-scroll-up';
-import Navbar from '../components/Navbar.jsx';
-// import SecondNavbar from '../components/SecondNavbar.jsx';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
 // import { Sticky, StickyContainer } from 'react-sticky';
@@ -20,8 +18,6 @@ import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
-import SpringScrollbars from '../components/SpringScrollbars';
-// import 'react-perfect-scrollbar/dist/css/styles.css';
 
 class Home extends Component {
     constructor(props, ...rest) {
@@ -283,13 +279,7 @@ render() {
     // const newsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, coolAruba];
 
     return (
-        <div className="pageScroll">
-                    <div className="button" key="scrollTop" onClick={this.handleScrollTopClick}>
-                        <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
-                    </div>
-    <SpringScrollbars style={{position : "unset"}} ref="scrollbars">
-<Navbar/>
-
+        <div>
                 <main role="main" className="container">
                 <Jumbotron />
                         {
@@ -428,7 +418,6 @@ render() {
                     </div>
                 </div>
                 </main>
-            </SpringScrollbars>
         </div>
     );
 }

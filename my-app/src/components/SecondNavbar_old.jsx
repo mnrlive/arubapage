@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import Scrollspy from 'react-scrollspy';
 
-class SecondNavbar extends Component {
+class SecondNavbarOld extends Component {
     render() {
         return (
             <div>
@@ -30,4 +30,4 @@ class SecondNavbar extends Component {
     }
 }
 
-export default SecondNavbar;
+export default SecondNavbarOld;

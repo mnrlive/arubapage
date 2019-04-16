@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import WeatherWidget from './WeatherWidget';
+import WeatherWidget from '../WeatherWidget';
 import './Navbar.css';
 
-class Navbar extends Component {
-    render() {
-        return (
+
+        const Navbar = ({ loaded }) =>  (
             <div>
             <nav className="navbar navbar-expand-md navbar-dark">
             <div className="container">
@@ -28,6 +27,7 @@ class Navbar extends Component {
                      <span id="brandname">ArubaPage</span>
                     </a>
                 </div>
+                { !loaded ? <img id='spinner' src='https://loading.io/spinners/spinner/index.ajax-spinner-preloader.gif' alt='Loading news..' /> : null }
                  <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="nav nav-masthead justify-content-center">
                         <li className="nav-item">
@@ -58,7 +58,5 @@ class Navbar extends Component {
             </nav>
      </div> 
         );
-    }
-}
 
 export default Navbar;

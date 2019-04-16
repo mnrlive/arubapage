@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Navbar from '../components/NavbarAbout.jsx';
 import ScrollToTop from 'react-scroll-up';
 import Skeleton from 'react-loading-skeleton';
 
@@ -85,7 +84,6 @@ class About extends Component {
         })
 return (
     <div>
-        <Navbar />
         <div className="jumbotron">
             <section className="jumbotron text-center">
                 <div className="container">

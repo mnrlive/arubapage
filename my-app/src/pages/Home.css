@@ -6,11 +6,11 @@
         height: 100%;
 }
 
-.pageScroll{
+/* .pageScroll{
         overflow: hidden;
         height: calc(100vh - 50px);
         min-height: initial;
-}
+} */
 
 .button{
     float: right;
@@ -24,6 +24,7 @@
     padding-bottom: var(--jumbotron-padding-y);
     margin-bottom: 0;
     background-color: #f5f7fa;
+    margin-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -33,11 +34,11 @@
     }
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     .container{
         max-width: 1300px;
     }
-}
+} */
 
 .jumbotron p:last-child {
     margin-bottom: 0;
@@ -72,6 +73,7 @@
 }
 
 .footer>.container {
+    margin-bottom: 200px;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -237,12 +239,12 @@ i:hover{
         background-image: linear-gradient(100deg, #0070ba00, #1546a085);
 }
 
-#browsercheck {
+#browsercheck{
     font-size: 8px;
 }
 
 .navZ{
-    z-index: 2;
+    z-index: 1;
 }
 
 .bottomText{
@@ -689,6 +691,16 @@ i:hover{
       .audio_player .audio_info {
           animation: none !important;
       }
+  }
+
+  .nav-controller{
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      padding-top: 15px;
+      z-index: 1;
+      height: unset;
+      overflow-y: hidden;
   }
 
   #ArubaNative,

@@ -1,5 +1,6 @@
 export const arubaNative = 'https://provider.arubapage.com/https://arubanative.com/wp-json/wp/v2/posts?_embed&per_page=12';
 export const noticiaCla = 'https://provider.arubapage.com/https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.noticiacla.com%2Frss';
+// export const awe24 = 'https://provider.arubapage.com/https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.awe24.com%2Frss';
 export const eArubianoNews = 'https://provider.arubapage.com/https://earubianonews.com/wp-json/wp/v2/posts?_embed&per_page=12';
 export const aweMainta = 'https://provider.arubapage.com/https://awemainta.com/wp-json/wp/v2/posts?_embed&per_page=12';
 export const _24ora = 'https://provider.arubapage.com/https://24ora.com/wp-json/wp/v2/posts?_embed&per_page=12';
