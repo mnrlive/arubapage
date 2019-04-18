@@ -9,8 +9,6 @@ import _ from 'lodash'
 import './Home.css';
 import newsServices from '../config/services';
 import NewsItem from '../components/NewsItem';
-// recently added components | 02-12-2018
-import NewsItem2 from '../components/NewsItem2';
 import Jumbotron from "../components/Jumbotron";
 import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
@@ -110,7 +108,6 @@ mapOpenGraphImageResults = function (url, index) {
 
 
 render() {
-    // TODO: work this into newsitem2;
     let noticiaCla = this.state.services.noticiaCla && this.state.services.noticiaCla.map((cla, index) => {
         return (
             <NewsItem key={index} index={index} cla={cla} />
@@ -119,11 +116,11 @@ render() {
     // e arubiano Crawl for images!
     let eArubianoNews = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
         return (
-           <NewsItem2 
-                key={index} 
-                index={index} 
-                newsSource={arubiano} 
-                provider="earubianonews.com" 
+           <NewsItem
+                key={index}
+                index={index}
+                newsSource={arubiano}
+                provider="earubianonews.com"
                 imgFunction={imageErrorCheck(arubiano)}
                 renderedContent = {
                     ReactHtmlParser(sanitizeHtml(arubiano.content.rendered, {
@@ -141,20 +138,20 @@ render() {
     //awe mainta
     let aweMainta = this.state.services.aweMainta && this.state.services.aweMainta.map((mainta, index) => {
         return (
-            <NewsItem2 key={index} index={index} newsSource={mainta} provider="awemainta.com" imgFunction={imageErrorCheck(mainta)} />
+            <NewsItem key={index} index={index} newsSource={mainta} provider="awemainta.com" imgFunction={imageErrorCheck(mainta)} />
         )
     })
     //boletin extra Crawl for images!
     let boletinExtra =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletinExtra, index) => {
         return (
-            <NewsItem2 key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
+            <NewsItem key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
         )
     })
     //24ora Crawl for images!
 
     let bintiCuatroOra = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
         return (
-            <NewsItem2
+            <NewsItem
                 key={index}
                 index={index}
                 newsSource={ora}
@@ -177,7 +174,7 @@ render() {
     //masnoticia
     let masNoticia = this.state.services.masNoticia && this.state.services.masNoticia.map((masNoticia, index) => {
         return (
-            <NewsItem2
+            <NewsItem
                 key={index}
                 index={index}
                 newsSource={masNoticia}
@@ -194,31 +191,31 @@ render() {
     //diario
     let diario = this.state.services.diario && this.state.services.diario.map((diario, index) => {
         return (
-            <NewsItem2 key={index} index={index} newsSource={diario} provider="diario.aw" imgFunction={imageErrorCheck(diario)} />
+            <NewsItem key={index} index={index} newsSource={diario} provider="diario.aw" imgFunction={imageErrorCheck(diario)} />
         )
     })
     //aruba native
     let arubaNative = this.state.services.arubaNative && this.state.services.arubaNative.map((arubaNative, index) => {
         return (
-            <NewsItem2 key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
+            <NewsItem key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
         )
     })
     //solo di pueblo
     let solo = this.state.services.solo && this.state.services.solo.map((solo, index) => {
         return (
-            <NewsItem2 key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
+            <NewsItem key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
         )
     })
     //bon dia aruba
     let bondia = this.state.services.bonDia && this.state.services.bonDia.map((bondia, index) => {
         return (
-            <NewsItem2 key={index} index={index} newsSource={bondia} provider="bondia.com" imgFunction={imageErrorCheck(bondia)} />
+            <NewsItem key={index} index={index} newsSource={bondia} provider="bondia.com" imgFunction={imageErrorCheck(bondia)} />
         )
     })
     //focus
     let focus = this.state.services.focus && this.state.services.focus.map((focus, index) => {
         return (
-            <NewsItem2
+            <NewsItem
                 key={index}
                 index={index}
                 newsSource={focus}
@@ -235,7 +232,7 @@ render() {
     //visit aruba
     let visitAruba = this.state.services.batiBleki && this.state.services.batiBleki.map((visitAruba, index) => {
         return (
-            <NewsItem2
+            <NewsItem
                 key={index}
                 index={index}
                 newsSource={visitAruba}
@@ -248,7 +245,7 @@ render() {
     //297sports
     let sports = this.state.services.sports && this.state.services.sports.map((sports, index) => {
         return (
-            <NewsItem2
+            <NewsItem
                 key={index}
                 index={index}
                 newsSource={sports}
@@ -263,7 +260,7 @@ render() {
 
         let xclusivo = this.state.services.xclusivo && this.state.services.xclusivo.map((xclusivo, index) => {
         return (
-            <NewsItem2
+            <NewsItem
                 key={index}
                 index={index}
                 newsSource={xclusivo}
@@ -284,7 +281,7 @@ render() {
                 <Jumbotron />
                         {
                             (!isMobile) ?
-                         ( 
+                         (
                     <AdSense.Google
                         client='ca-pub-8107944427019798'
                         slot='5340644171'
