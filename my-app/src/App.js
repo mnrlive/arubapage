@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Favicon from 'react-favicon';
 import Analytics from 'react-router-ga';
 import ico from './images/aruba.ico';
@@ -7,7 +7,6 @@ import ogs from 'open-graph-scraper';
 import './App.css';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import Footer from './components/Footer/Footer';
 import _ from 'lodash';
 import NewsItemsContainer from "./components/common/NewsItem/NewsItemsContainer";
@@ -18,7 +17,6 @@ import Header from './components/Header/Header';
 import ScrollToTop from 'react-scroll-up';
 import SecondNavbar from './components/Navbars/SecondNavbar';
 import Sticky from 'react-sticky-el';
-// import { PageTransition } from 'react-router-page-transition-v2';
 
 
 class App extends Component {
@@ -92,17 +90,9 @@ class App extends Component {
         </ScrollToTop>
              <div>
                  <Favicon url={[ico]} />
-                <Route render={({ location }) => ( 
-                    <TransitionGroup>
-                    <CSSTransition
-                        key={location.key}
-                        timeout={250}
-                        classNames = "fade"
-                    >
-                     <Switch location={location}>
                  <Route exact path="/" component={Home}/>
                  <Route exact path="/about" component={About} />
-                 { newsSources && newsSources.map((newsItems) => {
+                 { newsSources && newsSources.map((newsItems, index) => {
                     if(newsItems){
                         let anchor;
                             if( newsItems[0].props.provider){
@@ -113,9 +103,9 @@ class App extends Component {
                             }
 
                         return  (
-                            <Route key={newsItems} path={ '/' +  anchor } component={() => (
+                            <Route key={index} path={ '/' +  anchor } component={() => (
                                 <NewsItemsContainer
-                                    key={newsItems}
+                                    key={index}
                                     id={anchor}
                                     newsSource={anchor}
                                     newsItems={newsItems}
@@ -126,11 +116,6 @@ class App extends Component {
                     return null
                    })
                  }
-                </Switch>
-                </CSSTransition>
-                </TransitionGroup>
-                )}
-                />
             </div>
           <Footer />
        </Analytics>
