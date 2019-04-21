@@ -14,6 +14,9 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
+import uuid from "uuid";
+
+// import InfiniteScroll from "react-infinite-scroll-component";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
 
@@ -24,16 +27,7 @@ class Home extends Component {
             services: {},
             loaded: false
         }
-         this.handleScrollTopClick = this.handleScrollTopClick.bind(this);
 }
-
-    handleScrollTopClick() {
-        const { scrollbars } = this.refs;
-        const scrollHeight = scrollbars.getScrollHeight();
-        scrollbars.scrollTop(_.random(scrollHeight));
-        scrollbars.scrollTop(scrollHeight);
-
-    }
 
 addServiceData(key, data) {
     this.setState((state) => ({
@@ -105,7 +99,6 @@ mapOpenGraphImageResults = function (url, index) {
         })
     }
 }
-
 
 render() {
     let noticiaCla = this.state.services.noticiaCla && this.state.services.noticiaCla.map((cla, index) => {
@@ -258,152 +251,61 @@ render() {
         )
     })
 
-        let xclusivo = this.state.services.xclusivo && this.state.services.xclusivo.map((xclusivo, index) => {
-        return (
-            <NewsItem
-                key={index}
-                index={index}
-                newsSource={xclusivo}
-                provider="xclusivomagazine.com"
-                imgFunction={imageErrorCheck(xclusivo)}
-                renderedContent={ReactHtmlParser(sanitizeHtml(xclusivo.content.rendered, {
-                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
-                                }))}
-            />
-        )
-    })
+    //     let xclusivo = this.state.services.xclusivo && this.state.services.xclusivo.map((xclusivo, index) => {
+    //     return (
+    //         <NewsItem
+    //             key={index}
+    //             index={index}
+    //             newsSource={xclusivo}
+    //             provider="xclusivomagazine.com"
+    //             imgFunction={imageErrorCheck(xclusivo)}
+    //             renderedContent={ReactHtmlParser(sanitizeHtml(xclusivo.content.rendered, {
+    //                                 allowedTags: ['p', 'em', 'strong', 'b', 'i']
+    //                             }))}
+    //         />
+    //     )
+    // })
+
+    let newsSources = [ masNoticia,arubaNative,noticiaCla,bondia,diario,bintiCuatroOra,boletinExtra,eArubianoNews,aweMainta,solo,focus,visitAruba,sports];
+
+
+       let generate = newsSources.map(item => {
+           let anchor;
+     if(item){
+            if( item[0].props.provider){
+                const {provider} = item[0].props
+                anchor = provider.replace('www.', '').charAt(0).toUpperCase() + provider.replace('www.', '').slice(1)
+            } else {
+                anchor = "noticiacla.com"
+            }
+        }
+          return {
+              uid: uuid.v4(),
+              value: item,
+              name: anchor
+          };
+      });
     // could be mapped over for NewsItemsContainer rendering
-    // const newsSources = [arubaNative, masNoticia, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, focus, visitAruba, coolAruba];
 
     return (
-        <div>
                 <main role="main" className="container">
                 <Jumbotron />
-                        {
-                            (!isMobile) ?
-                         (
-                    <AdSense.Google
+                {
+                    (!isMobile) ?
+                         ( <AdSense.Google
                         client='ca-pub-8107944427019798'
                         slot='5340644171'
                         style={{ display: 'block' }}
                         format='auto'
                         responsive='true'
                     />) : null
-                        }
-                <div className="container">
-                    {this.state.loaded || <Skeleton count={10} />}
-                    <section id='MasNoticia'><NewsItemsContainer id='MasNoticia' newsSource='MasNoticia.com' newsItems={masNoticia} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='9924285810'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='ArubaNative'><NewsItemsContainer id='ArubaNative' newsSource='ArubaNative.com' newsItems={arubaNative} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='8522153357'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='NoticiaCla'><NewsItemsContainer id='NoticiaCla' newsSource='NoticiaCla.com' newsItems={noticiaCla} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='6279843837'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='Diario'><NewsItemsContainer id='Diario' newsSource='Diario.aw' newsItems={diario} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='7209782125'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='SoloDiPueblo'><NewsItemsContainer id='SoloDiPueblo' newsSource='SoloDiPueblo.com' newsItems={solo} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='1191168688'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='BonDia'><NewsItemsContainer id='BonDia' newsSource='BonDia.com' newsItems={bondia} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='5177804717'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='dosCuatorOra'><NewsItemsContainer id='24ora' newsSource='24ora.com' newsItems={bintiCuatroOra} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='9153419185'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='AweMainta'><NewsItemsContainer id='AweMainta' newsSource='AweMainta.com' newsItems={aweMainta} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='4467358277'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='BoletinExtra'><NewsItemsContainer id='BoletinExtra' newsSource='BoletinExtra.com' newsItems={boletinExtra} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='7457194139'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='EarubianoNews'><NewsItemsContainer id='EarubianoNews' newsSource='EarubianoNews.com' newsItems={eArubianoNews} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='6163583321'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='Focus'><NewsItemsContainer id='Focus' newsSource='Focus.aw' newsItems={focus} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='3134805748'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='VisitAruba'><NewsItemsContainer id='VisitAruba' newsSource='VisitAruba.com' newsItems={visitAruba} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='5205724870'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='dosNuebeSheteSports'><NewsItemsContainer id='297Sports' newsSource='297Sports.com' newsItems={sports} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='5944091472'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
-                    <section id='xClusivoMag'><NewsItemsContainer id='xClusivo' newsSource='XclusivoMagazine.com' newsItems={xclusivo} /></section>
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='5944091472'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />
+                    }
+                {this.state.loaded || <Skeleton count={newsSources.length} />}
+
+                {generate.map((i) => (
+                         <NewsItemsContainer key={i.uid} newsSource={i.name} newsItems={i.value} />
+                    ))}
+     
                     <div className="bottomText">
                         <p className="lead font-weight-normal">
                         It is with great pleasure that we proudly present to you our solution for the island of <b>Aruba</b> regarding online news.<br /><br />
@@ -413,9 +315,8 @@ render() {
                             We are currently displaying the latest 10 news articles from each news provider. <i className="text-muted">#stayinformed</i></p>
                             <div className="text-center text-muted"><p>© 2018 made by:</p><a href="https://robingiel.com" target="_blank" rel="noopener noreferrer">RG</a></div>
                     </div>
-                </div>
+            
                 </main>
-        </div>
     );
 }
 }

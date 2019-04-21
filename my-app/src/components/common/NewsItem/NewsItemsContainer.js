@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import ScrollToTop from 'react-scroll-up';
-import { configureAnchors } from 'react-scrollable-anchor';
 import './NewsItem.css';
-// import ScrollableAnchor, {configureAnchors} from 'react-scrollable-anchor';
 
 class NewsItemsContainer extends Component {
-  componentDidMount() {
-    configureAnchors({offset: -65, scrollDuration: 200});
-}
   render() {
-    const { newsSource, newsItems } = this.props
+    const { newsSource, newsItems } = this.props;
     return (
       <main role="main" className="container newsItemBox">
         <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>

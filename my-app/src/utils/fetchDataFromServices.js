@@ -17,7 +17,7 @@ export const fetchDataFromServices = function (addServiceData){
           catch (e) {
 
           }
-      }else{
+      } else {
           try{
               fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {addServiceData(key, responseJson)})
           } catch (e) {

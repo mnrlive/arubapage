@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Favicon from 'react-favicon';
 import Analytics from 'react-router-ga';
 import ico from './images/aruba.ico';
@@ -7,6 +7,7 @@ import ogs from 'open-graph-scraper';
 import './App.css';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import Footer from './components/Footer/Footer';
 import _ from 'lodash';
 import NewsItemsContainer from "./components/common/NewsItem/NewsItemsContainer";
@@ -15,7 +16,9 @@ import { fetchDataFromServices } from "./utils/fetchDataFromServices";
 import { formatNewsSources } from './utils/formatNewsSources';
 import Header from './components/Header/Header';
 import ScrollToTop from 'react-scroll-up';
-// import AddToHomescreen from 'react-add-to-homescreen';
+import SecondNavbar from './components/Navbars/SecondNavbar';
+import Sticky from 'react-sticky-el';
+// import { PageTransition } from 'react-router-page-transition-v2';
 
 
 class App extends Component {
@@ -60,7 +63,7 @@ class App extends Component {
                 }));
             })
             // eslint-disable-next-line
-            noticiaCla.map((cla, index) => {
+            noticiaCla.map((cla) => {
                 const options = { 'url': 'https://provider.arubapage.com/' + cla.link }
                 ogs(options)
                     .then(function (result) {
@@ -75,21 +78,31 @@ class App extends Component {
     }
   render() {
         const { services } = this.state;
-        const newsSources = formatNewsSources(services)
-        let loaded = _.compact(newsSources).length === 14
-    return (
-      <Router>
+        const newsSources = formatNewsSources(services);
+        let loaded = _.compact(newsSources).length === 13;
+    return ( 
+      <Router>       
       <Analytics id="UA-115970603-1" debug>
       <Header loaded = {loaded}/>
-
+        <Sticky style={{"zIndex": '1'}}>
+            <SecondNavbar/>
+        </Sticky>
         <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
             <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
         </ScrollToTop>
              <div>
                  <Favicon url={[ico]} />
+                <Route render={({ location }) => ( 
+                    <TransitionGroup>
+                    <CSSTransition
+                        key={location.key}
+                        timeout={250}
+                        classNames = "fade"
+                    >
+                     <Switch location={location}>
                  <Route exact path="/" component={Home}/>
                  <Route exact path="/about" component={About} />
-                 { newsSources && newsSources.map((newsItems, index) => {
+                 { newsSources && newsSources.map((newsItems) => {
                     if(newsItems){
                         let anchor;
                             if( newsItems[0].props.provider){
@@ -100,9 +113,9 @@ class App extends Component {
                             }
 
                         return  (
-                            <Route key={index} path={ '/' +  anchor } component={() => (
+                            <Route key={newsItems} path={ '/' +  anchor } component={() => (
                                 <NewsItemsContainer
-                                    key={index}
+                                    key={newsItems}
                                     id={anchor}
                                     newsSource={anchor}
                                     newsItems={newsItems}
@@ -113,10 +126,15 @@ class App extends Component {
                     return null
                    })
                  }
+                </Switch>
+                </CSSTransition>
+                </TransitionGroup>
+                )}
+                />
             </div>
           <Footer />
        </Analytics>
-      </Router>
+    </Router>
       );
   }
 }
