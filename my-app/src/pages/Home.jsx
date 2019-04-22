@@ -14,7 +14,6 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
-import uuid from "uuid";
 
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { isMobile} from 'react-device-detect';
@@ -280,7 +279,6 @@ render() {
             }
         }
           return {
-              uid: uuid.v4(),
               value: item,
               name: anchor
           };
@@ -302,8 +300,8 @@ render() {
                     }
                 {this.state.loaded || <Skeleton count={newsSources.length} />}
 
-                {generate.map((i) => (
-                         <NewsItemsContainer key={i.uid} newsSource={i.name} newsItems={i.value} />
+                {generate.map((i, index) => (
+                         <NewsItemsContainer key={index} newsSource={i.name} newsItems={i.value} />
                     ))}
      
                     <div className="bottomText">
