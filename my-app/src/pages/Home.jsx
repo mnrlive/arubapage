@@ -3,177 +3,77 @@ import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
 import _ from 'lodash'
 import './Home.css';
-import newsServices from '../config/services';
-import NewsItem from '../components/NewsItem';
 import Jumbotron from "../components/Jumbotron";
 import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
-import { imageErrorCheck } from "../utils/imageErrorCheck";
-import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
 // import InfiniteScroll from "react-infinite-scroll-component";
+import { formatNewsSources } from "../utils/formatNewsSources";
+import { fetchDataFromServices } from "../utils/fetchDataFromServices";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
 
 class Home extends Component {
-    constructor(props, ...rest) {
-        super(props, ...rest);
-        this.state = {
-            services: {},
-            loaded: false
-        }
-}
+  constructor() {
+      super();
+      this.state = {
+          services: {},
+          loaded: false
+      }
+  }
 
-addServiceData(key, data) {
-    this.setState((state) => ({
-        ...state,
-        services: {
-            ...state.services,
-            [key]: data
-        }, loaded: true
-    }))
-    if(key === 'noticiaCla'){
-        this.mapOpenGraphImageResults();
-    }
-}
+  addServiceData = (key, data) => {
+      this.setState((state) => ({
+          ...state,
+          services: {
+              ...state.services,
+              [key]: data
+          },
+          loaded: true
+      }))
+      if (key === 'noticiaCla') {
+          this.mapOpenGraphImageResults();
+      }
+  }
 
-fetchDataFromServices(){
-    const myHeaders = new Headers();
-    myHeaders.append('pragma', 'no-cache');
-    myHeaders.append('cache-control', 'no-cache');
-    const fetchConfig = {
-        method: 'GET',
-        headers: myHeaders,
-    };
-    Object.keys(newsServices).forEach((key) => {
-        if(key === 'noticiaCla'){
+  componentDidMount() {
+      fetchDataFromServices(this.addServiceData);
+  }
 
-            try{
-                fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {this.addServiceData(key, responseJson.items)})
-            }
-            catch (e) {
-
-            }
-        }else{
-            try{
-                fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => { this.addServiceData(key, responseJson)})
-            } catch (e) {
-
-            }
-        }
-    })
-}
-
-componentDidMount() {
-    this.fetchDataFromServices();
-}
-
-mapOpenGraphImageResults = function (url, index) {
-    if (this.state.services.noticiaCla && this.state.services.noticiaCla.length > 0) {
-        let noticiaCla = _.cloneDeep(this.state.services.noticiaCla);
-        let done = _.after(noticiaCla.length, () => {
-            this.setState(state => ({
-                ...state,
-                services: {
-                    ...state.services,
-                    noticiaCla
-                }
-            }));
-        })
-        // eslint-disable-next-line
-        noticiaCla.map((cla, index) => {
-            const options = { 'url': 'https://provider.arubapage.com/' + cla.link }
-            ogs(options)
-                .then(function (result) {
-                    cla.imgUrl = result.data.ogImage.url;
-                    done();
-                })
-                .catch(function (error) {
-                    console.log('error:', error);
-                })
-        })
-    }
-}
-
+  // TODO: Refactor out of here
+  mapOpenGraphImageResults = function () {
+      const {
+          services
+      } = this.state;
+      if (services.noticiaCla && services.noticiaCla.length > 0) {
+          let noticiaCla = _.cloneDeep(services.noticiaCla);
+          let done = _.after(noticiaCla.length, () => {
+              this.setState(state => ({
+                  ...state,
+                  services: {
+                      ...state.services,
+                      noticiaCla
+                  }
+              }));
+          })
+          // eslint-disable-next-line
+          noticiaCla.map((cla) => {
+              const options = {
+                  'url': 'https://provider.arubapage.com/' + cla.link
+              }
+              ogs(options)
+                  .then(function (result) {
+                      cla.imgUrl = result.data.ogImage.url;
+                      done();
+                  })
+                  .catch(function (error) {
+                      console.log('error:', error);
+                  })
+          })
+      }
+  }
 render() {
-    let noticiaCla = this.state.services.noticiaCla && this.state.services.noticiaCla.map((cla, index) => {
-        return (
-            <NewsItem key={index} index={index} cla={cla} />
-        )
-    })
-    // e arubiano Crawl for images!
-    let eArubianoNews = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={arubiano} provider="earubianonews.com" imgFunction={imageErrorCheck(arubiano)} />
-        )
-    })
-    //awe mainta
-    let aweMainta = this.state.services.aweMainta && this.state.services.aweMainta.map((mainta, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={mainta} provider="awemainta.com" imgFunction={imageErrorCheck(mainta)} />
-        )
-    })
-    //boletin extra Crawl for images!
-    let boletinExtra =  this.state.services.boletinExtra && this.state.services.boletinExtra.map((boletinExtra, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
-        )
-    })
-    //24ora Crawl for images!
-    let bintiCuatroOra = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={ora} provider="24ora.com" imgFunction={imageBintiCuater(ora)} />
-        )
-    })
-    //masnoticia
-    let masNoticia = this.state.services.masNoticia && this.state.services.masNoticia.map((masNoticia, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={masNoticia} provider="masnoticia.com" imgFunction={imageErrorCheck(masNoticia)} />
-        )
-    })
-    //diario
-    let diario = this.state.services.diario && this.state.services.diario.map((diario, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={diario} provider="diario.aw" imgFunction={imageErrorCheck(diario)} />
-        )
-    })
-    //aruba native
-    let arubaNative = this.state.services.arubaNative && this.state.services.arubaNative.map((arubaNative, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
-        )
-    })
-    //solo di pueblo
-    let solo = this.state.services.solo && this.state.services.solo.map((solo, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
-        )
-    })
-    //bon dia aruba
-    let bondia = this.state.services.bonDia && this.state.services.bonDia.map((bondia, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={bondia} provider="bondia.com" imgFunction={imageErrorCheck(bondia)} />
-        )
-    })
-    //focus
-    let focus = this.state.services.focus && this.state.services.focus.map((focus, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={focus} provider="focus.aw" imgFunction={imageErrorCheck(focus)} />
-        )
-    })
-    //visit aruba
-    let visitAruba = this.state.services.batiBleki && this.state.services.batiBleki.map((visitAruba, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={visitAruba} provider="visitaruba.com" imgFunction={imageErrorCheck(visitAruba)} />
-        )
-    })
-    //297sports
-    let sports = this.state.services.sports && this.state.services.sports.map((sports, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={sports} provider="297sports.com" imgFunction={imageSports(sports)} />
-        )
-    })
-
-    let newsSources = [ masNoticia,arubaNative,noticiaCla,bondia,diario,bintiCuatroOra,boletinExtra,eArubianoNews,aweMainta,solo,focus,visitAruba,sports];
+        const { services } = this.state;
+        const newsSources = formatNewsSources(services);
 
 
        let generate = newsSources.map(item => {

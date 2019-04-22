@@ -101,7 +101,6 @@ class App extends Component {
                             } else {
                                 anchor = "noticiacla.com"
                             }
-
                         return  (
                             <Route key={index} path={ '/' +  anchor } component={() => (
                                 <NewsItemsContainer
