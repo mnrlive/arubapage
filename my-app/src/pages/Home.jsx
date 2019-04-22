@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import ReactHtmlParser from 'react-html-parser';
-import sanitizeHtml from 'sanitize-html';
-// import ScrollToTop from 'react-scroll-up';
 import ogs from 'open-graph-scraper';
 import Skeleton from 'react-loading-skeleton';
-// import { Sticky, StickyContainer } from 'react-sticky';
 import _ from 'lodash'
 import './Home.css';
 import newsServices from '../config/services';
@@ -14,7 +10,6 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 // recently added utils | 02-12-2018
 import { imageErrorCheck } from "../utils/imageErrorCheck";
 import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
-
 // import InfiniteScroll from "react-infinite-scroll-component";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
@@ -108,23 +103,7 @@ render() {
     // e arubiano Crawl for images!
     let eArubianoNews = this.state.services.eArubianoNews && this.state.services.eArubianoNews.map((arubiano, index) => {
         return (
-           <NewsItem
-                key={index}
-                index={index}
-                newsSource={arubiano}
-                provider="earubianonews.com"
-                imgFunction={imageErrorCheck(arubiano)}
-                renderedContent = {
-                    ReactHtmlParser(sanitizeHtml(arubiano.content.rendered, {
-                        allowedTags: ['p', 'li', 'iframe', 'i', 'strong', 'blockquote'],
-                        allowedAttributes: {
-                            'iframe': ['src']
-                        },
-                        allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
-                    }))
-                }
-
-                 />
+            <NewsItem key={index} index={index} newsSource={arubiano} provider="earubianonews.com" imgFunction={imageErrorCheck(arubiano)} />
         )
     })
     //awe mainta
@@ -140,44 +119,15 @@ render() {
         )
     })
     //24ora Crawl for images!
-
     let bintiCuatroOra = this.state.services._24ora && this.state.services._24ora.map((ora, index) => {
         return (
-            <NewsItem
-                key={index}
-                index={index}
-                newsSource={ora}
-                provider="24ora.com"
-                imgFunction={imageBintiCuater(ora)}
-                renderedContent={ReactHtmlParser(sanitizeHtml(ora.content.rendered, {
-                                    allowedTags: ['p', 'em', 'strong', 'b', 'i', 'span'],
-                                    transformTags: {
-                                        'span': function (tagName, attribs) {
-                                            return {
-                                                tagName: 'span',
-                                                text: ' '
-                                            };
-                                        }
-                                    }
-                                }))}
-            />
+            <NewsItem key={index} index={index} newsSource={ora} provider="24ora.com" imgFunction={imageBintiCuater(ora)} />
         )
     })
     //masnoticia
     let masNoticia = this.state.services.masNoticia && this.state.services.masNoticia.map((masNoticia, index) => {
         return (
-            <NewsItem
-                key={index}
-                index={index}
-                newsSource={masNoticia}
-                provider="masnoticia.com"
-                imgFunction={imageErrorCheck(masNoticia)}
-                renderedContent={ReactHtmlParser(sanitizeHtml(masNoticia.content.rendered, {
-                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong'],
-                                    allowedAttributes: { 'iframe': ['src'] },
-                                    allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
-                                }))}
-            />
+            <NewsItem key={index} index={index} newsSource={masNoticia} provider="masnoticia.com" imgFunction={imageErrorCheck(masNoticia)} />
         )
     })
     //diario
@@ -207,63 +157,21 @@ render() {
     //focus
     let focus = this.state.services.focus && this.state.services.focus.map((focus, index) => {
         return (
-            <NewsItem
-                key={index}
-                index={index}
-                newsSource={focus}
-                provider="focus.aw"
-                imgFunction={imageErrorCheck(focus)}
-                renderedContent={ReactHtmlParser(sanitizeHtml(focus.content.rendered, {
-                                    allowedTags: ['p', 'li', 'iframe', 'i', 'strong'],
-                                    allowedAttributes: { 'iframe': ['src'] },
-                                    allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
-                                }))}
-            />
+            <NewsItem key={index} index={index} newsSource={focus} provider="focus.aw" imgFunction={imageErrorCheck(focus)} />
         )
     })
     //visit aruba
     let visitAruba = this.state.services.batiBleki && this.state.services.batiBleki.map((visitAruba, index) => {
         return (
-            <NewsItem
-                key={index}
-                index={index}
-                newsSource={visitAruba}
-                provider="visitaruba.com"
-                imgFunction={(!visitAruba._embedded['wp:featuredmedia'] || visitAruba._embedded['wp:featuredmedia'][0].code) ?
-                        require('../images/batiBlekiHD.PNG') : visitAruba._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
-            />
+            <NewsItem key={index} index={index} newsSource={visitAruba} provider="visitaruba.com" imgFunction={imageErrorCheck(visitAruba)} />
         )
     })
     //297sports
     let sports = this.state.services.sports && this.state.services.sports.map((sports, index) => {
         return (
-            <NewsItem
-                key={index}
-                index={index}
-                newsSource={sports}
-                provider="www.297sports.com"
-                imgFunction={imageSports(sports)}
-                renderedContent={ReactHtmlParser(sanitizeHtml(sports.content.rendered, {
-                                    allowedTags: ['p', 'em', 'strong', 'b', 'i']
-                                }))}
-            />
+            <NewsItem key={index} index={index} newsSource={sports} provider="297sports.com" imgFunction={imageSports(sports)} />
         )
     })
-
-    //     let xclusivo = this.state.services.xclusivo && this.state.services.xclusivo.map((xclusivo, index) => {
-    //     return (
-    //         <NewsItem
-    //             key={index}
-    //             index={index}
-    //             newsSource={xclusivo}
-    //             provider="xclusivomagazine.com"
-    //             imgFunction={imageErrorCheck(xclusivo)}
-    //             renderedContent={ReactHtmlParser(sanitizeHtml(xclusivo.content.rendered, {
-    //                                 allowedTags: ['p', 'em', 'strong', 'b', 'i']
-    //                             }))}
-    //         />
-    //     )
-    // })
 
     let newsSources = [ masNoticia,arubaNative,noticiaCla,bondia,diario,bintiCuatroOra,boletinExtra,eArubianoNews,aweMainta,solo,focus,visitAruba,sports];
 

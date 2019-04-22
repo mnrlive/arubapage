@@ -51,7 +51,13 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
             image={imgFunction}
             title={ReactHtmlParser(newsSource.title.rendered)}
             date={moment(newsSource.date).format('L')}
-            renderedContent={renderedContent ? renderedContent : ReactHtmlParser(sanitizeHtml(newsSource.content.rendered))}
+            renderedContent={renderedContent ? renderedContent : ReactHtmlParser(sanitizeHtml(newsSource.content.rendered, {
+                allowedTags: ['p', 'li', 'iframe', 'i', 'strong'],
+                  allowedAttributes: {
+                    'iframe': ['src']
+                  },
+                  allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
+            }))}
             source={" https://" + provider}
             articleUrl={newsSource.link}
         />

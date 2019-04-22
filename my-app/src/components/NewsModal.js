@@ -31,6 +31,7 @@ const NewsModal = props => (
               <div className="modal-body" >
                   <p className="card-text">{props.date}</p>
                   {props.renderedContent}
+                 <div> 
                   <a
                     href={props.source}
                     target="_blank"
@@ -55,6 +56,7 @@ const NewsModal = props => (
                     </i>
                       link to article
                   </a>
+                </div>
                   <div className="modal-footer">
                       <div className="sharebuttons">
                           <FacebookShareButton url={props.articleUrl}>
