@@ -70,5 +70,11 @@ export const imageErrorCheck = function(provider) {
         } catch(e) {
             return require('../images/batiBlekiHD.PNG');
         }
+      } else if (link[0] === 'xclusivomagazine.com') {
+          try {
+              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+          } catch (e) {
+              return require('../images/focus.PNG');
+          }
       }
 }

@@ -11,6 +11,7 @@ import { formatNewsSources } from "../utils/formatNewsSources";
 import { fetchDataFromServices } from "../utils/fetchDataFromServices";
 import { isMobile} from 'react-device-detect';
 import AdSense from 'react-adsense';
+import proxy from '../config/proxy'
 
 class Home extends Component {
   constructor() {
@@ -58,7 +59,7 @@ class Home extends Component {
           // eslint-disable-next-line
           noticiaCla.map((cla) => {
               const options = {
-                  'url': 'https://provider.arubapage.com/' + cla.link
+                  'url': proxy + cla.link
               }
               ogs(options)
                   .then(function (result) {

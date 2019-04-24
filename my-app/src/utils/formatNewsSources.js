@@ -81,8 +81,14 @@ export const formatNewsSources = (services) => {
             <NewsItem key={index} index={index} newsSource={sports} provider="297sports.com" imgFunction={imageSports(sports)} />
         )
     })
+    //xclusivo 
+    let xclusivo = services.xclusivo && services.xclusivo.map((xclusivo, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={xclusivo} provider="xclusivomagazine.com" imgFunction={imageErrorCheck(xclusivo)} />
+        )
+    })
 
-    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, solo, focus, visitAruba, sports];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, solo, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }

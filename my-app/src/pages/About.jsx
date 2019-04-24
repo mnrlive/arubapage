@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
+import proxy from '../config/proxy';
 
 class About extends Component {
 
@@ -21,7 +22,7 @@ class About extends Component {
                     loaded: true
                 })
             }),
-            fetch('https://provider.arubapage.com/https://publish.twitter.com/oembed?url=https://twitter.com/arubapage/status/977901243275403265').then((response) => response.json()).then(response => {
+            fetch( proxy + 'https://publish.twitter.com/oembed?url=https://twitter.com/arubapage/status/977901243275403265').then((response) => response.json()).then(response => {
                 this.setState({
                     twitters: [response],
                     loaded: true

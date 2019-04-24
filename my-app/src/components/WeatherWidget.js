@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Skycons } from 'skycons';
+import proxy from '../config/proxy';
 
     const long = 12.4903;
     const lat = -69.961;
@@ -7,8 +8,6 @@ import { Skycons } from 'skycons';
     let temperatureDescription;
     let bindIcon;
 
-
-    const proxy = 'https://provider.arubapage.com/';
     const api = proxy + 'https://api.darksky.net/forecast/1afbc4782792106525717c6d6565e9b1/' + long + ',' + lat;
 
 class WeatherWidget extends Component{

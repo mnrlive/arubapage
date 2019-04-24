@@ -1,6 +1,6 @@
 
+import proxy from './proxy'
 const articleCount = 12;
-const proxy = 'https://provider.arubapage.com/';
 
 export const arubaNative = `${proxy}https://arubanative.com/wp-json/wp/v2/posts?_embed&per_page=${articleCount}`;
 export const noticiaCla = `${proxy}https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.noticiacla.com%2Frss`;
@@ -16,10 +16,10 @@ export const batiBleki =`${proxy}https://www.visitaruba.com/blog/wp-json/wp/v2/p
 export const bonDia = `${proxy}https://www.bondia.com/wp-json/wp/v2/posts?_embed&per_page=${articleCount}`;
 export const sports = `${proxy}http://www.297sports.com/wp-json//wp/v2/posts?_embed&per_page=${articleCount}`;
 export const solo = `${proxy}http://solodipueblo.com//wp-json/wp/v2/posts?_embed&per_page=${articleCount}`;
-// export const xclusivo = `${proxy}http://xclusivomagazine.com//wp-json/wp/v2/posts?_embed&per_page=${articleCount}`;
+export const xclusivo = `${proxy}http://xclusivomagazine.com//wp-json/wp/v2/posts?_embed&per_page=${articleCount}`;
 
 
 const services = {
-    arubaNative,noticiaCla,eArubianoNews,aweMainta,_24ora,boletinExtra,masNoticia,diario,focus,batiBleki,bonDia,sports,solo
+    arubaNative,noticiaCla,eArubianoNews,aweMainta,_24ora,boletinExtra,masNoticia,diario,focus,batiBleki,bonDia,sports,solo,xclusivo
 }
 export default services;

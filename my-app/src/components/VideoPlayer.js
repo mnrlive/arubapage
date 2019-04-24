@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import proxy from '../config/proxy';
 import {
   isChrome,
   browserName,
@@ -8,9 +9,9 @@ import {
 
 const renderContent = () => {
   if (((isChrome || isFirefox) && !isAndroid)) {
-        return 'https://provider.arubapage.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+        return `${proxy}http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
     }else if((browserName === 'Facebook' && isChrome)){
-      return 'https://provider.arubapage.com/http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+      return `${proxy}http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
     }else{
         return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
     }

@@ -17,6 +17,7 @@ import Header from './components/Header/Header';
 import ScrollToTop from 'react-scroll-up';
 import SecondNavbar from './components/Navbars/SecondNavbar';
 import Sticky from 'react-sticky-el';
+import proxy from './config/proxy';
 
 
 class App extends Component {
@@ -62,7 +63,7 @@ class App extends Component {
             })
             // eslint-disable-next-line
             noticiaCla.map((cla) => {
-                const options = { 'url': 'https://provider.arubapage.com/' + cla.link }
+                const options = { 'url': proxy + cla.link }
                 ogs(options)
                     .then(function (result) {
                         cla.imgUrl = result.data.ogImage.url;
