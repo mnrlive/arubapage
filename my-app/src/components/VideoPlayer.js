@@ -9,7 +9,7 @@ import {
 
 const renderContent = () => {
   if (((isChrome || isFirefox) && !isAndroid)) {
-        return `${proxy}http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
+        return `http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
     }else if((browserName === 'Facebook' && isChrome)){
       return `${proxy}http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
     }else{

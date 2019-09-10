@@ -12,6 +12,7 @@ class SecondNavbar extends Component {
                     <Link className="nav-link" to="arubanative.com">ArubaNative</Link>
                     <Link className="nav-link" to="masnoticia.com">MasNoticia</Link>
                     <Link className="nav-link" to="noticiacla.com">NoticiaCla</Link>
+                    <Link className="nav-link" to="awe24.com">Awe24</Link>
                     <Link className="nav-link" to="diario.aw">Diario</Link>
                     <Link className="nav-link" to="solodipueblo.com">SoloDiPueblo</Link>
                     <Link className="nav-link" to="24ora.com">24ora</Link>

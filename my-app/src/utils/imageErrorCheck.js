@@ -35,7 +35,7 @@ export const imageErrorCheck = function(provider) {
         }
        else if (link[0] === 'www.awemainta.com') {
        try {
-           return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
+           return (provider.jetpack_featured_media_url);
        } catch (e) {
            return require('../images/aweMainta.PNG');
           }

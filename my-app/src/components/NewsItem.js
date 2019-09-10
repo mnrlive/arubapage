@@ -6,7 +6,7 @@ import NewsCard from "./NewsCard";
 import NewsModal from "./NewsModal";
 // import LazyLoad from 'react-lazyload';
 
-const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, cla }) => {
+const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, cla, awe }) => {
   //newsSource && console.log(newsSource);
   if (cla) {
     const id = cla.guid.slice(cla.guid.lastIndexOf('/') + 1)
@@ -30,6 +30,33 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
           renderedContent={cla.content}
           source={" https://noticiacla.com"}
           articleUrl={cla.link}
+        />
+      </div>
+    )
+  }else if (awe) {
+    const id = awe.guid.slice(awe.guid.lastIndexOf('/') + 1)
+    const excerpt = awe.description.slice(0,247) + "..."
+    return (
+      <div className="col-md-4">
+        <NewsCard
+          image = {
+            (!awe.enclosure.link) ? require('../images/awe.PNG') : awe.enclosure.link
+          }
+          title={awe.title}
+          date={awe.pubDate}
+          excerpt={excerpt}
+          target={"#" + id}
+          provider="awe24.com"
+          cla={true}
+        />
+        <NewsModal
+          id={id}
+          image={(!awe.enclosure.link) ? require('../images/noticiaCLa.PNG') : awe.enclosure.link}
+          title={awe.title}
+          date={awe.pubDate}
+          renderedContent={awe.content}
+          source={" https://awe24.com"}
+          articleUrl={awe.link}
         />
       </div>
     )

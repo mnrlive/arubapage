@@ -12,7 +12,7 @@ class NewsItemsContainer extends Component {
         </ScrollToTop>
         {/* <ScrollableAnchor id={id || ""}> */}
           <h3 className="pb-3 mb-4 font-italic border-bottom">
-              {newsSource ? newsSource.charAt(0).toUpperCase() + newsSource.slice(1, newsSource.indexOf('.')) : "NotciaCla"}
+              {newsSource ? newsSource.charAt(0).toUpperCase() + newsSource.slice(1, newsSource.indexOf('.')) : "NotciaCla" }
           </h3>
         {/* </ScrollableAnchor> */}
         <div className="row">

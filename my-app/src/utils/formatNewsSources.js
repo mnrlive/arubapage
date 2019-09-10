@@ -9,6 +9,12 @@ export const formatNewsSources = (services) => {
             <NewsItem key={index} index={index} cla={cla} />
         )
     })
+
+       let awe24 = services.awe24 && services.awe24.map((awe, index) => {
+        return (
+            <NewsItem key={index} index={index} awe={awe} />
+        )
+    })
     // e arubiano Crawl for images!
     let eArubianoNews = services.eArubianoNews && services.eArubianoNews.map((arubiano, index) => {
         return (
@@ -88,7 +94,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, solo, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, awe24, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, solo, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }

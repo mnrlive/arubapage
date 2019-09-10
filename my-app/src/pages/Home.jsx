@@ -83,8 +83,10 @@ render() {
             if( item[0].props.provider){
                 const {provider} = item[0].props
                 anchor = provider.replace('www.', '').charAt(0).toUpperCase() + provider.replace('www.', '').slice(1)
-            } else {
+            } else if (item[0].props.cla) {
                 anchor = "noticiacla.com"
+            } else if (item[0].props.awe){
+                anchor = "awe24.com"
             }
         }
           return {

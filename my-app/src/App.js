@@ -99,8 +99,10 @@ class App extends Component {
                             if( newsItems[0].props.provider){
                                 const {provider} = newsItems[0].props
                                 anchor = provider.replace('www.', '').charAt(0).toUpperCase() + provider.replace('www.', '').slice(1)
-                            } else {
+                            } else if( services.noticiaCla) {
                                 anchor = "noticiacla.com"
+                            } else if (services.awe24) {
+                                anchor = "awe24.com"
                             }
                         return  (
                             <Route key={index} path={ '/' +  anchor } component={() => (
