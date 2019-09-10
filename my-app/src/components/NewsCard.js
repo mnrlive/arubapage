@@ -12,7 +12,7 @@ const NewsCard = props => {
         <div className="card-body">
             <h3>{props.title}</h3>
             <p className="card-text">{props.date}</p>
-            {props.cla ? <p>{props.excerpt}</p> : <p dangerouslySetInnerHTML={props.excerpt}></p>}
+            {props.cla || props.awe ? <p>{props.excerpt}</p> : <p dangerouslySetInnerHTML={props.excerpt}></p>}
             <button
                 type="button"
                 className="btn btn-lg btn-primary"

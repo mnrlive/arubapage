@@ -78,7 +78,7 @@ class App extends Component {
   render() {
         const { services } = this.state;
         const newsSources = formatNewsSources(services);
-        let loaded = _.compact(newsSources).length === 13;
+        let loaded = _.compact(newsSources).length === 15;
     return ( 
       <Router>       
       <Analytics id="UA-115970603-1" debug>
@@ -99,9 +99,9 @@ class App extends Component {
                             if( newsItems[0].props.provider){
                                 const {provider} = newsItems[0].props
                                 anchor = provider.replace('www.', '').charAt(0).toUpperCase() + provider.replace('www.', '').slice(1)
-                            } else if( services.noticiaCla) {
+                            } else if (newsItems[0].props.cla) {
                                 anchor = "noticiacla.com"
-                            } else if (services.awe24) {
+                            } else if (newsItems[0].props.awe) {
                                 anchor = "awe24.com"
                             }
                         return  (

@@ -33,7 +33,9 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
         />
       </div>
     )
-  }else if (awe) {
+  }
+  
+  if (awe) {
     const id = awe.guid.slice(awe.guid.lastIndexOf('/') + 1)
     const excerpt = awe.description.slice(0,247) + "..."
     return (
@@ -47,7 +49,7 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
           excerpt={excerpt}
           target={"#" + id}
           provider="awe24.com"
-          cla={true}
+          awe={true}
         />
         <NewsModal
           id={id}
@@ -61,6 +63,9 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
       </div>
     )
   }
+
+  
+  const dirty = newsSource.content.rendered.replace( /\[(.*?)\]/gm, " ");
   return (
   // <LazyLoad height={200}>
     <div className="col-md-4" key={index}>
@@ -69,7 +74,7 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
             title={ReactHtmlParser(newsSource.title.rendered)}
             date={moment(newsSource.date).format('L')}
             excerpt={ newsSource.description ? { __html: newsSource.description.substring(0, 250) + "..."} :
-                { __html: newsSource.excerpt.rendered.substring(0, 250) + "..." }}
+                { __html: dirty.substring(0, 250) + "..." }}
             target={"#" + newsSource.id}
             provider={provider}
         />
@@ -78,7 +83,7 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
             image={imgFunction}
             title={ReactHtmlParser(newsSource.title.rendered)}
             date={moment(newsSource.date).format('L')}
-            renderedContent={renderedContent ? renderedContent : ReactHtmlParser(sanitizeHtml(newsSource.content.rendered, {
+            renderedContent={renderedContent ? renderedContent : ReactHtmlParser(sanitizeHtml(dirty, {
                 allowedTags: ['p', 'li', 'iframe', 'i', 'strong'],
                   allowedAttributes: {
                     'iframe': ['src']

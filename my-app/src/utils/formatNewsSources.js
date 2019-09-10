@@ -10,7 +10,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-       let awe24 = services.awe24 && services.awe24.map((awe, index) => {
+    let awe24 = services.awe24 && services.awe24.map((awe, index) => {
         return (
             <NewsItem key={index} index={index} awe={awe} />
         )
