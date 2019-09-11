@@ -93,6 +93,7 @@ class App extends Component {
                  <Favicon url={[ico]} />
                  <Route exact path="/" component={Home}/>
                  <Route exact path="/about" component={About} />
+                 <Route exact path="/ads.txt" />
                  { newsSources && newsSources.map((newsItems, index) => {
                     if(newsItems){
                         let anchor;
