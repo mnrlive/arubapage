@@ -251,6 +251,7 @@ i:hover{
 .bottomText{
     margin-top: 25px;
     margin-bottom: 25px;
+    padding-bottom: 100px !important;
     padding: 10%;
 }
 
