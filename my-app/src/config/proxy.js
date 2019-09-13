@@ -1,3 +1,3 @@
-const proxy = 'https://cors-anywhere.herokuapp.com/';
+const proxy = 'https://wordpressmade.com/';
 
 export default proxy;
