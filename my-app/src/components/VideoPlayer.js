@@ -17,7 +17,7 @@ const renderContent = () => {
     }
 }
 
-let defaultVolume = 0.2;
+let defaultVolume = 1;
 const videoOptions = {
     autoplay: false,
     controls: true,
