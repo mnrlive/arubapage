@@ -53,7 +53,7 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
         />
         <NewsModal
           id={id}
-          image={(!awe.enclosure.link) ? require('../images/noticiaCLa.PNG') : awe.enclosure.link}
+          image={(!awe.enclosure.link) ? require('../images/awe.PNG') : awe.enclosure.link}
           title={awe.title}
           date={awe.pubDate}
           renderedContent={awe.content}
