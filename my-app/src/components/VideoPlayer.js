@@ -50,7 +50,7 @@ class VideoPlayer extends Component {
   render() {
     return (
       <div data-vjs-player>
-          <video ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
+          <video data-setup="{chromecast:{appId: 'chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID'}}" ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
       </div>
     );
   }

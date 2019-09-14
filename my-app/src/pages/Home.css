@@ -255,6 +255,17 @@ i:hover{
     padding: 10%;
 }
 
+.vjs-chromecast-button{
+    font-size: 18px !important;
+    margin-right: -10px !important;
+    padding-top: 5px !important;
+}
+
+.video-js .vjs-fullscreen-control {
+    font-size: 17px;
+    margin-top: -10px;
+}
+
 .video-js .vjs-big-play-button {
     height: 2em !important;
     width: 2em !important;
