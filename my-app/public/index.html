@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://unpkg.com/react-responsive-audio-player@1.5.0/dist/audioplayer.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="//vjs.zencdn.net/7.3.0/video-js.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//vjs.zencdn.net/7.6.0/video-js.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/videojs-chromecast/1.1.1/videojs.chromecast.css" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -83,9 +83,9 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-   <script rel="preload" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js" as="script"></script>
-   <script rel="preload" src="//vjs.zencdn.net/7.3.0/video.min.js" as="script"></script>
-   <script rel="preload" src="https://cdnjs.cloudflare.com/ajax/libs/video.js-chromecast/2.0.9/videojs-chromecast.min.js" as="script"></script>
+   <script rel="preload" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" as="script"></script>
+   <script rel="preload" src="//vjs.zencdn.net/7.6.0/video.min.js" as="script"></script>
+   <script rel="preload" src="https://cdn.jsdelivr.net/npm/@silvermine/videojs-chromecast@1.2.0/dist/silvermine-videojs-chromecast.js" as="script"></script>
    <script rel="preload" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" as="script"></script>
    <script rel="preload" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" as="script"></script>
    <script rel="preload" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" as="script"></script>

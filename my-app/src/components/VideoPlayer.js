@@ -23,6 +23,10 @@ const videoOptions = {
     controls: true,
     preload: true,
     fluid: true,
+    techOrder: [ 'chromecast', 'html5' ], // You may have more Tech, such as Flash or HLS
+    plugins: {
+       chromecast: {}
+    },
     poster: require('../images/TeleArubaGrey.png'),
     overrideNative: true,
     sources: [{
@@ -35,9 +39,10 @@ class VideoPlayer extends Component {
 
   componentDidMount() {
         this.player = window.videojs(this.videoNode, videoOptions, function onPlayerReady() {
-            // console.log('onPlayerReady', this);
             this.volume(defaultVolume);
         });
+
+        this.player.chromecast();
   }
 
   // destroy player on unmount
@@ -50,7 +55,7 @@ class VideoPlayer extends Component {
   render() {
     return (
       <div data-vjs-player>
-          <video data-setup="{chromecast:{appId: 'chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID'}}" ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
+          <video poster="https://arubapage.com/arubapagebanner.JPG" ref={node => this.videoNode = node} className="video-js vjs-default-skin vjs-big-play-centered"></video>
       </div>
     );
   }

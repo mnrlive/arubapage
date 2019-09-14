@@ -256,14 +256,19 @@ i:hover{
 }
 
 .vjs-chromecast-button{
-    font-size: 18px !important;
+    font-size: 20px !important;
     margin-right: -10px !important;
-    padding-top: 5px !important;
+    margin-left: -10px !important;
 }
 
-.video-js .vjs-fullscreen-control {
+/* .video-js .vjs-fullscreen-control {
     font-size: 17px;
     margin-top: -10px;
+} */
+
+.vjs-button>.vjs-icon-placeholder:before {
+    font-size: 30px;
+    line-height: unset !important;
 }
 
 .video-js .vjs-big-play-button {
