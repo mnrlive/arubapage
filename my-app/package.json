@@ -11,7 +11,7 @@
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "open-graph-scraper": "^3.3.0",
-    "react": "^16.2.0",
+    "react": "^16.7.0",
     "react-add-to-homescreen": "^1.0.0",
     "react-adsense": "0.0.6",
     "react-custom-scrollbars": "^4.2.1",
