@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ScrollToTop from 'react-scroll-up';
 import './NewsItem.css';
-import AdBanner from '../../AdBanner';
 
 class NewsItemsContainer extends Component {
   render() {
     const { newsSource, newsItems } = this.props;
     return (
       <main role="main" className="container newsItemBox">
-        <AdBanner slot='3825049427' />
         <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
             <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
         </ScrollToTop>

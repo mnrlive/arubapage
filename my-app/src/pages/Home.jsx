@@ -101,7 +101,7 @@ render() {
                 <Jumbotron />
                 {
                     (!isMobile) ?
-                         (<AdBanner slot='5340644171' /> ) : null
+                         (<AdBanner slot='5340644171' /> ) : ( <AdBanner slot='3825049427' />)
                     }
                 {this.state.loaded || <Skeleton count={newsSources.length} />}
 
