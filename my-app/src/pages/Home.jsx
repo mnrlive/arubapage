@@ -10,8 +10,8 @@ import NewsItemsContainer from "../components/NewsItemsContainer";
 import { formatNewsSources } from "../utils/formatNewsSources";
 import { fetchDataFromServices } from "../utils/fetchDataFromServices";
 import { isMobile} from 'react-device-detect';
-import AdSense from 'react-adsense';
-import proxy from '../config/proxy'
+import proxy from '../config/proxy';
+import AdBanner from '../components/AdBanner';
 
 class Home extends Component {
   constructor() {
@@ -101,13 +101,7 @@ render() {
                 <Jumbotron />
                 {
                     (!isMobile) ?
-                         ( <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='5340644171'
-                        style={{ display: 'block' }}
-                        format='auto'
-                        responsive='true'
-                    />) : null
+                         (<AdBanner slot='5340644171' /> ) : null
                     }
                 {this.state.loaded || <Skeleton count={newsSources.length} />}
 
