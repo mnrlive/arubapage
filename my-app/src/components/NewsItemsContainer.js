@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AdBanner from '../components/AdBanner';
 
 class NewsItemsContainer extends Component {
 
@@ -11,6 +12,7 @@ class NewsItemsContainer extends Component {
         <div className="row">
             {this.props.newsItems}
         </div>
+        <AdBanner slot='3825049427' />
     </div>
     );
   }
