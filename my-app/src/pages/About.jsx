@@ -111,12 +111,11 @@ return (
         <div className="container">
             <div className="row">
             {this.state.loaded || <Skeleton count={10} />}
-                {boletins}
+            <GoogleAd />
                 {instagrams}
                 {twitters}
             </div>
         </div>
-        <GoogleAd />
         <div id="aboutFooter" className="container">
             <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://robingiel.com" target="_blank" rel="noopener noreferrer">RG</a></div>
         </div>
