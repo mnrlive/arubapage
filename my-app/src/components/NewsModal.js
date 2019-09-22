@@ -7,7 +7,6 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from 'react-share';
-import GoogleAd from '../components/GoogleAd';
 
 const NewsModal = props => (
     <div
@@ -32,7 +31,6 @@ const NewsModal = props => (
               <div className="modal-body" >
                   <p className="card-text">{props.date}</p>
                   {props.renderedContent}
-                  <GoogleAd />
                  <div>
                   <a
                     href={props.source}

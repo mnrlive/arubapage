@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
 import proxy from '../config/proxy';
+import GoogleAd from '../components/GoogleAd';
 
 class About extends Component {
 
@@ -115,6 +116,7 @@ return (
                 {twitters}
             </div>
         </div>
+        <GoogleAd />
         <div id="aboutFooter" className="container">
             <div className="text-center text-muted"><p>© 2018 made by</p><a href="https://robingiel.com" target="_blank" rel="noopener noreferrer">RG</a></div>
         </div>
