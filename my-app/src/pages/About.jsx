@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
 import proxy from '../config/proxy';
-import GoogleAd from '../components/GoogleAd';
+import AdSense from 'react-adsense';
 
 class About extends Component {
 
@@ -109,9 +109,16 @@ return (
             </section>
         </div>
         <div className="container">
+            <AdSense.Google
+                        client='ca-pub-8107944427019798'
+                        slot='5340644171'
+                        style={{ display: 'block' }}
+                        format='auto'
+                        responsive='true'
+                    />
             <div className="row">
             {this.state.loaded || <Skeleton count={10} />}
-            <GoogleAd />
+                {boletins}
                 {instagrams}
                 {twitters}
             </div>
