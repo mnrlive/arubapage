@@ -8,6 +8,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.2",
     "debug": ">=2.6.9",
+    "http-server": "^0.11.1",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "open-graph-scraper": "^3.3.0",
@@ -52,6 +53,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-sw": "workbox copyLibraries build/ && workbox injectManifest workbox-config.js && http-server build/ -c 0"
   }
 }

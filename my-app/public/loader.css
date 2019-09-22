@@ -1,7 +1,7 @@
 .arubaflag-frame{
-    display: -webkit-flex;
+  display: -webkit-flex;
   display: -moz-flex;
-  /* display: flex; */
+  display: flex;
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
   flex-direction: column;
@@ -10,7 +10,7 @@
   justify-content: center;
   -webkit-animation: fadein 436ms;
   -moz-animation: fadein 436ms;
-  /* animation: fadein 436ms; */
+  animation: fadein 436ms;
   height: 98%;
 }
 
