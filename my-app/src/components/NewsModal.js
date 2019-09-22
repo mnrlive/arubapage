@@ -7,6 +7,7 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from 'react-share';
+import AdSense from 'react-adsense';
 
 const NewsModal = props => (
     <div
@@ -31,7 +32,15 @@ const NewsModal = props => (
               <div className="modal-body" >
                   <p className="card-text">{props.date}</p>
                   {props.renderedContent}
-                 <div> 
+                    <AdSense.Google
+                        client='ca-pub-8107944427019798'
+                        slot='8123387088'
+                        class="adsbygoogle"
+                        style={{ display: 'block', textAlign: 'center' }}
+                        format='fluid'
+                        layout="in article"
+                    />
+                 <div>
                   <a
                     href={props.source}
                     target="_blank"
