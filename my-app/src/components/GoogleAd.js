@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import AdSense from 'react-adsense';
+
 export default class GoogleAd extends Component {
     componentDidMount() {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -6,12 +8,13 @@ export default class GoogleAd extends Component {
 
     render() {
         return (
-            <ins className='adsbygoogle'
-                style={{ display: "block"}}
-                data-ad-client="ca-pub-8107944427019798"
-                data-ad-slot="3825049427"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
+            <AdSense.Google
+            client='ca-pub-8107944427019798'
+            slot='5340644171'
+            style={{ display: 'block' }}
+            format='auto'
+            responsive='true'
+        />
         );
     }
 }
