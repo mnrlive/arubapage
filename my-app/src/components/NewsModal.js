@@ -7,7 +7,6 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from 'react-share';
-import AdSense from 'react-adsense';
 
 const NewsModal = props => (
     <div
@@ -32,14 +31,18 @@ const NewsModal = props => (
               <div className="modal-body" >
                   <p className="card-text">{props.date}</p>
                   {props.renderedContent}
-                    <AdSense.Google
-                        client='ca-pub-8107944427019798'
-                        slot='8123387088'
-                        class="adsbygoogle"
-                        style={{ display: 'block', textAlign: 'center' }}
-                        format='fluid'
-                        layout="in article"
-                    />
+              <div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                        style={{display: 'block', TextAlign: 'center'}}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-8107944427019798"
+                        data-ad-slot="8123387088"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                </div>  
                  <div>
                   <a
                     href={props.source}
