@@ -31,18 +31,16 @@ const NewsModal = props => (
               <div className="modal-body" >
                   <p className="card-text">{props.date}</p>
                   {props.renderedContent}
-              <div>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <ins class="adsbygoogle"
-                        style={{display: 'block', TextAlign: 'center'}}
-                        data-ad-layout="in-article"
-                        data-ad-format="fluid"
+                        style={{display: 'block'}}
                         data-ad-client="ca-pub-8107944427019798"
-                        data-ad-slot="8123387088"></ins>
+                        data-ad-slot="3825049427"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
-                  </script>
-                </div>  
+                    </script>
                  <div>
                   <a
                     href={props.source}
