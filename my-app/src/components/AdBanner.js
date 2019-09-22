@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import AdSense from 'react-adsense';
 
 class AdBanner extends Component {
-    componentDidMount() {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
 
     render() {
         const style = {
