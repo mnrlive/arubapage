@@ -6,7 +6,7 @@ class NewsItemsContainer extends Component {
   render() {
     return (
       <div>
-          <h3 className="pb-3 mb-4 font-italic border-bottom">
+          <h3 className="pb-3 mb-4 font-italic border-bottom newsContainersTitles">
               {this.props.newsSource}
           </h3>
         <div className="row">

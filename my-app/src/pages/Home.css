@@ -736,3 +736,8 @@ i:hover{
   #dosNuebeSheteSports{
       margin-top: 130px;
   }
+
+  .newsContainersTitles{
+    text-align: center;
+    padding-top: 1rem!important;
+  }
