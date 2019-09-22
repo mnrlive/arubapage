@@ -8,7 +8,7 @@ class NewsItemsContainer extends Component {
     const { newsSource, newsItems } = this.props;
     return (
       <main role="main" className="container newsItemBox">
-        <AdBanner slot='5340644171' />
+        <AdBanner slot='3825049427' />
         <ScrollToTop style={{ "zIndex": '1', bottom: '85px'}} showUnder={160}>
             <span><i className="arrow fa fa-arrow-circle-up fa-3x"></i></span>
         </ScrollToTop>
