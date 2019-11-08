@@ -9,7 +9,7 @@ export const fetchDataFromServices = function (addServiceData){
       headers: myHeaders,
   };
   Object.keys(newsServices).forEach((key) => {
-      if (key === 'noticiaCla' || key === 'awe24') {
+      if (key === 'noticiaCla') {
 
           try{
               fetch(newsServices[key], fetchConfig).then((response) => response.json()).then((responseJson) => {addServiceData(key, responseJson.items)})

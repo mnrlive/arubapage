@@ -1,4 +1,3 @@
-
 // Cathing erros and showing default
 export const imageErrorCheck = function(provider) {
 
@@ -31,7 +30,7 @@ export const imageErrorCheck = function(provider) {
           }
       }  
       else if (link[0] === 'earubianonews.com') {
-              return require('../images/eArubiano.PNG');
+              return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
         }
        else if (link[0] === 'www.awemainta.com') {
        try {
@@ -39,7 +38,17 @@ export const imageErrorCheck = function(provider) {
        } catch (e) {
            return require('../images/aweMainta.PNG');
           }
-      } else if (link[0] === 'www.297sports.com') {
+      } 
+      else if (link[0] === 'awe24.com') {
+        const regImage = /src\s*=\s*"(.+?)"/ ;
+        try {
+            return (regImage.exec(provider.content.rendered)[1]);
+        } catch (e) {
+            return require('../images/awe.PNG');
+           }
+       } 
+      
+      else if (link[0] === 'www.297sports.com') {
           try {
               return (provider._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url);
           } catch (e) {

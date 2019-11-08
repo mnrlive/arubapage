@@ -1,7 +1,7 @@
 import React from "react"
 import NewsItem from '../components/NewsItem';
 import { imageErrorCheck } from "../utils/imageErrorCheck";
-import { imageTest, imageBintiCuater, imageSports} from "../utils/imageFunctions";
+import { imageBintiCuater, imageSports} from "../utils/imageFunctions";
 
 export const formatNewsSources = (services) => {
    let noticiaCla = services.noticiaCla && services.noticiaCla.map((cla, index) => {
@@ -12,7 +12,7 @@ export const formatNewsSources = (services) => {
 
     let awe24 = services.awe24 && services.awe24.map((awe, index) => {
         return (
-            <NewsItem key={index} index={index} awe={awe} />
+            <NewsItem key={index} index={index} newsSource={awe} provider="awe24.com" imgFunction={imageErrorCheck(awe)} />
         )
     })
     // e arubiano Crawl for images!
@@ -28,11 +28,12 @@ export const formatNewsSources = (services) => {
         )
     })
     //boletin extra Crawl for images!
-    let boletinExtra =  services.boletinExtra && services.boletinExtra.map((boletinExtra, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
-        )
-    })
+    // let boletinExtra =  services.boletinExtra && services.boletinExtra.map((boletinExtra, index) => {
+    //     return (
+    //         <NewsItem key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
+    //     )
+    // })
+
     //24ora Crawl for images!
     let bintiCuatroOra = services._24ora && services._24ora.map((ora, index) => {
         return (
@@ -94,7 +95,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, awe24, bondia, diario, bintiCuatroOra, boletinExtra, eArubianoNews, aweMainta, solo, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, awe24, bondia, diario, bintiCuatroOra, eArubianoNews, aweMainta, solo, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }
