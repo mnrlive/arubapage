@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.aa3f9c1e.css",
   "main.css.map": "static/css/main.aa3f9c1e.css.map",
-  "main.js": "static/js/main.1187fba1.js",
-  "main.js.map": "static/js/main.1187fba1.js.map",
+  "main.js": "static/js/main.157af8cd.js",
+  "main.js.map": "static/js/main.157af8cd.js.map",
   "static/media/24ora.jpg": "static/media/24ora.a7c8bf13.jpg",
   "static/media/297sport.JPG": "static/media/297sport.ac3557a3.JPG",
   "static/media/TeleArubaGrey.png": "static/media/TeleArubaGrey.2389ed14.png",
@@ -17,6 +17,7 @@
   "static/media/diario.PNG": "static/media/diario.f4a5deea.PNG",
   "static/media/eArubiano.PNG": "static/media/eArubiano.b4e35207.PNG",
   "static/media/focus.PNG": "static/media/focus.66065183.PNG",
+  "static/media/loader.svg": "static/media/loader.9c458897.svg",
   "static/media/masnoticia.PNG": "static/media/masnoticia.ec232440.PNG",
   "static/media/noticiaCLa.PNG": "static/media/noticiaCLa.aa9202e7.PNG",
   "static/media/soloDefaultimg.jpg": "static/media/soloDefaultimg.5417e189.jpg",
