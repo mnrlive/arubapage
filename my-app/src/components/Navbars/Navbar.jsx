@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import WeatherWidget from '../WeatherWidget';
+import Loader from '../Loader'
 import './Navbar.css';
 
 
@@ -27,7 +28,7 @@ import './Navbar.css';
                      <span id="brandname">ArubaPage</span>
                     </a>
                 </div>
-                { !loaded ? <img id='spinner' src='https://loading.io/spinners/spinner/index.ajax-spinner-preloader.gif' alt='Loading news..' /> : null }
+                { !loaded ? <Loader/> : null }
                  <div className="collapse navbar-collapse" id="navbarCollapse">
                         <ul className="nav nav-masthead justify-content-center">
                         <li className="nav-item">
