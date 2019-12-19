@@ -148,7 +148,7 @@ footer p {
 } */
 
 .navbar-collapse{
-    align-items: baseline;
+    align-items: center;
 }
 
 @media (min-width: 48em) {
@@ -283,7 +283,8 @@ i:hover{
 }
 
 .nav-item {
-    padding-top: 20px;
+   display: flex;
+   align-items: center;
 }
 
 
@@ -728,7 +729,6 @@ i:hover{
   #dosCuatorOra,
   #BoletinExtra,
   #EarubianoNews,
-  #AweMainta,
   #Focus,
   #VisitAruba,
   #BonDia,

@@ -17,7 +17,6 @@ class SecondNavbar extends Component {
                     <Link className="nav-link" to="solodipueblo.com">SoloDiPueblo</Link>
                     <Link className="nav-link" to="24ora.com">24ora</Link>
                     <Link className="nav-link" to="earubianonews.com">EarubianoNews</Link>
-                    <Link className="nav-link" to="awemainta.com">AweMainta</Link>
                     <Link className="nav-link" to="focus.aw">Focus</Link>
                     <Link className="nav-link" to="visitaruba.com">VisitAruba</Link>
                     <Link className="nav-link" to="bondia.com">BonDia</Link>

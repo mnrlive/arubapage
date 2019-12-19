@@ -99,7 +99,8 @@ body {
 }
 
 .location {
-    display: -webkit-inline-box;
+    display: inline-flex;
+    margin-top: 20px;
     color: white;
     padding-left: 3px;
 }
