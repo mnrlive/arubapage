@@ -1,3 +1,3 @@
-const proxy = 'https://wordpressmade.com/';
+const proxy = 'https://proxy.robingiel.com/';
 
 export default proxy;
