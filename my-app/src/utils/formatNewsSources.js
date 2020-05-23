@@ -22,11 +22,11 @@ export const formatNewsSources = (services) => {
         )
     })
     //awe mainta
-    // let aweMainta = services.aweMainta && services.aweMainta.map((mainta, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={mainta} provider="awemainta.com" imgFunction={imageErrorCheck(mainta)} />
-    //     )
-    // })
+    let aweMainta = services.aweMainta && services.aweMainta.map((mainta, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={mainta} provider="www.awemainta.com" imgFunction={imageErrorCheck(mainta)} />
+        )
+    })
     //boletin extra Crawl for images!
     // let boletinExtra =  services.boletinExtra && services.boletinExtra.map((boletinExtra, index) => {
     //     return (
@@ -95,7 +95,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, awe24, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, awe24, aweMainta, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }

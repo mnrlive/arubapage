@@ -31,23 +31,30 @@ export const imageErrorCheck = function(provider) {
     } catch (e) {
       return require("../images/focus.PNG");
     }
-  } else if (link[0] === "earubianonews.com") {
+  } else if (link[0] === "www.earubianonews.com") {
     try {
-      return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
-        .source_url;
+      const regexErubiano = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
+      return regexErubiano.exec(provider.content.rendered)[0];
     } catch (e) {
       return require("../images/eArubiano.PNG");
     }
-//   } else if (link[0] === "www.awemainta.com") {
-//     try {
-//       return provider.jetpack_featured_media_url;
-//     } catch (e) {
-//       return require("../images/aweMainta.PNG");
-//     }
-  } else if (link[0] === "awe24.com") {
-    const regImage = /src\s*=\s*"(.+?)"/;
+  } else if (link[0] === "www.awemainta.com") {
     try {
-      return regImage.exec(provider.content.rendered)[1];
+      const aweM = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
+      let initial_url;
+      let processed_url;
+      initial_url = aweM.exec(provider.content.rendered)[0];
+      processed_url = "http" + initial_url.slice(5);
+      console.log(processed_url);
+      return processed_url;
+    } catch (e) {
+      return require("../images/aweMainta.PNG");
+    }
+  } else if (link[0] === "awe24.com") {
+    // const regImage = /src\s*=\s*"(.+?)"/;
+    const regImage = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
+    try {
+      return regImage.exec(provider.content.rendered)[0];
     } catch (e) {
       return require("../images/awe.PNG");
     }
@@ -58,10 +65,9 @@ export const imageErrorCheck = function(provider) {
     } catch (e) {
       return require("../images/coolFm.png");
     }
-  } else if (link[0] === "www.diario.aw") {
+  } else if (link[0] === "diario.aw") {
     try {
-      return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
-        .source_url;
+      return provider.jetpack_featured_media_url;
     } catch (e) {
       return require("../images/diario.PNG");
     }
@@ -74,8 +80,8 @@ export const imageErrorCheck = function(provider) {
     }
   } else if (link[0] === "solodipueblo.com") {
     try {
-      //   return (provider._embedded['wp:featuredmedia'][0].media_details['file']);
-      return require("../images/soloDefaultimg.jpg");
+        return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
+        .source_url;
     } catch (e) {
       return require("../images/soloDefaultimg.jpg");
     }
