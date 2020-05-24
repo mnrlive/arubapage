@@ -88,7 +88,7 @@ const NewsItem = ({ newsSource, index, provider, imgFunction, renderedContent, c
                   allowedAttributes: {
                     'iframe': ['src']
                   },
-                  allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com']
+                  allowedIframeHostnames: ['www.youtube.com', 'player.vimeo.com', 'www.facebook.com']
             }))}
             source={" https://" + provider}
             articleUrl={newsSource.link}

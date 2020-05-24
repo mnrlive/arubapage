@@ -9,3 +9,7 @@ body {
 :focus {
   outline: none !important;
 }
+
+iframe{
+  width: auto;
+}
