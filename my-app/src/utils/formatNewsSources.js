@@ -10,11 +10,11 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let awe24 = services.awe24 && services.awe24.map((awe, index) => {
-        return (
-            <NewsItem key={index} index={index} newsSource={awe} provider="awe24.com" imgFunction={imageErrorCheck(awe)} />
-        )
-    })
+    // let awe24 = services.awe24 && services.awe24.map((awe, index) => {
+    //     return (
+    //         <NewsItem key={index} index={index} newsSource={awe} provider="awe24.com" imgFunction={imageErrorCheck(awe)} />
+    //     )
+    // })
     // e arubiano Crawl for images!
     let eArubianoNews = services.eArubianoNews && services.eArubianoNews.map((arubiano, index) => {
         return (
@@ -95,7 +95,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, awe24, aweMainta, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, aweMainta, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }
