@@ -9,13 +9,8 @@ class SecondNavbar extends Component {
             <div className="nav-pills nav-underline nav-scroller bg-white shadow-sm box-shadow">
                 <nav className="nav nav-underline">
                     <Link className="nav-link" to="/">Latest</Link>
-                    <Link className="nav-link" to="arubanative.com">ArubaNative</Link>
-                    <Link className="nav-link" to="masnoticia.com">MasNoticia</Link>
                     <Link className="nav-link" to="noticiacla.com">NoticiaCla</Link>
-                    <Link className="nav-link" to="awemainta.com">AweMainta</Link>
                     <Link className="nav-link" to="diario.aw">Diario</Link>
-                    <Link className="nav-link" to="solodipueblo.com">SoloDiPueblo</Link>
-                    <Link className="nav-link" to="24ora.com">24ora</Link>
                     <Link className="nav-link" to="earubianonews.com">EarubianoNews</Link>
                     <Link className="nav-link" to="focus.aw">Focus</Link>
                     <Link className="nav-link" to="visitaruba.com">VisitAruba</Link>
