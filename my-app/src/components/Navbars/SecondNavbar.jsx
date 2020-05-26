@@ -9,7 +9,6 @@ class SecondNavbar extends Component {
             <div className="nav-pills nav-underline nav-scroller bg-white shadow-sm box-shadow">
                 <nav className="nav nav-underline">
                     <Link className="nav-link" to="/">Latest</Link>
-                    <Link className="nav-link" to="noticiacla.com">NoticiaCla</Link>
                     <Link className="nav-link" to="diario.aw">Diario</Link>
                     <Link className="nav-link" to="earubianonews.com">EarubianoNews</Link>
                     <Link className="nav-link" to="focus.aw">Focus</Link>

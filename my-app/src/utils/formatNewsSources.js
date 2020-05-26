@@ -4,11 +4,11 @@ import { imageErrorCheck } from "../utils/imageErrorCheck";
 import {imageSports} from "../utils/imageFunctions";
 
 export const formatNewsSources = (services) => {
-   let noticiaCla = services.noticiaCla && services.noticiaCla.map((cla, index) => {
-        return (
-            <NewsItem key={index} index={index} cla={cla} />
-        )
-    })
+//    let noticiaCla = services.noticiaCla && services.noticiaCla.map((cla, index) => {
+//         return (
+//             <NewsItem key={index} index={index} cla={cla} />
+//         )
+//     })
 
     // let awe24 = services.awe24 && services.awe24.map((awe, index) => {
     //     return (
@@ -95,7 +95,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [noticiaCla, bondia, diario, eArubianoNews, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [bondia, diario, eArubianoNews, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }
