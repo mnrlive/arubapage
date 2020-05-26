@@ -78,7 +78,7 @@ class App extends Component {
   render() {
         const { services } = this.state;
         const newsSources = formatNewsSources(services);
-        let loaded = _.compact(newsSources).length === 13;
+        let loaded = _.compact(newsSources).length === 8;
     return ( 
       <Router>       
       <Analytics id="UA-115970603-1" debug>
