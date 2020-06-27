@@ -11,9 +11,9 @@ const renderContent = () => {
   if (((isChrome || isFirefox) && !isAndroid)) {
         return `${proxy}http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
     }else if((browserName === 'Facebook' && isChrome)){
-      return `${proxy}http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8`;
+      return `${proxy}https://backend-server-dot-telearuba-app.appspot.com/media/livestream13/chunklist_w949781578_b1596000_sleng.m3u8`;
     }else{
-        return 'http://cdn.setar.aw:1935/Telearuba/smil:telearuba.smil/playlist.m3u8';
+        return 'https://backend-server-dot-telearuba-app.appspot.com/media/livestream13/chunklist_w949781578_b1596000_sleng.m3u8';
     }
 }
 
