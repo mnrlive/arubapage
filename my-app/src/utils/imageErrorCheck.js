@@ -61,7 +61,7 @@ export const imageErrorCheck = function (provider) {
       let processed_url;
       initial_url = aweM.exec(provider.content.rendered)[0];
       processed_url = "http" + initial_url.slice(5);
-      return processed_url;
+      return 'https://images.weserv.nl/?url=' + processed_url + '&w=800&h=800';
     } catch (e) {
       return require("../images/aweMainta.PNG");
     }
