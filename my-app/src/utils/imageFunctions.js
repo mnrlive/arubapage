@@ -14,8 +14,9 @@ export const imageBintiCuater = function (ora) {
 
 export const imageSports = function (sports) {
   let url = sports._embedded["wp:featuredmedia"][0].source_url;
+  let httpUrl = url.replace(/^https:\/\//i, "http://");
   try {
-    return url.replace(/^https:\/\//i, "http://");
+    return 'https://images.weserv.nl/?url=' + httpUrl + '&w=300&h=300';
   } catch (e) {
     return require("../images/297sport.JPG");
   }

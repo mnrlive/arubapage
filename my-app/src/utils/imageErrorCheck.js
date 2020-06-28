@@ -2,6 +2,8 @@
 export const imageErrorCheck = function (provider) {
   const regEx = /[-a-zA-Z0-9@:%_.~#?&=]{2,256}\.[a-z]{2,4}/;
   const link = regEx.exec(provider.link);
+  // const proxy = 'https://images.weserv.nl/?url=';
+  // const resize = '&w=300&h=300';
 
   if (link[0] === "arubanative.com") {
     try {
@@ -29,16 +31,17 @@ export const imageErrorCheck = function (provider) {
   }
   if (link[0] === "xclusivomagazine.com") {
     try {
-      return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
-        .source_url;
+      return 'https://images.weserv.nl/?url=' + provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
+        .source_url + '&w=500&h=500';
     } catch (e) {
       return require("../images/focus.PNG");
     }
   }
-  if (link[0] === "www.earubianonews.com") {
+  if (link[0] === "www.eanews.com") {
     try {
-      const regexErubiano = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
-      return regexErubiano.exec(provider.content.rendered)[0];
+      // const regexErubiano = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
+      return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
+      .source_url
     } catch (e) {
       return require("../images/eArubiano.PNG");
     }
