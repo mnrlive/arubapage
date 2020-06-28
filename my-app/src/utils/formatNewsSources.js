@@ -4,11 +4,11 @@ import { imageErrorCheck } from "../utils/imageErrorCheck";
 import {imageSports} from "../utils/imageFunctions";
 
 export const formatNewsSources = (services) => {
-//    let noticiaCla = services.noticiaCla && services.noticiaCla.map((cla, index) => {
-//         return (
-//             <NewsItem key={index} index={index} cla={cla} />
-//         )
-//     })
+   let noticiaCla = services.noticiaCla && services.noticiaCla.map((cla, index) => {
+        return (
+            <NewsItem key={index} index={index} cla={cla} />
+        )
+    })
 
     // let awe24 = services.awe24 && services.awe24.map((awe, index) => {
     //     return (
@@ -22,11 +22,11 @@ export const formatNewsSources = (services) => {
         )
     })
     //awe mainta
-    // let aweMainta = services.aweMainta && services.aweMainta.map((mainta, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={mainta} provider="www.awemainta.com" imgFunction={imageErrorCheck(mainta)} />
-    //     )
-    // })
+    let aweMainta = services.aweMainta && services.aweMainta.map((mainta, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={mainta} provider="www.awemainta.com" imgFunction={imageErrorCheck(mainta)} />
+        )
+    })
     //boletin extra Crawl for images!
     // let boletinExtra =  services.boletinExtra && services.boletinExtra.map((boletinExtra, index) => {
     //     return (
@@ -35,17 +35,17 @@ export const formatNewsSources = (services) => {
     // })
 
     //24ora Crawl for images!
-    // let bintiCuatroOra = services._24ora && services._24ora.map((ora, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={ora} provider="24ora.com" imgFunction={imageBintiCuater(ora)} />
-    //     )
-    // })
+    let bintiCuatroOra = services._24ora && services._24ora.map((ora, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={ora} provider="24ora.com" imgFunction={imageErrorCheck(ora)} />
+        )
+    })
     //masnoticia
-    // let masNoticia = services.masNoticia && services.masNoticia.map((masNoticia, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={masNoticia} provider="masnoticia.com" imgFunction={imageErrorCheck(masNoticia)} />
-    //     )
-    // })
+    let masNoticia = services.masNoticia && services.masNoticia.map((masNoticia, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={masNoticia} provider="masnoticia.com" imgFunction={imageErrorCheck(masNoticia)} />
+        )
+    })
     //diario
     let diario = services.diario && services.diario.map((diario, index) => {
         return (
@@ -53,17 +53,17 @@ export const formatNewsSources = (services) => {
         )
     })
     //aruba native
-    // let arubaNative = services.arubaNative && services.arubaNative.map((arubaNative, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
-    //     )
-    // })
+    let arubaNative = services.arubaNative && services.arubaNative.map((arubaNative, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={arubaNative} provider="arubanative.com" imgFunction={imageErrorCheck(arubaNative)} />
+        )
+    })
     //solo di pueblo
-    // let solo = services.solo && services.solo.map((solo, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
-    //     )
-    // })
+    let solo = services.solo && services.solo.map((solo, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={solo} provider="solodipueblo.com" imgFunction={imageErrorCheck(solo)} />
+        )
+    })
     //bon dia aruba
     let bondia = services.bonDia && services.bonDia.map((bondia, index) => {
         return (
@@ -95,7 +95,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [bondia, diario, eArubianoNews, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, aweMainta, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo];
 
     return formattedNewsSources;
 }

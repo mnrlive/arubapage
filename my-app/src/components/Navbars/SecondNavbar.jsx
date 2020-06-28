@@ -16,9 +16,13 @@ class SecondNavbar extends Component {
                     <Link className="nav-link" to="bondia.com">BonDia</Link>
                     <Link className="nav-link" to="297Sports.com">297Sports</Link>
                     <Link className="nav-link" to="xclusivomagazine.com">Xclusivo</Link>
+                    <Link className="nav-link" to="arubanative.com">ArubaNative</Link>
+                    <Link className="nav-link" to="masnoticia.com">MasNoticia</Link>
+                    <Link className="nav-link" to="awemainta.com">AweMainta</Link>
+                    <Link className="nav-link" to="solodipueblo.com">SoloDiPueblo</Link>
+                    <Link className="nav-link" to="24ora.com">24ora</Link>
                 </nav>
             </div>
-
         );
     }
 }

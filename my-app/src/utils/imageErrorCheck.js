@@ -32,9 +32,17 @@ export const imageErrorCheck = function (provider) {
   if (link[0] === "xclusivomagazine.com") {
     try {
       return 'https://images.weserv.nl/?url=' + provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
-        .source_url + '&w=500&h=500';
+        .source_url + '&w=800&h=800';
     } catch (e) {
       return require("../images/focus.PNG");
+    }
+  }
+  if (link[0] === "24ora.com") {
+    try {
+      return 'https://images.weserv.nl/?url=' + provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
+        .source_url + '&w=800&h=800';
+    } catch (e) {
+      return require("../images/24ora.jpg");
     }
   }
   if (link[0] === "www.eanews.com") {
