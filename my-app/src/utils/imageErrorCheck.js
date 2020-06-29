@@ -21,6 +21,15 @@ export const imageErrorCheck = function (provider) {
       return require("../images/bondia.PNG");
     }
   }
+  if (link[0] === "www.arubatoday.com") {
+    try {
+      return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
+        .source_url;
+    } catch (e) {
+      return require("../images/arubaToday.PNG");
+    }
+  }
+
   if (link[0] === "focus.aw") {
     try {
       return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
@@ -66,15 +75,15 @@ export const imageErrorCheck = function (provider) {
       return require("../images/aweMainta.PNG");
     }
   }
-  // if (link[0] === "awe24.com") {
-  //   // const regImage = /src\s*=\s*"(.+?)"/;
-  //   const regImage = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
-  //   try {
-  //     return regImage.exec(provider.content.rendered)[0];
-  //   } catch (e) {
-  //     return require("../images/awe.PNG");
-  //   }
-  // }
+  if (link[0] === "awe24.com") {
+    // const regImage = /src\s*=\s*"(.+?)"/;
+    const regImage = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/g;
+    try {
+      return regImage.exec(provider.content.rendered)[0];
+    } catch (e) {
+      return require("../images/awe.PNG");
+    }
+  }
   if (link[0] === "www.297sports.com") {
     try {
       return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full

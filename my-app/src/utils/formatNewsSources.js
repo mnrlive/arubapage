@@ -10,11 +10,11 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    // let awe24 = services.awe24 && services.awe24.map((awe, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={awe} provider="awe24.com" imgFunction={imageErrorCheck(awe)} />
-    //     )
-    // })
+    let awe24 = services.awe24 && services.awe24.map((awe, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={awe} provider="awe24.com" imgFunction={imageErrorCheck(awe)} />
+        )
+    })
     // e arubiano Crawl for images!
     let eArubianoNews = services.eArubianoNews && services.eArubianoNews.map((arubiano, index) => {
         return (
@@ -27,12 +27,12 @@ export const formatNewsSources = (services) => {
             <NewsItem key={index} index={index} newsSource={mainta} provider="www.awemainta.com" imgFunction={imageErrorCheck(mainta)} />
         )
     })
-    //boletin extra Crawl for images!
-    // let boletinExtra =  services.boletinExtra && services.boletinExtra.map((boletinExtra, index) => {
-    //     return (
-    //         <NewsItem key={index} index={index} newsSource={boletinExtra} provider="boletinextra.com" imgFunction={imageTest(boletinExtra)} />
-    //     )
-    // })
+    //aruba today
+    let arubaToday =  services.arubaToday && services.arubaToday.map((arubaToday, index) => {
+        return (
+            <NewsItem key={index} index={index} newsSource={arubaToday} provider="www.arubaToday.com" imgFunction={imageErrorCheck(arubaToday)} />
+        )
+    })
 
     //24ora Crawl for images!
     let bintiCuatroOra = services._24ora && services._24ora.map((ora, index) => {
@@ -95,7 +95,7 @@ export const formatNewsSources = (services) => {
         )
     })
 
-    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, aweMainta, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo];
+    let formattedNewsSources = [masNoticia, arubaNative, noticiaCla, aweMainta, bondia, diario, bintiCuatroOra, eArubianoNews, solo, focus, visitAruba, sports, xclusivo, awe24, arubaToday];
 
     return formattedNewsSources;
 }
