@@ -15,7 +15,7 @@ export const imageErrorCheck = function (provider) {
   }
   if (link[0] === "www.bondia.com") {
     try {
-      return provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
+      return 'https://images.weserv.nl/?url=' + provider._embedded["wp:featuredmedia"][0].media_details.sizes.full
         .source_url;
     } catch (e) {
       return require("../images/bondia.PNG");
